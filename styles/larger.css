@@ -5,8 +5,8 @@
     }
 
     .brand img {
-        width: 44px;
-        height: 44px;
+        width: 116px;
+        height: auto;
     }
 
     #menu {
@@ -18,13 +18,14 @@
         display: flex;
         max-width: 1180px;
         margin: 0 auto;
+        border-bottom: 3px solid #e7a92c;
     }
 
     nav a {
         min-height: 36px;
         padding: 0.6rem 1rem;
         border-top: 0;
-        border-right: 1px solid #000000;
+        border-right: 1px solid #16475a;
     }
 
     h1 {

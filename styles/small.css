@@ -5,8 +5,8 @@
 body {
     margin: 0;
     font-family: "Inter", Arial, sans-serif;
-    color: #181818;
-    background: #ffffff;
+    color: #1f2933;
+    background: #fffdf8;
 }
 
 header {
@@ -15,6 +15,8 @@ header {
     justify-content: space-between;
     gap: 1rem;
     padding: 0.75rem 1rem;
+    background: #ffffff;
+    border-bottom: 4px solid #e7a92c;
 }
 
 .brand {
@@ -25,15 +27,16 @@ header {
 }
 
 .brand img {
-    width: 48px;
-    height: 48px;
+    width: 96px;
+    height: auto;
+    object-fit: contain;
 }
 
 #menu {
     width: 44px;
     height: 44px;
-    border: 1px solid #9a9a9a;
-    background: #e7e7e7;
+    border: 1px solid #1e5f78;
+    background: #e7a92c;
     color: #111111;
     font-size: 1.7rem;
     font-weight: 700;
@@ -41,7 +44,7 @@ header {
 }
 
 #menu::before {
-    content: "☰";
+    content: "\2630";
 }
 
 #menu.open::before {
@@ -50,7 +53,7 @@ header {
 
 nav {
     display: none;
-    background: #222222;
+    background: #1e5f78;
 }
 
 nav.open {
@@ -64,12 +67,12 @@ nav a {
     color: #ffffff;
     text-decoration: none;
     font-weight: 600;
-    border-top: 1px solid #000000;
+    border-top: 1px solid #16475a;
 }
 
 nav a:hover,
 nav a.active {
-    background: #3c3c3c;
+    background: #d8582c;
 }
 
 main {
@@ -91,14 +94,14 @@ h1 {
 
 .card {
     margin-bottom: 1rem;
-    background: #dedede;
-    border: 1px solid #cfcfcf;
+    background: #f4f7f1;
+    border: 1px solid #c7d37b;
 }
 
 .card h2 {
     margin: 0;
     padding: 0.45rem 0.75rem;
-    background: #202020;
+    background: #1e5f78;
     color: #ffffff;
     text-align: center;
     font-size: 1rem;
@@ -120,7 +123,9 @@ h1 {
     aspect-ratio: 1 / 1;
     margin: 1.3rem auto;
     border-radius: 6px;
-    background: linear-gradient(135deg, #b9b9b9, #9f9f9f);
+    display: block;
+    object-fit: cover;
+    object-position: center top;
 }
 
 .filters {
@@ -132,9 +137,9 @@ h1 {
 
 .filter-button {
     min-height: 44px;
-    border: 1px solid #111111;
+    border: 1px solid #1e5f78;
     border-radius: 6px;
-    background: #e5e5e5;
+    background: #fff7df;
     color: #111111;
     font-weight: 700;
     cursor: pointer;
@@ -142,7 +147,7 @@ h1 {
 
 .filter-button:hover,
 .filter-button.active {
-    background: #2d5c75;
+    background: #d8582c;
     color: #ffffff;
 }
 
@@ -155,16 +160,16 @@ h1 {
 .course-card {
     min-height: 34px;
     padding: 0.45rem;
-    border: 1px solid #777777;
-    background: #f4f4f4;
+    border: 1px solid #d8a12d;
+    background: #fff7df;
     text-align: center;
     font-weight: 600;
 }
 
 .course-card.completed {
-    background: #774936;
+    background: #b8c43c;
     color: #ffffff;
-    border-color: #5f3729;
+    border-color: #7f8f2d;
 }
 
 .credits {
@@ -174,7 +179,8 @@ h1 {
 
 footer {
     padding: 1rem;
-    background: #dedede;
+    background: #f4f7f1;
+    border-top: 4px solid #1e5f78;
     text-align: center;
 }
 
