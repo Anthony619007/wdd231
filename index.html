@@ -3,9 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WDD 231 - Anthony Anusiem</title>
+    <meta name="description" content="Course home page for WDD 131 with responsive navigation, course filters, and student information.">
+    <meta name="author" content="Anthony Anusiem">
+    <title>WDD 131 Course Home | Anthony Anusiem</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/small.css">
+    <link rel="stylesheet" href="styles/larger.css">
+    <script src="scripts/navigation.js" defer></script>
+    <script src="scripts/date.js" defer></script>
+    <script src="scripts/courses.js" defer></script>
 </head>
 <body>
-    
+    <header>
+        <div class="brand">
+            <img src="images/logo.svg" alt="Site logo" width="56" height="56">
+            <span>Anthony Anusiem</span>
+        </div>
+        <button id="menu" aria-label="Open navigation menu" aria-expanded="false"></button>
+    </header>
+
+    <nav id="navigation">
+        <a class="active" href="index.html">Home</a>
+        <a href="#">Chamber</a>
+        <a href="#">Final</a>
+    </nav>
+
+    <main>
+        <h1>Home</h1>
+
+        <div class="home-grid">
+            <section class="card about">
+                <h2>About Me</h2>
+                <p>
+                    My name is Anthony Anusiem. I am learning web and software development
+                    and practicing how to build responsive pages that are clear, useful, and
+                    easy to use on different screen sizes.
+                </p>
+            </section>
+
+            <section class="card photo">
+                <h2>Student Photo</h2>
+                <div class="student-photo" role="img" aria-label="Student photo placeholder"></div>
+            </section>
+        </div>
+
+        <section class="card courses">
+            <h2>Web Certificate Courses</h2>
+            <div class="filters" aria-label="Course filters">
+                <button class="filter-button active" type="button" data-filter="all">All</button>
+                <button class="filter-button" type="button" data-filter="CSE">CSE</button>
+                <button class="filter-button" type="button" data-filter="WDD">WDD</button>
+            </div>
+            <div id="course-list" class="course-list"></div>
+            <p id="total-credits" class="credits"></p>
+        </section>
+    </main>
+
+    <footer>
+        <div class="social">
+            <a href="https://www.linkedin.com/" aria-label="LinkedIn">
+                <img src="images/linkedin.svg" alt="" width="40" height="40">
+            </a>
+            <a href="https://github.com/" aria-label="GitHub">
+                <img src="images/github.svg" alt="" width="40" height="40">
+            </a>
+            <a href="https://x.com/" aria-label="X">
+                <img src="images/x.svg" alt="" width="40" height="40">
+            </a>
+        </div>
+        <p>&copy;<span id="currentyear"></span> • Anthony Anusiem • Utah, USA</p>
+        <p>Last Modification: <span id="lastModified"></span></p>
+    </footer>
 </body>
 </html>

@@ -1,0 +1,199 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Inter", Arial, sans-serif;
+    color: #181818;
+    background: #ffffff;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.75rem 1rem;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-weight: 600;
+}
+
+.brand img {
+    width: 48px;
+    height: 48px;
+}
+
+#menu {
+    width: 44px;
+    height: 44px;
+    border: 1px solid #9a9a9a;
+    background: #e7e7e7;
+    color: #111111;
+    font-size: 1.7rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+#menu::before {
+    content: "☰";
+}
+
+#menu.open::before {
+    content: "X";
+}
+
+nav {
+    display: none;
+    background: #222222;
+}
+
+nav.open {
+    display: block;
+}
+
+nav a {
+    display: block;
+    min-height: 44px;
+    padding: 0.8rem 1rem;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+    border-top: 1px solid #000000;
+}
+
+nav a:hover,
+nav a.active {
+    background: #3c3c3c;
+}
+
+main {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 0.75rem 1rem;
+}
+
+h1 {
+    margin: 1rem 0 0.5rem;
+    font-size: 1.7rem;
+    font-weight: 400;
+}
+
+.home-grid {
+    display: grid;
+    gap: 1rem;
+}
+
+.card {
+    margin-bottom: 1rem;
+    background: #dedede;
+    border: 1px solid #cfcfcf;
+}
+
+.card h2 {
+    margin: 0;
+    padding: 0.45rem 0.75rem;
+    background: #202020;
+    color: #ffffff;
+    text-align: center;
+    font-size: 1rem;
+    letter-spacing: 0;
+}
+
+.card p {
+    margin: 0;
+    padding: 0.85rem 0.75rem;
+    line-height: 1.5;
+}
+
+.photo {
+    text-align: center;
+}
+
+.student-photo {
+    width: min(72vw, 260px);
+    aspect-ratio: 1 / 1;
+    margin: 1.3rem auto;
+    border-radius: 6px;
+    background: linear-gradient(135deg, #b9b9b9, #9f9f9f);
+}
+
+.filters {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.7rem;
+    padding: 0.7rem 0.6rem 0.4rem;
+}
+
+.filter-button {
+    min-height: 44px;
+    border: 1px solid #111111;
+    border-radius: 6px;
+    background: #e5e5e5;
+    color: #111111;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.filter-button:hover,
+.filter-button.active {
+    background: #2d5c75;
+    color: #ffffff;
+}
+
+.course-list {
+    display: grid;
+    gap: 0.55rem;
+    padding: 0.4rem 0.6rem;
+}
+
+.course-card {
+    min-height: 34px;
+    padding: 0.45rem;
+    border: 1px solid #777777;
+    background: #f4f4f4;
+    text-align: center;
+    font-weight: 600;
+}
+
+.course-card.completed {
+    background: #774936;
+    color: #ffffff;
+    border-color: #5f3729;
+}
+
+.credits {
+    text-align: center;
+    font-size: 0.95rem;
+}
+
+footer {
+    padding: 1rem;
+    background: #dedede;
+    text-align: center;
+}
+
+.social {
+    display: flex;
+    justify-content: center;
+    gap: 1.1rem;
+    margin-bottom: 0.8rem;
+}
+
+.social a {
+    display: inline-flex;
+    width: 44px;
+    height: 44px;
+    align-items: center;
+    justify-content: center;
+}
+
+footer p {
+    margin: 0.35rem 0;
+    font-size: 0.9rem;
+}

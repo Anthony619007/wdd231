@@ -1,0 +1,54 @@
+@media screen and (min-width: 720px) {
+    header {
+        justify-content: flex-start;
+        padding-bottom: 0.5rem;
+    }
+
+    .brand img {
+        width: 44px;
+        height: 44px;
+    }
+
+    #menu {
+        display: none;
+    }
+
+    nav,
+    nav.open {
+        display: flex;
+        max-width: 1180px;
+        margin: 0 auto;
+    }
+
+    nav a {
+        min-height: 36px;
+        padding: 0.6rem 1rem;
+        border-top: 0;
+        border-right: 1px solid #000000;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    .home-grid {
+        grid-template-columns: 2fr 1fr;
+    }
+
+    .card {
+        margin-bottom: 1rem;
+    }
+
+    .about p {
+        min-height: 244px;
+    }
+
+    .student-photo {
+        width: min(70%, 230px);
+        margin: 1.4rem auto;
+    }
+
+    .course-list {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
