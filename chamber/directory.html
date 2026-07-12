@@ -136,33 +136,19 @@
       transition: 0.25s ease;
       display: flex;
       flex-direction: column;
+      position: relative;
     }
     .member-card:hover {
       box-shadow: 0 12px 30px rgba(0,0,0,0.07);
       transform: translateY(-3px);
     }
-    /* Logo container & image */
-    .member-logo {
+    .member-card img {
       width: 100%;
       height: 180px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      object-fit: cover;
       border-radius: 14px;
       background: #f1f5f9;
       border: 1px solid #eef2f6;
-      overflow: hidden;
-    }
-    .member-logo svg {
-      max-width: 80%;
-      max-height: 80%;
-      width: auto;
-      height: auto;
-    }
-    .member-logo img {
-      max-width: 80%;
-      max-height: 80%;
-      object-fit: contain;
     }
     .member-info {
       flex: 1;
@@ -222,6 +208,27 @@
       font-weight: 400;
       color: #1f6e8c;
     }
+    /* Download button for logos */
+    .download-logo {
+      align-self: flex-start;
+      margin-top: 0.5rem;
+      background: #0f2a36;
+      color: white;
+      border: none;
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+    .download-logo:hover {
+      background: #1a4a5a;
+      transform: scale(1.02);
+    }
 
     /* ----- List view specific ----- */
     .list-view .member-card {
@@ -231,9 +238,10 @@
       gap: 1.2rem;
       padding: 1rem 1.5rem;
     }
-    .list-view .member-logo {
+    .list-view .member-card img {
       width: 100px;
       height: 100px;
+      object-fit: cover;
       border-radius: 50%;
       flex-shrink: 0;
       border: 2px solid #dce5ed;
@@ -300,12 +308,12 @@
       .header-flex { flex-direction: column; align-items: stretch; gap: 0.5rem; }
       nav ul { justify-content: center; gap: 1rem; }
       .list-view .member-card { flex-direction: column; align-items: flex-start; }
-      .list-view .member-logo { width: 80px; height: 80px; }
+      .list-view .member-card img { width: 80px; height: 80px; }
       .list-view .member-info { flex-direction: column; align-items: flex-start; gap: 0.2rem; }
     }
     @media (max-width: 480px) {
       .grid-view { grid-template-columns: 1fr; }
-      .member-logo { height: 160px; }
+      .member-card img { height: 160px; }
     }
   </style>
 </head>
@@ -363,72 +371,116 @@
       const modSpan = document.getElementById('modDate');
       modSpan.textContent = document.lastModified || new Date().toLocaleString();
 
-      // ----- DATA (Ghana businesses with updated links and extracted logos/colors) -----
+      // ----- UPDATED DATA (Ghana businesses with new links, images, and colors) -----
       const membersData = [
         {
-          companyName: 'Accra Web Solutions',
+          companyName: 'Accra Web Designs',
           address: '23 Independence Ave, Accra',
           phone: '+233 30 222 1111',
           website: 'https://ghanawebdesigns.com',
-          // Extracted color: #1a3a4a, Logo: SVG text-based
-          logo: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 80" style="background:#1a3a4a; border-radius:12px;"><text x="10" y="50" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="#ffd966">GWD</text><text x="10" y="70" font-family="Arial, sans-serif" font-size="11" fill="#e6edf2">Ghana Web Designs</text></svg>`,
-          membershipLevel: 3
+          // Using a brand color from the site (dark blue/gold) and a placeholder logo
+          image: 'https://placehold.co/600x400/1a3a4a/f7d44a?text=Accra+Web',
+          membershipLevel: 3,
+          logoColor: '#1a3a4a'
         },
         {
-          companyName: 'Kumasi Digital Hub',
+          companyName: 'Kumasi Hive',
           address: '12 Asante Rd, Kumasi',
           phone: '+233 32 200 3456',
           website: 'https://kumasihive.com',
-          // Extracted color: #2a4a5a, Logo: SVG text-based
-          logo: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 80" style="background:#2a4a5a; border-radius:12px;"><text x="10" y="50" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#ffd966">KH</text><text x="10" y="70" font-family="Arial, sans-serif" font-size="11" fill="#e6edf2">Kumasi Hive</text></svg>`,
-          membershipLevel: 2
+          image: 'https://placehold.co/600x400/2a4a5a/ffffff?text=Kumasi+Hive',
+          membershipLevel: 2,
+          logoColor: '#2a4a5a'
         },
         {
-          companyName: 'Tema Port Logistics',
+          companyName: 'Achievers Logistics',
           address: '5 Harbour St, Tema',
           phone: '+233 30 333 7890',
           website: 'http://www.achieverslogistics.com',
-          // Extracted color: #3a5a6a, Logo: SVG text-based
-          logo: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 80" style="background:#3a5a6a; border-radius:12px;"><text x="10" y="45" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#ffd966">ACHIEVERS</text><text x="10" y="68" font-family="Arial, sans-serif" font-size="11" fill="#e6edf2">Logistics</text></svg>`,
-          membershipLevel: 3
+          image: 'https://placehold.co/600x400/3a5a6a/ffffff?text=Achievers',
+          membershipLevel: 3,
+          logoColor: '#3a5a6a'
         },
         {
-          companyName: 'Cape Coast Creative',
+          companyName: 'Rossmann Group',
           address: '17 Castle Rd, Cape Coast',
           phone: '+233 42 444 5678',
           website: 'https://www.rossmann.ro/grupul-rossman/?lang=en',
-          // Using Rossmann brand colors (red/white)
-          logo: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 80" style="background:#d21034; border-radius:12px;"><text x="15" y="50" font-family="Arial, sans-serif" font-size="28" font-weight="bold" fill="white">ROSSMANN</text></svg>`,
-          membershipLevel: 1
+          image: 'https://placehold.co/600x400/4a6a7a/ffffff?text=Rossmann',
+          membershipLevel: 1,
+          logoColor: '#4a6a7a'
         },
         {
-          companyName: 'Sunyani AgroTech',
+          companyName: 'AgriTech Ghana',
           address: '9 Garden Street, Sunyani',
           phone: '+233 35 555 4321',
-          website: 'https://agritech.edu.gh',
-          // Extracted color: #5a7a8a, Logo: SVG text-based
-          logo: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 80" style="background:#5a7a8a; border-radius:12px;"><text x="10" y="45" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#ffd966">AGRITECH</text><text x="10" y="68" font-family="Arial, sans-serif" font-size="11" fill="#e6edf2">Sunyani</text></svg>`,
-          membershipLevel: 2
+          website: 'https://agritech.edu.gh/',
+          image: 'https://placehold.co/600x400/5a7a8a/ffffff?text=AgriTech',
+          membershipLevel: 2,
+          logoColor: '#5a7a8a'
         },
         {
-          companyName: 'Tamale Transport Co.',
+          companyName: 'DHL Ghana',
           address: '44 Station Rd, Tamale',
           phone: '+233 37 666 9876',
-          website: 'http://dhl.com',
-          // DHL colors: yellow and red
-          logo: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 80" style="background:#ffcc00; border-radius:12px;"><text x="15" y="50" font-family="Arial, sans-serif" font-size="28" font-weight="bold" fill="#d21034">DHL</text></svg>`,
-          membershipLevel: 1
+          website: 'http://dhl.com/',
+          image: 'https://placehold.co/600x400/6a8a9a/ffffff?text=DHL+Ghana',
+          membershipLevel: 1,
+          logoColor: '#6a8a9a'
         },
         {
-          companyName: 'Ho IT Solutions',
+          companyName: 'ZenTech Ghana',
           address: '21 Volta St, Ho',
           phone: '+233 36 777 6543',
-          website: 'https://233developers.com',
-          // Extracted color: #7a9aaa, Logo: SVG text-based
-          logo: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 80" style="background:#7a9aaa; border-radius:12px;"><text x="10" y="45" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#ffd966">233</text><text x="10" y="68" font-family="Arial, sans-serif" font-size="12" fill="#e6edf2">Developers</text></svg>`,
-          membershipLevel: 3
+          website: 'https://www.zentechgh.com/',
+          image: 'https://placehold.co/600x400/7a9aaa/ffffff?text=ZenTech',
+          membershipLevel: 3,
+          logoColor: '#7a9aaa'
         }
       ];
+
+      // ----- Helper: download logo (creates a simple colored square with text) -----
+      function downloadLogo(companyName, color) {
+        // Create a canvas to generate a simple logo
+        const canvas = document.createElement('canvas');
+        canvas.width = 200;
+        canvas.height = 200;
+        const ctx = canvas.getContext('2d');
+        // Background
+        ctx.fillStyle = color || '#1a3a4a';
+        ctx.fillRect(0, 0, 200, 200);
+        // Text
+        ctx.fillStyle = '#ffffff';
+        ctx.font = 'bold 24px system-ui, sans-serif';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        // Wrap text if needed
+        const words = companyName.split(' ');
+        let line = '';
+        let lines = [];
+        for (let i = 0; i < words.length; i++) {
+          const testLine = line + words[i] + ' ';
+          if (ctx.measureText(testLine).width > 180 && i > 0) {
+            lines.push(line.trim());
+            line = words[i] + ' ';
+          } else {
+            line = testLine;
+          }
+        }
+        lines.push(line.trim());
+        // Draw lines
+        const lineHeight = 30;
+        const startY = 100 - ((lines.length - 1) * lineHeight) / 2;
+        lines.forEach((l, idx) => {
+          ctx.fillText(l, 100, startY + idx * lineHeight);
+        });
+
+        // Trigger download
+        const link = document.createElement('a');
+        link.download = `${companyName.replace(/\s+/g, '_')}_logo.png`;
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+      }
 
       // ----- Render function -----
       const container = document.getElementById('directoryContainer');
@@ -436,24 +488,36 @@
 
       function renderMembers(view) {
         container.className = view === 'grid' ? 'grid-view' : 'list-view';
-        container.innerHTML = membersData.map(m => {
+        container.innerHTML = membersData.map((m, index) => {
           const levelClass = m.membershipLevel === 3 ? 'gold' : m.membershipLevel === 2 ? 'silver' : '';
           const levelLabel = m.membershipLevel === 3 ? '⭐ Gold' : m.membershipLevel === 2 ? '🔹 Silver' : 'Member';
+          const imgSrc = m.image || 'https://placehold.co/600x400/1a3a4a/ffffff?text=Business';
+          // Use a unique id for each download button
+          const downloadId = `download-${index}`;
           return `
             <div class="member-card">
-              <div class="member-logo">
-                ${m.logo || '<span style="color:#1a3a4a;font-weight:bold;">Logo</span>'}
-              </div>
+              <img src="${imgSrc}" alt="${m.companyName}" loading="lazy" />
               <div class="member-info">
                 <div class="member-name">${m.companyName}</div>
                 <span class="member-level ${levelClass}">${levelLabel}</span>
                 <div class="member-address">📍 ${m.address || 'Accra, Ghana'}</div>
                 <div class="member-phone">📞 <a href="tel:${m.phone}">${m.phone || 'N/A'}</a></div>
-                <div class="member-web">🌐 <a href="${m.website}" target="_blank" rel="noopener">${m.website.replace(/^https?:\/\//, '').replace(/^www\./, '')}</a></div>
+                <div class="member-web">🌐 <a href="${m.website}" target="_blank" rel="noopener">${m.website.replace(/^https?:\/\//, '').replace(/\/.*$/, '')}</a></div>
+                <button class="download-logo" data-name="${m.companyName}" data-color="${m.logoColor || '#1a3a4a'}">⬇ Download Logo</button>
               </div>
             </div>
           `;
         }).join('');
+
+        // Attach download events after rendering
+        document.querySelectorAll('.download-logo').forEach(btn => {
+          btn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const name = this.getAttribute('data-name');
+            const color = this.getAttribute('data-color');
+            downloadLogo(name, color);
+          });
+        });
       }
 
       // ----- Toggle buttons -----
