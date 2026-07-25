@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Join | Ghana Chamber of Commerce Membership Application</title>
+    <title>Join Chamber Membership | ChamberConnect</title>
     <style>
+        /* ----- Reset & Base ----- */
         * {
             margin: 0;
             padding: 0;
@@ -18,6 +19,7 @@
             line-height: 1.7;
         }
 
+        /* ----- Header / Navigation ----- */
         header {
             background: #0a1a2a;
             color: #fff;
@@ -64,6 +66,7 @@
             color: #fff;
         }
 
+        /* ----- Main Layout ----- */
         .container {
             max-width: 1400px;
             margin: 0 auto;
@@ -84,6 +87,7 @@
             padding-bottom: 1rem;
         }
 
+        /* ----- Two Column Layout ----- */
         .join-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -98,6 +102,7 @@
             }
         }
 
+        /* ----- Form Styles ----- */
         .form-section {
             background: #fff;
             border-radius: 20px;
@@ -152,6 +157,14 @@
             box-shadow: 0 0 0 4px rgba(74, 138, 196, 0.15);
         }
 
+        .form-group input:invalid:not(:placeholder-shown) {
+            border-color: #e74c3c;
+        }
+
+        .form-group input:valid:not(:placeholder-shown) {
+            border-color: #27ae60;
+        }
+
         .form-group textarea {
             resize: vertical;
             min-height: 100px;
@@ -182,6 +195,11 @@
             transform: translateY(-2px);
         }
 
+        .submit-btn:active {
+            transform: scale(0.98);
+        }
+
+        /* ----- Membership Cards (Right Side) ----- */
         .membership-cards {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -205,6 +223,8 @@
             flex-direction: column;
             align-items: center;
             text-align: center;
+
+            /* ANIMATION: initial load fade + slide up */
             opacity: 0;
             transform: translateY(30px);
             animation: cardReveal 0.6s ease forwards;
@@ -280,6 +300,7 @@
             background: #e8f0fe;
         }
 
+        /* Card color accents */
         .membership-card.np {
             border-top-color: #6ab04c;
         }
@@ -293,6 +314,7 @@
             border-top-color: #f1c40f;
         }
 
+        /* ----- MODALS ----- */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -392,6 +414,7 @@
             margin-top: 0.5rem;
         }
 
+        /* ----- Footer ----- */
         footer {
             background: #0a1a2a;
             color: #8ab0d0;
@@ -401,6 +424,7 @@
             font-size: 0.9rem;
         }
 
+        /* ----- Responsive tweaks ----- */
         @media (max-width: 600px) {
             header {
                 flex-direction: column;
@@ -421,12 +445,18 @@
                 padding: 1rem;
             }
         }
+
+        /* Utility */
+        .text-muted {
+            color: #5a7a8a;
+            font-size: 0.9rem;
+        }
     </style>
 </head>
 <body>
+    <form id="joinForm" method="get" action="thankyou.html">
 
-    <form id="joinForm" method="get" action="thankyou.html" novalidate>
-
+    <!-- ===== HEADER ===== -->
     <header>
         <div class="logo">🏛️ Chamber<span>Connect</span></div>
         <nav>
@@ -440,20 +470,20 @@
         </nav>
     </header>
 
+    <!-- ===== MAIN CONTENT ===== -->
     <div class="container">
         <h1>Join the Chamber</h1>
         <p class="subhead">Apply for membership and become part of a thriving business community.</p>
 
         <div class="join-grid">
 
-            <!-- ===== FORM FIELDS ===== -->
+            <!-- ===== FORM (LEFT) ===== -->
             <section class="form-section" aria-label="Membership Application Form">
                 <h2>Application Form</h2>
-
                     <!-- First Name -->
                     <div class="form-group">
-                        <label for="firstName">First Name <span class="required">*</span></label>
-                        <input type="text" id="firstName" name="firstName"
+                        <label for="fname">First Name <span class="required" aria-label="required">*</span></label>
+                        <input type="text" id="fname" name="fname"
                         title="Enter your first name"
                         autocomplete="given-name"
                         placeholder="e.g. Jane"
@@ -462,18 +492,18 @@
 
                     <!-- Last Name -->
                     <div class="form-group">
-                        <label for="lastName">Last Name <span class="required">*</span></label>
-                        <input type="text" id="lastName" name="lastName"
+                        <label for="lname">Last Name <span class="required" aria-label="required">*</span></label>
+                        <input type="text" id="lname" name="lname"
                         title="Enter your last name"
                         autocomplete="family-name"
                         placeholder="e.g. Doe"
                         required />
                     </div>
 
-                    <!-- Organizational Title -->
+                    <!-- Organizational Title (with pattern) -->
                     <div class="form-group">
-                        <label for="orgTitle">Organizational Title</label>
-                        <input type="text" id="orgTitle" name="orgTitle"
+                        <label for="orgtitle">Organization Title</label>
+                        <input type="text" id="orgtitle" name="orgtitle"
                         title="Your job title (letters, hyphens, spaces only, min 7 characters)"
                         autocomplete="organization-title"
                         placeholder="e.g. Director of Operations"
@@ -484,7 +514,7 @@
 
                     <!-- Email -->
                     <div class="form-group">
-                        <label for="email">Email Address <span class="required">*</span></label>
+                        <label for="email">Email Address <span class="required" aria-label="required">*</span></label>
                         <input type="email" id="email" name="email"
                         title="Enter your business email address"
                         autocomplete="email"
@@ -494,28 +524,28 @@
 
                     <!-- Mobile Phone -->
                     <div class="form-group">
-                        <label for="mobile">Mobile Phone <span class="required">*</span></label>
-                        <input type="tel" id="mobile" name="mobile"
+                        <label for="phone">Mobile Phone <span class="required" aria-label="required">*</span></label>
+                        <input type="tel" id="phone" name="phone"
                         title="Enter your mobile phone number"
                         autocomplete="tel"
                         placeholder="(123) 456-7890"
                         required />
                     </div>
 
-                    <!-- Business Name -->
+                    <!-- Business/Organization Name -->
                     <div class="form-group">
-                        <label for="businessName">Business / Organization Name <span class="required">*</span></label>
-                        <input type="text" id="businessName" name="businessName"
+                        <label for="organization">Organization Name <span class="required" aria-label="required">*</span></label>
+                        <input type="text" id="organization" name="organization"
                         title="Enter the full legal name of your business or organization"
                         autocomplete="organization"
                         placeholder="e.g. Acme Corporation"
                         required />
                     </div>
 
-                    <!-- Membership Level -->
+                    <!-- Membership Level Selection -->
                     <div class="form-group">
-                        <label for="membershipLevel">Membership Level <span class="required">*</span></label>
-                        <select id="membershipLevel" name="membershipLevel" required title="Select a membership level">
+                        <label for="membership">Membership Level <span class="required" aria-label="required">*</span></label>
+                        <select id="membership" name="membership" required title="Select a membership level">
                             <option value="">— Please select —</option>
                             <option value="np">NP Membership (Non-Profit, no fee)</option>
                             <option value="bronze">Bronze Membership</option>
@@ -526,8 +556,8 @@
 
                     <!-- Business Description -->
                     <div class="form-group">
-                        <label for="businessDesc">Business / Organization Description</label>
-                        <textarea id="businessDesc" name="businessDesc"
+                        <label for="description">Organization Description</label>
+                        <textarea id="description" name="description"
                         title="Describe your business or organization"
                         placeholder="Tell us about your company, mission, and what you do..."></textarea>
                     </div>
@@ -535,14 +565,14 @@
                     <!-- Hidden Timestamp -->
                     <input type="hidden" id="timestamp" name="timestamp" />
 
-                    <!-- Submit Button - inside the form -->
+                    <!-- Submit -->
                     <button type="submit" class="submit-btn">➜ Submit Application</button>
-
             </section>
 
-            <!-- ===== MEMBERSHIP CARDS ===== -->
+            <!-- ===== MEMBERSHIP CARDS (RIGHT) ===== -->
             <aside class="membership-cards" aria-label="Membership Levels">
 
+                <!-- NP -->
                 <div class="membership-card np">
                     <div class="level-badge">NP</div>
                     <div class="level-price">Non-Profit · Free</div>
@@ -550,6 +580,7 @@
                     <span class="modal-link" data-modal="modalNp">View Benefits →</span>
                 </div>
 
+                <!-- Bronze -->
                 <div class="membership-card bronze">
                     <div class="level-badge">Bronze</div>
                     <div class="level-price">$200 / year</div>
@@ -557,6 +588,7 @@
                     <span class="modal-link" data-modal="modalBronze">View Benefits →</span>
                 </div>
 
+                <!-- Silver -->
                 <div class="membership-card silver">
                     <div class="level-badge">Silver</div>
                     <div class="level-price">$450 / year</div>
@@ -564,6 +596,7 @@
                     <span class="modal-link" data-modal="modalSilver">View Benefits →</span>
                 </div>
 
+                <!-- Gold -->
                 <div class="membership-card gold">
                     <div class="level-badge">Gold</div>
                     <div class="level-price">$850 / year</div>
@@ -575,16 +608,19 @@
         </div>
     </div>
 
-    </form>
-
+    <!-- ===== FOOTER ===== -->
     <footer>
         &copy; 2026 ChamberConnect — Building a stronger business community together.
     </footer>
 
+    <!-- ========================================================= -->
     <!-- ===== MODALS ===== -->
+    <!-- ========================================================= -->
+
+    <!-- NP Modal -->
     <div class="modal-overlay" id="modalNp">
         <div class="modal-box">
-            <button class="close-modal" aria-label="Close modal">&times;</button>
+            <button type="button" class="close-modal" aria-label="Close modal">&times;</button>
             <h2>NP Membership</h2>
             <p><strong>For non-profit organizations · No fee</strong></p>
             <ul class="benefit-list">
@@ -597,9 +633,10 @@
         </div>
     </div>
 
+    <!-- Bronze Modal -->
     <div class="modal-overlay" id="modalBronze">
         <div class="modal-box">
-            <button class="close-modal" aria-label="Close modal">&times;</button>
+            <button type="button" class="close-modal" aria-label="Close modal">&times;</button>
             <h2>Bronze Membership</h2>
             <p><strong>Essential exposure &amp; networking</strong></p>
             <ul class="benefit-list">
@@ -613,9 +650,10 @@
         </div>
     </div>
 
+    <!-- Silver Modal -->
     <div class="modal-overlay" id="modalSilver">
         <div class="modal-box">
-            <button class="close-modal" aria-label="Close modal">&times;</button>
+            <button type="button" class="close-modal" aria-label="Close modal">&times;</button>
             <h2>Silver Membership</h2>
             <p><strong>Enhanced visibility &amp; marketing</strong></p>
             <ul class="benefit-list">
@@ -630,9 +668,10 @@
         </div>
     </div>
 
+    <!-- Gold Modal -->
     <div class="modal-overlay" id="modalGold">
         <div class="modal-box">
-            <button class="close-modal" aria-label="Close modal">&times;</button>
+            <button type="button" class="close-modal" aria-label="Close modal">&times;</button>
             <h2>Gold Membership</h2>
             <p><strong>Premium exposure &amp; leadership</strong></p>
             <ul class="benefit-list">
@@ -648,11 +687,16 @@
         </div>
     </div>
 
+    </form>
+
+    <!-- ========================================================= -->
+    <!-- ===== SCRIPTS ===== -->
+    <!-- ========================================================= -->
     <script>
         (function() {
             'use strict';
 
-            // Set timestamp
+            // ---------- SET TIMESTAMP ----------
             const tsField = document.getElementById('timestamp');
             if (tsField) {
                 const now = new Date();
@@ -668,11 +712,12 @@
                 tsField.value = formatted;
             }
 
-            // Modal logic
+            // ---------- MODAL LOGIC ----------
             const modalLinks = document.querySelectorAll('.modal-link');
             const modals = document.querySelectorAll('.modal-overlay');
             const closeBtns = document.querySelectorAll('.close-modal');
 
+            // Open modal
             modalLinks.forEach(link => {
                 link.addEventListener('click', function(e) {
                     const targetId = this.dataset.modal;
@@ -684,11 +729,13 @@
                 });
             });
 
+            // Close modal function
             function closeModal(modal) {
                 modal.classList.remove('active');
                 document.body.style.overflow = '';
             }
 
+            // Close via X button
             closeBtns.forEach(btn => {
                 btn.addEventListener('click', function() {
                     const modal = this.closest('.modal-overlay');
@@ -696,6 +743,7 @@
                 });
             });
 
+            // Close via overlay click
             modals.forEach(modal => {
                 modal.addEventListener('click', function(e) {
                     if (e.target === this) {
@@ -704,6 +752,7 @@
                 });
             });
 
+            // Close via Escape key
             document.addEventListener('keydown', function(e) {
                 if (e.key === 'Escape') {
                     const activeModal = document.querySelector('.modal-overlay.active');
@@ -713,7 +762,7 @@
                 }
             });
 
-            // Form validation
+            // ---------- FORM SUBMISSION ----------
             const form = document.getElementById('joinForm');
             form.addEventListener('submit', function(e) {
                 const requiredFields = form.querySelectorAll('[required]');
@@ -735,7 +784,26 @@
                     if (firstInvalid) {
                         firstInvalid.focus();
                     }
+                    return;
                 }
+            });
+
+            // ---------- REAL-TIME VALIDATION ----------
+            const inputs = form.querySelectorAll('input, textarea, select');
+            inputs.forEach(input => {
+                input.addEventListener('blur', function() {
+                    if (this.hasAttribute('required') && !this.value.trim()) {
+                        this.style.borderColor = '#e74c3c';
+                    } else if (this.hasAttribute('required') && this.value.trim()) {
+                        this.style.borderColor = '#27ae60';
+                    }
+                });
+
+                input.addEventListener('input', function() {
+                    if (this.hasAttribute('required') && this.value.trim()) {
+                        this.style.borderColor = '#27ae60';
+                    }
+                });
             });
 
             console.log('🏛️ Chamber join page loaded successfully.');
