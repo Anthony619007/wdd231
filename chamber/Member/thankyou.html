@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Thank You - Chamber Application Received</title>
+    <title>Join Chamber Membership | ChamberConnect</title>
     <style>
         /* ----- Reset & Base ----- */
         * {
@@ -60,122 +60,358 @@
             transition: background 0.2s, color 0.2s;
         }
 
-        nav ul li a:hover {
+        nav ul li a:hover,
+        nav ul li a.active {
             background: #1a3a5a;
             color: #fff;
         }
 
-        /* ----- Main Content ----- */
+        /* ----- Main Layout ----- */
         .container {
-            max-width: 900px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 3rem 1.5rem 4rem;
+            padding: 2rem 1.5rem 3rem;
         }
 
-        .thankyou-box {
-            background: #fff;
-            border-radius: 24px;
-            padding: 3rem 2.5rem;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
-            text-align: center;
-        }
-
-        .thankyou-box .icon {
-            font-size: 4rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .thankyou-box h1 {
-            font-size: 2.6rem;
+        h1 {
+            font-size: 2.4rem;
             color: #0a1a2a;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.3rem;
         }
 
-        .thankyou-box .subhead {
+        .subhead {
             color: #3a5a7a;
             font-size: 1.1rem;
-            margin-bottom: 2.5rem;
+            margin-bottom: 2rem;
             border-bottom: 2px solid #d0e0f0;
-            padding-bottom: 1.5rem;
+            padding-bottom: 1rem;
         }
 
-        /* ----- Data Display ----- */
-        .data-grid {
+        /* ----- Two Column Layout ----- */
+        .join-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 1.2rem;
-            text-align: left;
-            margin: 2rem 0;
+            gap: 3rem;
+            align-items: start;
         }
 
-        @media (max-width: 600px) {
-            .data-grid {
+        @media (max-width: 900px) {
+            .join-grid {
                 grid-template-columns: 1fr;
+                gap: 2.5rem;
             }
         }
 
-        .data-item {
-            background: #f8fafc;
-            border-radius: 12px;
-            padding: 1rem 1.2rem;
-            border-left: 4px solid #4a8ac4;
+        /* ----- Form Styles ----- */
+        .form-section {
+            background: #fff;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
         }
 
-        .data-item .label {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: #5a7a9a;
-            font-weight: 700;
-        }
-
-        .data-item .value {
-            font-size: 1.1rem;
-            font-weight: 600;
+        .form-section h2 {
+            font-size: 1.6rem;
             color: #0a1a2a;
-            word-break: break-word;
+            margin-bottom: 1.5rem;
+            border-left: 5px solid #4a8ac4;
+            padding-left: 1rem;
         }
 
-        .data-item .value.missing {
-            color: #8a9aaa;
-            font-style: italic;
-            font-weight: 400;
+        .form-group {
+            margin-bottom: 1.2rem;
         }
 
-        /* ----- Actions ----- */
-        .actions {
-            margin-top: 2.5rem;
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 0.8rem 2rem;
-            border-radius: 40px;
+        .form-group label {
+            display: block;
             font-weight: 600;
-            text-decoration: none;
-            transition: background 0.25s, transform 0.15s;
+            margin-bottom: 0.3rem;
+            color: #1a2a3a;
+            font-size: 0.95rem;
+        }
+
+        .form-group label .required {
+            color: #c0392b;
+            font-weight: 700;
+            margin-left: 2px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.7rem 1rem;
+            border: 2px solid #d0dce8;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border-color 0.25s, box-shadow 0.25s;
+            background: #fafcfe;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #4a8ac4;
+            box-shadow: 0 0 0 4px rgba(74, 138, 196, 0.15);
+        }
+
+        .form-group input:invalid:not(:placeholder-shown) {
+            border-color: #e74c3c;
+        }
+
+        .form-group input:valid:not(:placeholder-shown) {
+            border-color: #27ae60;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-group .hint {
+            font-size: 0.8rem;
+            color: #5a7a9a;
+            margin-top: 0.2rem;
+        }
+
+        .submit-btn {
             background: #0a1a2a;
             color: #fff;
+            border: none;
+            padding: 0.9rem 2.5rem;
+            border-radius: 40px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.25s, transform 0.15s;
+            width: 100%;
+            margin-top: 0.5rem;
         }
 
-        .btn:hover {
+        .submit-btn:hover {
             background: #1a3a5a;
             transform: translateY(-2px);
         }
 
-        .btn-outline {
-            background: transparent;
-            color: #0a1a2a;
-            border: 2px solid #0a1a2a;
+        .submit-btn:active {
+            transform: scale(0.98);
         }
 
-        .btn-outline:hover {
+        /* ----- Membership Cards (Right Side) ----- */
+        .membership-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
+        }
+
+        @media (max-width: 480px) {
+            .membership-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .membership-card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 1.5rem 1.2rem;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+            border-top: 5px solid #4a8ac4;
+            transition: transform 0.25s, box-shadow 0.25s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+
+            /* ANIMATION: initial load fade + slide up */
+            opacity: 0;
+            transform: translateY(30px);
+            animation: cardReveal 0.6s ease forwards;
+        }
+
+        .membership-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+        .membership-card:nth-child(2) {
+            animation-delay: 0.25s;
+        }
+        .membership-card:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+        .membership-card:nth-child(4) {
+            animation-delay: 0.55s;
+        }
+
+        @keyframes cardReveal {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+                background: #f0f7ff;
+            }
+            60% {
+                background: #e8f0fe;
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+                background: #fff;
+            }
+        }
+
+        .membership-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.10);
+        }
+
+        .membership-card .level-badge {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #0a1a2a;
+            margin-bottom: 0.2rem;
+        }
+
+        .membership-card .level-price {
+            font-size: 0.9rem;
+            color: #3a6a8a;
+            font-weight: 600;
+            margin-bottom: 0.6rem;
+        }
+
+        .membership-card .level-desc {
+            font-size: 0.85rem;
+            color: #3a5a6a;
+            margin-bottom: 0.8rem;
+            flex-grow: 1;
+        }
+
+        .membership-card .modal-link {
+            color: #4a8ac4;
+            font-weight: 600;
+            text-decoration: underline;
+            cursor: pointer;
+            font-size: 0.9rem;
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            transition: background 0.2s;
+        }
+
+        .membership-card .modal-link:hover {
+            background: #e8f0fe;
+        }
+
+        /* Card color accents */
+        .membership-card.np {
+            border-top-color: #6ab04c;
+        }
+        .membership-card.bronze {
+            border-top-color: #cd7f32;
+        }
+        .membership-card.silver {
+            border-top-color: #a0aec0;
+        }
+        .membership-card.gold {
+            border-top-color: #f1c40f;
+        }
+
+        /* ----- MODALS ----- */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(4px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            animation: fadeInModal 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        @keyframes fadeInModal {
+            0% {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .modal-box {
+            background: #fff;
+            border-radius: 24px;
+            max-width: 500px;
+            width: 90%;
+            padding: 2rem 2rem 1.8rem;
+            box-shadow: 0 24px 64px rgba(0, 0, 0, 0.3);
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-box .close-modal {
+            position: absolute;
+            top: 12px;
+            right: 18px;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: #5a7a8a;
+            transition: color 0.2s, transform 0.2s;
+            background: none;
+            border: none;
+            line-height: 1;
+        }
+
+        .modal-box .close-modal:hover {
+            color: #c0392b;
+            transform: rotate(90deg);
+        }
+
+        .modal-box h2 {
+            color: #0a1a2a;
+            font-size: 1.6rem;
+            margin-bottom: 0.5rem;
+            border-bottom: 3px solid #4a8ac4;
+            padding-bottom: 0.6rem;
+        }
+
+        .modal-box .benefit-list {
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0;
+        }
+
+        .modal-box .benefit-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eef4f8;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .modal-box .benefit-list li::before {
+            content: "✓";
+            color: #27ae60;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .modal-box .price-tag {
+            display: inline-block;
             background: #0a1a2a;
             color: #fff;
+            padding: 0.4rem 1.5rem;
+            border-radius: 40px;
+            font-weight: 600;
+            margin-top: 0.5rem;
         }
 
         /* ----- Footer ----- */
@@ -188,7 +424,7 @@
             font-size: 0.9rem;
         }
 
-        /* ----- Responsive ----- */
+        /* ----- Responsive tweaks ----- */
         @media (max-width: 600px) {
             header {
                 flex-direction: column;
@@ -199,54 +435,262 @@
                 justify-content: center;
                 gap: 0.8rem;
             }
-            .thankyou-box {
-                padding: 2rem 1.2rem;
+            h1 {
+                font-size: 1.8rem;
             }
-            .thankyou-box h1 {
-                font-size: 2rem;
+            .form-section {
+                padding: 1.2rem;
             }
+            .membership-card {
+                padding: 1rem;
+            }
+        }
+
+        /* Utility */
+        .text-muted {
+            color: #5a7a8a;
+            font-size: 0.9rem;
         }
     </style>
 </head>
 <body>
 
-    <!-- ===== HEADER ===== -->
-    <header>
-        <div class="logo">🏛️ Chamber<span>Connect</span></div>
-        <nav>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="join.html">Join</a></li>
-                <li><a href="#">Directory</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+    <!-- ===== FORM STARTS INSIDE BODY (FIXED) ===== -->
+    <form id="joinForm" method="get" action="thankyou.html">
 
-    <!-- ===== MAIN CONTENT ===== -->
-    <div class="container">
-        <div class="thankyou-box">
-            <div class="icon">🎉</div>
-            <h1>Thank You!</h1>
-            <p class="subhead">Your membership application has been received. We'll review your submission and get back to you within 2 business days.</p>
+        <!-- ===== HEADER ===== -->
+        <header>
+            <div class="logo">🏛️ Chamber<span>Connect</span></div>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#" class="active">Join</a></li>
+                    <li><a href="#">Directory</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
 
-            <!-- ===== DATA DISPLAY ===== -->
-            <div class="data-grid" id="dataGrid">
-                <!-- Populated by JavaScript -->
-            </div>
+        <!-- ===== MAIN CONTENT ===== -->
+        <div class="container">
+            <h1>Join the Chamber</h1>
+            <p class="subhead">Apply for membership and become part of a thriving business community.</p>
 
-            <div class="actions">
-                <a href="join.html" class="btn">← Back to Application</a>
-                <a href="#" class="btn btn-outline">Visit Homepage</a>
+            <div class="join-grid">
+
+                <!-- ===== FORM (LEFT) ===== -->
+                <section class="form-section" aria-label="Membership Application Form">
+                    <h2>Application Form</h2>
+                    <!-- First Name -->
+                    <div class="form-group">
+                        <label for="fname">First Name <span class="required" aria-label="required">*</span></label>
+                        <input type="text" id="fname" name="fname"
+                        title="Enter your first name"
+                        autocomplete="given-name"
+                        placeholder="e.g. Jane"
+                        required />
+                    </div>
+
+                    <!-- Last Name -->
+                    <div class="form-group">
+                        <label for="lname">Last Name <span class="required" aria-label="required">*</span></label>
+                        <input type="text" id="lname" name="lname"
+                        title="Enter your last name"
+                        autocomplete="family-name"
+                        placeholder="e.g. Doe"
+                        required />
+                    </div>
+
+                    <!-- Organizational Title (with pattern) -->
+                    <div class="form-group">
+                        <label for="orgtitle">Organization Title</label>
+                        <input type="text" id="orgtitle" name="orgtitle"
+                        title="Your job title (letters, hyphens, spaces only, min 7 characters)"
+                        autocomplete="organization-title"
+                        placeholder="e.g. Director of Operations"
+                        pattern="[A-Za-z\- ]{7,}"
+                        aria-describedby="titleHint" />
+                        <div class="hint" id="titleHint">Minimum 7 characters: letters, hyphens, and spaces only.</div>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="form-group">
+                        <label for="email">Email Address <span class="required" aria-label="required">*</span></label>
+                        <input type="email" id="email" name="email"
+                        title="Enter your business email address"
+                        autocomplete="email"
+                        placeholder="you@yourcompany.com"
+                        required />
+                    </div>
+
+                    <!-- Mobile Phone -->
+                    <div class="form-group">
+                        <label for="phone">Mobile Phone <span class="required" aria-label="required">*</span></label>
+                        <input type="tel" id="phone" name="phone"
+                        title="Enter your mobile phone number"
+                        autocomplete="tel"
+                        placeholder="(123) 456-7890"
+                        required />
+                    </div>
+
+                    <!-- Business/Organization Name -->
+                    <div class="form-group">
+                        <label for="organization">Organization Name <span class="required" aria-label="required">*</span></label>
+                        <input type="text" id="organization" name="organization"
+                        title="Enter the full legal name of your business or organization"
+                        autocomplete="organization"
+                        placeholder="e.g. Acme Corporation"
+                        required />
+                    </div>
+
+                    <!-- Membership Level Selection -->
+                    <div class="form-group">
+                        <label for="membership">Membership Level <span class="required" aria-label="required">*</span></label>
+                        <select id="membership" name="membership" required title="Select a membership level">
+                            <option value="">— Please select —</option>
+                            <option value="np">NP Membership (Non-Profit, no fee)</option>
+                            <option value="bronze">Bronze Membership</option>
+                            <option value="silver">Silver Membership</option>
+                            <option value="gold">Gold Membership</option>
+                        </select>
+                    </div>
+
+                    <!-- Business Description -->
+                    <div class="form-group">
+                        <label for="description">Organization Description</label>
+                        <textarea id="description" name="description"
+                        title="Describe your business or organization"
+                        placeholder="Tell us about your company, mission, and what you do..."></textarea>
+                    </div>
+
+                    <!-- Hidden Timestamp -->
+                    <input type="hidden" id="timestamp" name="timestamp" />
+
+                    <!-- Submit -->
+                    <button type="submit" class="submit-btn">➜ Submit Application</button>
+                </section>
+
+                <!-- ===== MEMBERSHIP CARDS (RIGHT) ===== -->
+                <aside class="membership-cards" aria-label="Membership Levels">
+
+                    <!-- NP -->
+                    <div class="membership-card np">
+                        <div class="level-badge">NP</div>
+                        <div class="level-price">Non-Profit · Free</div>
+                        <div class="level-desc">For registered non-profit organizations.</div>
+                        <span class="modal-link" data-modal="modalNp">View Benefits →</span>
+                    </div>
+
+                    <!-- Bronze -->
+                    <div class="membership-card bronze">
+                        <div class="level-badge">Bronze</div>
+                        <div class="level-price">$200 / year</div>
+                        <div class="level-desc">Essential exposure &amp; networking.</div>
+                        <span class="modal-link" data-modal="modalBronze">View Benefits →</span>
+                    </div>
+
+                    <!-- Silver -->
+                    <div class="membership-card silver">
+                        <div class="level-badge">Silver</div>
+                        <div class="level-price">$450 / year</div>
+                        <div class="level-desc">Enhanced visibility &amp; marketing.</div>
+                        <span class="modal-link" data-modal="modalSilver">View Benefits →</span>
+                    </div>
+
+                    <!-- Gold -->
+                    <div class="membership-card gold">
+                        <div class="level-badge">Gold</div>
+                        <div class="level-price">$850 / year</div>
+                        <div class="level-desc">Premium exposure &amp; leadership.</div>
+                        <span class="modal-link" data-modal="modalGold">View Benefits →</span>
+                    </div>
+
+                </aside>
             </div>
         </div>
-    </div>
 
-    <!-- ===== FOOTER ===== -->
-    <footer>
-        &copy; 2026 ChamberConnect — Building a stronger business community together.
-    </footer>
+        <!-- ===== FOOTER ===== -->
+        <footer>
+            &copy; 2026 ChamberConnect — Building a stronger business community together.
+        </footer>
+
+        <!-- ========================================================= -->
+        <!-- ===== MODALS ===== -->
+        <!-- ========================================================= -->
+
+        <!-- NP Modal -->
+        <div class="modal-overlay" id="modalNp">
+            <div class="modal-box">
+                <button type="button" class="close-modal" aria-label="Close modal">&times;</button>
+                <h2>NP Membership</h2>
+                <p><strong>For non-profit organizations · No fee</strong></p>
+                <ul class="benefit-list">
+                    <li>Basic listing in the online directory</li>
+                    <li>Invitation to quarterly networking events</li>
+                    <li>Access to member-only resources</li>
+                    <li>Eligibility for community grants</li>
+                </ul>
+                <span class="price-tag">$0 / year</span>
+            </div>
+        </div>
+
+        <!-- Bronze Modal -->
+        <div class="modal-overlay" id="modalBronze">
+            <div class="modal-box">
+                <button type="button" class="close-modal" aria-label="Close modal">&times;</button>
+                <h2>Bronze Membership</h2>
+                <p><strong>Essential exposure &amp; networking</strong></p>
+                <ul class="benefit-list">
+                    <li>Premium directory listing with logo</li>
+                    <li>Access to all networking events</li>
+                    <li>Monthly business newsletter feature</li>
+                    <li>10% discount on event tickets</li>
+                    <li>Member referral program</li>
+                </ul>
+                <span class="price-tag">$200 / year</span>
+            </div>
+        </div>
+
+        <!-- Silver Modal -->
+        <div class="modal-overlay" id="modalSilver">
+            <div class="modal-box">
+                <button type="button" class="close-modal" aria-label="Close modal">&times;</button>
+                <h2>Silver Membership</h2>
+                <p><strong>Enhanced visibility &amp; marketing</strong></p>
+                <ul class="benefit-list">
+                    <li>All Bronze benefits</li>
+                    <li>Featured spotlight on home page (rotating)</li>
+                    <li>Social media promotion (2 posts/year)</li>
+                    <li>20% discount on all Chamber events</li>
+                    <li>Access to exclusive CEO roundtables</li>
+                    <li>Priority booth selection at expos</li>
+                </ul>
+                <span class="price-tag">$450 / year</span>
+            </div>
+        </div>
+
+        <!-- Gold Modal -->
+        <div class="modal-overlay" id="modalGold">
+            <div class="modal-box">
+                <button type="button" class="close-modal" aria-label="Close modal">&times;</button>
+                <h2>Gold Membership</h2>
+                <p><strong>Premium exposure &amp; leadership</strong></p>
+                <ul class="benefit-list">
+                    <li>All Silver benefits</li>
+                    <li>Permanent spotlight on home page</li>
+                    <li>Customized social media campaign (4 posts/year)</li>
+                    <li>30% discount on all events &amp; training</li>
+                    <li>Invitation to Chairman's Circle (private events)</li>
+                    <li>Speaking opportunities at major conferences</li>
+                    <li>Complimentary booth at annual expo</li>
+                </ul>
+                <span class="price-tag">$850 / year</span>
+            </div>
+        </div>
+
+    </form>
+    <!-- ===== FORM ENDS ===== -->
 
     <!-- ========================================================= -->
     <!-- ===== SCRIPTS ===== -->
@@ -255,70 +699,117 @@
         (function() {
             'use strict';
 
-            // ---------- GET URL PARAMETERS ----------
-            const params = new URLSearchParams(window.location.search);
-
-            // ---------- FIELD MAPPING ----------
-            const fieldMapping = [
-                { key: 'firstName', label: 'First Name' },
-                { key: 'lastName', label: 'Last Name' },
-                { key: 'email', label: 'Email Address' },
-                { key: 'mobile', label: 'Mobile Phone' },
-                { key: 'businessName', label: 'Business / Organization Name' },
-                { key: 'timestamp', label: 'Date Submitted' },
-                { key: 'orgTitle', label: 'Organizational Title' },
-                { key: 'membershipLevel', label: 'Membership Level' },
-                { key: 'businessDesc', label: 'Business Description' }
-            ];
-
-            // ---------- FORMAT MEMBERSHIP LEVEL ----------
-            function formatMembershipLevel(value) {
-                const map = {
-                    'np': 'NP Membership (Non-Profit)',
-                    'bronze': 'Bronze Membership',
-                    'silver': 'Silver Membership',
-                    'gold': 'Gold Membership'
-                };
-                return map[value] || value || 'Not specified';
+            // ---------- SET TIMESTAMP ----------
+            const tsField = document.getElementById('timestamp');
+            if (tsField) {
+                const now = new Date();
+                const formatted = now.toLocaleString('en-US', {
+                    year: 'numeric',
+                    month: '2-digit',
+                    day: '2-digit',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit',
+                    hour12: false
+                });
+                tsField.value = formatted;
             }
 
-            // ---------- RENDER DATA ----------
-            const grid = document.getElementById('dataGrid');
+            // ---------- MODAL LOGIC ----------
+            const modalLinks = document.querySelectorAll('.modal-link');
+            const modals = document.querySelectorAll('.modal-overlay');
+            const closeBtns = document.querySelectorAll('.close-modal');
 
-            fieldMapping.forEach(field => {
-                let value = params.get(field.key) || '';
-
-                // Format special fields
-                if (field.key === 'membershipLevel') {
-                    value = formatMembershipLevel(value);
-                }
-
-                // If the field is required and missing, show a message
-                const requiredFields = ['firstName', 'lastName', 'email', 'mobile', 'businessName', 'timestamp'];
-                const isRequired = requiredFields.includes(field.key);
-
-                let displayValue = value || (isRequired ? '⚠️ Not provided' : 'Not provided');
-                const isMissing = isRequired && !value;
-
-                const div = document.createElement('div');
-                div.className = 'data-item';
-                div.innerHTML = `
-                    <div class="label">${field.label}</div>
-                    <div class="value ${isMissing ? 'missing' : ''}">${displayValue}</div>
-                `;
-                grid.appendChild(div);
+            // Open modal
+            modalLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const targetId = this.dataset.modal;
+                    const modal = document.getElementById(targetId);
+                    if (modal) {
+                        modal.classList.add('active');
+                        document.body.style.overflow = 'hidden';
+                    }
+                });
             });
 
-            // ---------- IF NO DATA, SHOW MESSAGE ----------
-            if (params.size === 0) {
-                grid.innerHTML = `
-                    <div style="grid-column:1/-1; text-align:center; padding:2rem; color:#5a7a9a;">
-                        <p>No application data received. Please submit the form from the <a href="join.html" style="color:#4a8ac4;">join page</a>.</p>
-                    </div>
-                `;
+            // Close modal function
+            function closeModal(modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
             }
 
-            console.log('✅ Thank you page loaded with data:', Object.fromEntries(params));
+            // Close via X button
+            closeBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const modal = this.closest('.modal-overlay');
+                    closeModal(modal);
+                });
+            });
+
+            // Close via overlay click
+            modals.forEach(modal => {
+                modal.addEventListener('click', function(e) {
+                    if (e.target === this) {
+                        closeModal(this);
+                    }
+                });
+            });
+
+            // Close via Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    const activeModal = document.querySelector('.modal-overlay.active');
+                    if (activeModal) {
+                        closeModal(activeModal);
+                    }
+                }
+            });
+
+            // ---------- FORM SUBMISSION ----------
+            const form = document.getElementById('joinForm');
+            form.addEventListener('submit', function(e) {
+                const requiredFields = form.querySelectorAll('[required]');
+                let valid = true;
+
+                requiredFields.forEach(field => {
+                    if (!field.value.trim()) {
+                        field.style.borderColor = '#e74c3c';
+                        valid = false;
+                    } else {
+                        field.style.borderColor = '';
+                    }
+                });
+
+                if (!valid) {
+                    e.preventDefault();
+                    alert('Please fill in all required fields (marked with *).');
+                    const firstInvalid = form.querySelector('[required]:invalid');
+                    if (firstInvalid) {
+                        firstInvalid.focus();
+                    }
+                    return;
+                }
+            });
+
+            // ---------- REAL-TIME VALIDATION ----------
+            const inputs = form.querySelectorAll('input, textarea, select');
+            inputs.forEach(input => {
+                input.addEventListener('blur', function() {
+                    if (this.hasAttribute('required') && !this.value.trim()) {
+                        this.style.borderColor = '#e74c3c';
+                    } else if (this.hasAttribute('required') && this.value.trim()) {
+                        this.style.borderColor = '#27ae60';
+                    }
+                });
+
+                input.addEventListener('input', function() {
+                    if (this.hasAttribute('required') && this.value.trim()) {
+                        this.style.borderColor = '#27ae60';
+                    }
+                });
+            });
+
+            console.log('🏛️ Chamber join page loaded successfully.');
         })();
     </script>
 
