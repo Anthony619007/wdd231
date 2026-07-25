@@ -1,86 +1,299 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Explore the Ghana Chamber business directory and connect with trusted local companies across Ghana.">
-    <meta name="author" content="Anthony Anusiem">
-    <title>Directory | Ghana Chamber of Commerce | Anthony Anusiem</title>
-    <meta property="og:title" content="Ghana Chamber Business Directory | Anthony Anusiem">
-    <meta property="og:description" content="Explore trusted Ghana Chamber businesses, compare membership levels, and connect with local services across Ghana.">
-    <meta property="og:image" content="https://anthony619007.github.io/wdd231/chamber/images/DAN-LOGO-4.png">
-    <meta property="og:url" content="https://anthony619007.github.io/wdd231/">
-    <meta property="og:type" content="website">
-    <link rel="icon" type="image/svg+xml" href="chamber/favicon.svg">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles/small.css">
-    <link rel="stylesheet" href="styles/larger.css">
-    <script src="scripts/navigation.js" defer></script>
-    <script src="scripts/date.js" defer></script>
-    <script src="scripts/courses.js" defer></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Urban Canopy Project - Canopy Mapper</title>
+    <!-- Leaflet CSS for the map -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        /* ----- Reset & Base ----- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f7f0;
+            color: #1e3a2e;
+            line-height: 1.6;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* ----- Navigation ----- */
+        nav {
+            background: #1e3a2e;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+        }
+        nav .logo {
+            color: #b8d9b0;
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        nav .logo span {
+            color: #7cb86c;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+        nav ul li a {
+            color: #e8f5e0;
+            font-weight: 500;
+            padding: 0.5rem 0.75rem;
+            border-radius: 6px;
+            transition: background 0.25s, color 0.25s;
+        }
+        nav ul li a:hover,
+        nav ul li a.active {
+            background: #3a6b4f;
+            color: #fff;
+        }
+
+        /* ----- Pages (shown/hidden via JS) ----- */
+        .page {
+            display: none;
+            padding: 2rem 2rem 4rem;
+            max-width: 1300px;
+            margin: 0 auto;
+            animation: fadeIn 0.4s ease;
+        }
+        .page.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(12px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ----- Page 1: Map ----- */
+        #map {
+            height: 500px;
+            width: 100%;
+            border-radius: 16px;
+            border: 2px solid #3a6b4f;
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.10);
+            margin-bottom: 1.5rem;
+        }
+        .map-stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            justify-content: center;
+            margin: 1.5rem 0;
+        }
+        .stat-card {
+            background: white;
+            padding: 1rem 2rem;
+            border-radius: 40px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+            font-weight: 600;
+            border-left: 5px solid #4c8b5c;
+            flex: 1 1 160px;
+            text-align: center;
+        }
+        .stat-card span {
+            display: block;
+            font-size: 1.8rem;
+            color: #1e3a2e;
+        }
+        .stat-card small {
+            font-weight: 400;
+            color: #4a6b50;
+        }
+
+        /* ----- Utility ----- */
+        h1 {
+            font-size: 2.4rem;
+            margin-bottom: 0.5rem;
+            color: #1e3a2e;
+        }
+        .subhead {
+            color: #3a6b4f;
+            margin-bottom: 1.8rem;
+            font-size: 1.1rem;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 1rem;
+            color: #3a5a3a;
+            border-top: 1px solid #c6dcc6;
+            margin-top: 2rem;
+            font-size: 0.9rem;
+        }
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #1e3a2e;
+            color: #e8f5e0;
+            padding: 0.8rem 2rem;
+            border-radius: 40px;
+            font-weight: 500;
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.2);
+            z-index: 9999;
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+        }
+        .toast.show {
+            opacity: 1;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            nav {
+                flex-direction: column;
+                gap: 0.6rem;
+                padding: 0.8rem;
+            }
+            nav ul {
+                gap: 0.8rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .page {
+                padding: 1rem;
+            }
+            #map {
+                height: 300px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <div class="brand">
-            <img src="images/byu-logo.webp" alt="BYU Pathway Worldwide logo" width="146" height="90">
-            <span>Anthony Anusiem</span>
-        </div>
-        <button id="menu" aria-label="Open navigation menu" aria-expanded="false"></button>
-    </header>
 
-    <nav id="navigation">
-        <a class="active" href="index.html">Home</a>
-        <a href="#">Chamber</a>
-        <a href="#">Final</a>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">🌳 Urban <span>Canopy</span></div>
+        <ul>
+            <li><a href="index.html" class="active">Canopy Mapper</a></li>
+            <li><a href="library.html">Tree Library</a></li>
+            <li><a href="community.html">Green Team</a></li>
+        </ul>
     </nav>
 
-    <main>
-        <h1>Home</h1>
+    <!-- ========== PAGE 1: MAP ========== -->
+    <section id="page1" class="page active">
+        <h1>🌿 The Canopy Mapper</h1>
+        <p class="subhead">Explore tree canopy coverage across the city. Click a neighborhood for live stats.</p>
+        <div id="map"></div>
 
-        <div class="home-grid">
-            <section class="card about">
-                <h2>About Me</h2>
-                <p>
-                    My name is Anthony Anusiem. I am learning web and software development
-                    and practicing how to build responsive pages that are clear, useful, and
-                    easy to use on different screen sizes.
-                </p>
-            </section>
-
-            <section class="card photo">
-                <h2>Student Photo</h2>
-                <img class="student-photo" src="images/profile.jpg" alt="Anthony Anusiem">
-            </section>
+        <div class="map-stats" id="statsContainer">
+            <div class="stat-card"><span id="statNeighborhood">Downtown</span><small>Neighborhood</small></div>
+            <div class="stat-card"><span id="statTemp">72°F</span><small>Avg. Summer Temp</small></div>
+            <div class="stat-card"><span id="statAQI">42</span><small>Air Quality Index</small></div>
+            <div class="stat-card"><span id="statTrees">1,240</span><small>Trees per Capita</small></div>
         </div>
+        <p style="text-align:center; color:#3a6b4f; font-weight:500;">Click any neighborhood marker on the map to update stats.</p>
+    </section>
 
-        <section class="card courses">
-            <h2>Web Certificate Courses</h2>
-            <div class="filters" role="group" aria-label="Course filters">
-                <button class="filter-button active" type="button" data-filter="all">All</button>
-                <button class="filter-button" type="button" data-filter="CSE">CSE</button>
-                <button class="filter-button" type="button" data-filter="WDD">WDD</button>
-            </div>
-            <div id="course-list" class="course-list"></div>
-            <p id="total-credits" class="credits"></p>
-        </section>
-    </main>
+    <!-- Toast -->
+    <div id="toast" class="toast"></div>
 
+    <!-- Footer -->
     <footer>
-        <div class="social">
-            <a href="https://www.linkedin.com/" aria-label="LinkedIn">
-                <img src="images/linkedin.svg" alt="" width="40" height="40">
-            </a>
-            <a href="https://github.com/" aria-label="GitHub">
-                <img src="images/github.svg" alt="" width="40" height="40">
-            </a>
-            <a href="https://x.com/" aria-label="twitter">
-                <img src="images/twitter.svg" alt="" width="40" height="40">
-            </a>
-        </div>
-        <p>&copy;<span id="currentyear"></span> &bull; Anthony Anusiem &bull; Accra, Ghana</p>
-        <p>Last Modification: <span id="lastModified"></span></p>
+        🌳 The Urban Canopy Project — built with ❤️ for greener cities.
     </footer>
+
+    <!-- ========== SCRIPTS ========== -->
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
+    </script>
+
+    <script>
+        // ---------- TOAST ----------
+        function showToast(msg) {
+            const t = document.getElementById('toast');
+            t.textContent = msg;
+            t.classList.add('show');
+            clearTimeout(t._timeout);
+            t._timeout = setTimeout(() => t.classList.remove('show'), 3200);
+        }
+
+        // ---------- PAGE 1: MAP ----------
+        let map;
+
+        // Sample neighborhood data (JSON-like)
+        const neighborhoodData = {
+            'Downtown': { temp: '72°F', aqi: '42', trees: '1,240' },
+            'Riverside': { temp: '68°F', aqi: '35', trees: '2,800' },
+            'Hilltop': { temp: '66°F', aqi: '28', trees: '4,500' },
+            'Eastside': { temp: '74°F', aqi: '55', trees: '890' },
+            'Westwood': { temp: '70°F', aqi: '38', trees: '3,100' },
+        };
+
+        function initMap() {
+            map = L.map('map').setView([40.7128, -74.0060], 12);
+
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; OpenStreetMap contributors'
+            }).addTo(map);
+
+            // markers with popups
+            const locations = [
+                { name: 'Downtown', lat: 40.7128, lng: -74.0060 },
+                { name: 'Riverside', lat: 40.7350, lng: -74.0020 },
+                { name: 'Hilltop', lat: 40.7500, lng: -73.9800 },
+                { name: 'Eastside', lat: 40.7200, lng: -73.9600 },
+                { name: 'Westwood', lat: 40.7400, lng: -74.0300 }
+            ];
+
+            // custom icon
+            const treeIcon = L.divIcon({
+                html: '🌳',
+                className: 'tree-marker',
+                iconSize: [32, 32],
+                iconAnchor: [16, 32]
+            });
+
+            locations.forEach(loc => {
+                const marker = L.marker([loc.lat, loc.lng], { icon: treeIcon }).addTo(map);
+                marker.bindPopup(`<b>${loc.name}</b><br>Click for canopy stats.`);
+                marker.on('click', () => {
+                    updateStats(loc.name);
+                });
+            });
+
+            // default stats
+            updateStats('Downtown');
+        }
+
+        function updateStats(neighborhood) {
+            const data = neighborhoodData[neighborhood] || neighborhoodData['Downtown'];
+            document.getElementById('statNeighborhood').textContent = neighborhood;
+            document.getElementById('statTemp').textContent = data.temp;
+            document.getElementById('statAQI').textContent = data.aqi;
+            document.getElementById('statTrees').textContent = data.trees;
+            showToast(`📊 Updated stats for ${neighborhood}`);
+        }
+
+        // initialize map after DOM
+        document.addEventListener('DOMContentLoaded', initMap);
+
+        console.log('🌳 Urban Canopy Project loaded successfully!');
+    </script>
+
 </body>
 </html>

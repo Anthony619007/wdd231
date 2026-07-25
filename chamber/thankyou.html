@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thank You - Chamber Application Received</title>
+    <style>
+        /* ----- Reset & Base ----- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f4f8;
+            color: #1a2a3a;
+            line-height: 1.7;
+        }
+
+        /* ----- Header / Navigation ----- */
+        header {
+            background: #0a1a2a;
+            color: #fff;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: #6eb5ff;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1.8rem;
+            flex-wrap: wrap;
+        }
+
+        nav ul li a {
+            color: #cde0f0;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        nav ul li a:hover {
+            background: #1a3a5a;
+            color: #fff;
+        }
+
+        /* ----- Main Content ----- */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem 4rem;
+        }
+
+        .thankyou-box {
+            background: #fff;
+            border-radius: 24px;
+            padding: 3rem 2.5rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+            text-align: center;
+        }
+
+        .thankyou-box .icon {
+            font-size: 4rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .thankyou-box h1 {
+            font-size: 2.6rem;
+            color: #0a1a2a;
+            margin-bottom: 0.5rem;
+        }
+
+        .thankyou-box .subhead {
+            color: #3a5a7a;
+            font-size: 1.1rem;
+            margin-bottom: 2.5rem;
+            border-bottom: 2px solid #d0e0f0;
+            padding-bottom: 1.5rem;
+        }
+
+        /* ----- Data Display ----- */
+        .data-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
+            text-align: left;
+            margin: 2rem 0;
+        }
+
+        @media (max-width: 600px) {
+            .data-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .data-item {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 1rem 1.2rem;
+            border-left: 4px solid #4a8ac4;
+        }
+
+        .data-item .label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #5a7a9a;
+            font-weight: 700;
+        }
+
+        .data-item .value {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #0a1a2a;
+            word-break: break-word;
+        }
+
+        .data-item .value.missing {
+            color: #8a9aaa;
+            font-style: italic;
+            font-weight: 400;
+        }
+
+        /* ----- Actions ----- */
+        .actions {
+            margin-top: 2.5rem;
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            border-radius: 40px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background 0.25s, transform 0.15s;
+            background: #0a1a2a;
+            color: #fff;
+        }
+
+        .btn:hover {
+            background: #1a3a5a;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: #0a1a2a;
+            border: 2px solid #0a1a2a;
+        }
+
+        .btn-outline:hover {
+            background: #0a1a2a;
+            color: #fff;
+        }
+
+        /* ----- Footer ----- */
+        footer {
+            background: #0a1a2a;
+            color: #8ab0d0;
+            text-align: center;
+            padding: 1.8rem 1.5rem;
+            margin-top: 2rem;
+            font-size: 0.9rem;
+        }
+
+        /* ----- Responsive ----- */
+        @media (max-width: 600px) {
+            header {
+                flex-direction: column;
+                gap: 0.5rem;
+                padding: 0.8rem 1rem;
+            }
+            nav ul {
+                justify-content: center;
+                gap: 0.8rem;
+            }
+            .thankyou-box {
+                padding: 2rem 1.2rem;
+            }
+            .thankyou-box h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== HEADER ===== -->
+    <header>
+        <div class="logo">🏛️ Chamber<span>Connect</span></div>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="join.html">Join</a></li>
+                <li><a href="#">Directory</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <div class="container">
+        <div class="thankyou-box">
+            <div class="icon">🎉</div>
+            <h1>Thank You!</h1>
+            <p class="subhead">Your membership application has been received. We'll review your submission and get back to you within 2 business days.</p>
+
+            <!-- ===== DATA DISPLAY ===== -->
+            <div class="data-grid" id="dataGrid">
+                <!-- Populated by JavaScript -->
+            </div>
+
+            <div class="actions">
+                <a href="join.html" class="btn">← Back to Application</a>
+                <a href="#" class="btn btn-outline">Visit Homepage</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        &copy; 2026 ChamberConnect — Building a stronger business community together.
+    </footer>
+
+    <!-- ========================================================= -->
+    <!-- ===== SCRIPTS ===== -->
+    <!-- ========================================================= -->
+    <script>
+        (function() {
+            'use strict';
+
+            // ---------- GET URL PARAMETERS ----------
+            const params = new URLSearchParams(window.location.search);
+
+            // ---------- FIELD MAPPING ----------
+            const fieldMapping = [
+                { key: 'firstName', label: 'First Name' },
+                { key: 'lastName', label: 'Last Name' },
+                { key: 'email', label: 'Email Address' },
+                { key: 'mobile', label: 'Mobile Phone' },
+                { key: 'businessName', label: 'Business / Organization Name' },
+                { key: 'timestamp', label: 'Date Submitted' },
+                { key: 'orgTitle', label: 'Organizational Title' },
+                { key: 'membershipLevel', label: 'Membership Level' },
+                { key: 'businessDesc', label: 'Business Description' }
+            ];
+
+            // ---------- FORMAT MEMBERSHIP LEVEL ----------
+            function formatMembershipLevel(value) {
+                const map = {
+                    'np': 'NP Membership (Non-Profit)',
+                    'bronze': 'Bronze Membership',
+                    'silver': 'Silver Membership',
+                    'gold': 'Gold Membership'
+                };
+                return map[value] || value || 'Not specified';
+            }
+
+            // ---------- RENDER DATA ----------
+            const grid = document.getElementById('dataGrid');
+
+            fieldMapping.forEach(field => {
+                let value = params.get(field.key) || '';
+
+                // Format special fields
+                if (field.key === 'membershipLevel') {
+                    value = formatMembershipLevel(value);
+                }
+
+                // If the field is required and missing, show a message
+                const requiredFields = ['firstName', 'lastName', 'email', 'mobile', 'businessName', 'timestamp'];
+                const isRequired = requiredFields.includes(field.key);
+
+                let displayValue = value || (isRequired ? '⚠️ Not provided' : 'Not provided');
+                const isMissing = isRequired && !value;
+
+                const div = document.createElement('div');
+                div.className = 'data-item';
+                div.innerHTML = `
+                    <div class="label">${field.label}</div>
+                    <div class="value ${isMissing ? 'missing' : ''}">${displayValue}</div>
+                `;
+                grid.appendChild(div);
+            });
+
+            // ---------- IF NO DATA, SHOW MESSAGE ----------
+            if (params.size === 0) {
+                grid.innerHTML = `
+                    <div style="grid-column:1/-1; text-align:center; padding:2rem; color:#5a7a9a;">
+                        <p>No application data received. Please submit the form from the <a href="join.html" style="color:#4a8ac4;">join page</a>.</p>
+                    </div>
+                `;
+            }
+
+            console.log('✅ Thank you page loaded with data:', Object.fromEntries(params));
+        })();
+    </script>
+
+</body>
+</html>
