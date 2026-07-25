@@ -1,0 +1,65 @@
+[
+  {
+    "companyName": "Accra Web Designs",
+    "address": "23 Independence Ave, Accra",
+    "phone": "+233 30 222 1111",
+    "website": "https://ghanawebdesigns.com",
+    "image": "https://placehold.co/600x400/1a3a4a/f7d44a?text=Accra+Web",
+    "membershipLevel": 3,
+    "logoColor": "#1a3a4a"
+  },
+  {
+    "companyName": "Kumasi Hive",
+    "address": "12 Asante Rd, Kumasi",
+    "phone": "+233 32 200 3456",
+    "website": "https://kumasihive.com",
+    "image": "https://placehold.co/600x400/2a4a5a/ffffff?text=Kumasi+Hive",
+    "membershipLevel": 2,
+    "logoColor": "#2a4a5a"
+  },
+  {
+    "companyName": "Achievers Logistics",
+    "address": "5 Harbour St, Tema",
+    "phone": "+233 30 333 7890",
+    "website": "http://www.achieverslogistics.com",
+    "image": "https://placehold.co/600x400/3a5a6a/ffffff?text=Achievers",
+    "membershipLevel": 3,
+    "logoColor": "#3a5a6a"
+  },
+  {
+    "companyName": "Rossmann Group",
+    "address": "17 Castle Rd, Cape Coast",
+    "phone": "+233 42 444 5678",
+    "website": "https://www.rossmann.ro/grupul-rossman/?lang=en",
+    "image": "https://placehold.co/600x400/4a6a7a/ffffff?text=Rossmann",
+    "membershipLevel": 1,
+    "logoColor": "#4a6a7a"
+  },
+  {
+    "companyName": "AgriTech Ghana",
+    "address": "9 Garden Street, Sunyani",
+    "phone": "+233 35 555 4321",
+    "website": "https://agritech.edu.gh/",
+    "image": "https://placehold.co/600x400/5a7a8a/ffffff?text=AgriTech",
+    "membershipLevel": 2,
+    "logoColor": "#5a7a8a"
+  },
+  {
+    "companyName": "DHL Ghana",
+    "address": "44 Station Rd, Tamale",
+    "phone": "+233 37 666 9876",
+    "website": "http://dhl.com/",
+    "image": "https://placehold.co/600x400/6a8a9a/ffffff?text=DHL+Ghana",
+    "membershipLevel": 1,
+    "logoColor": "#6a8a9a"
+  },
+  {
+    "companyName": "ZenTech Ghana",
+    "address": "21 Volta St, Ho",
+    "phone": "+233 36 777 6543",
+    "website": "https://www.zentechgh.com/",
+    "image": "https://placehold.co/600x400/7a9aaa/ffffff?text=ZenTech",
+    "membershipLevel": 3,
+    "logoColor": "#7a9aaa"
+  }
+]
