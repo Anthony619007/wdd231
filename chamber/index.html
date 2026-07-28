@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>The Urban Canopy Project - Canopy Mapper</title>
+    <title>Join Ghana Chamber of Commerce | Anthony Anusiem</title>
     <!-- Leaflet CSS for the map -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <style>
@@ -57,6 +57,7 @@
             padding: 0.5rem 0.75rem;
             border-radius: 6px;
             transition: background 0.25s, color 0.25s;
+            cursor: pointer;
         }
         nav ul li a:hover,
         nav ul li a.active {
@@ -122,16 +123,83 @@
             color: #4a6b50;
         }
 
+        /* ----- Form Styles ----- */
+        .join-form {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
+            max-width: 700px;
+            margin: 2rem auto;
+            border: 1px solid #c6dcc6;
+        }
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+        .form-group {
+            margin-bottom: 1.2rem;
+            text-align: left;
+        }
+        .form-group.full-width {
+            grid-column: span 2;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #1e3a2e;
+        }
+        .form-group input, 
+        .form-group select, 
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #c6dcc6;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 1rem;
+            background: #fafdfa;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        .form-group input:focus, 
+        .form-group select:focus, 
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #7cb86c;
+            box-shadow: 0 0 0 3px rgba(124, 184, 108, 0.2);
+        }
+        .submit-btn {
+            background: #1e3a2e;
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.3s, transform 0.2s;
+            margin-top: 1rem;
+        }
+        .submit-btn:hover {
+            background: #3a6b4f;
+            transform: translateY(-2px);
+        }
+
         /* ----- Utility ----- */
         h1 {
             font-size: 2.4rem;
             margin-bottom: 0.5rem;
             color: #1e3a2e;
+            text-align: center;
         }
         .subhead {
             color: #3a6b4f;
             margin-bottom: 1.8rem;
             font-size: 1.1rem;
+            text-align: center;
         }
         footer {
             text-align: center;
@@ -173,6 +241,12 @@
                 flex-wrap: wrap;
                 justify-content: center;
             }
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            .form-group.full-width {
+                grid-column: span 1;
+            }
             .page {
                 padding: 1rem;
             }
@@ -186,27 +260,89 @@
 
     <!-- Navigation -->
     <nav>
-        <div class="logo">🌳 Urban <span>Canopy</span></div>
+        <div class="logo">🇬🇭 Ghana <span>Chamber</span></div>
         <ul>
-            <li><a href="index.html" class="active">Canopy Mapper</a></li>
-            <li><a href="library.html">Tree Library</a></li>
-            <li><a href="community.html">Green Team</a></li>
+            <li><a id="nav-map" class="active" onclick="showPage('page1')">Directory Map</a></li>
+            <li><a id="nav-join" onclick="showPage('page-join')">Join Chamber</a></li>
         </ul>
     </nav>
 
     <!-- ========== PAGE 1: MAP ========== -->
     <section id="page1" class="page active">
-        <h1>🌿 The Canopy Mapper</h1>
-        <p class="subhead">Explore tree canopy coverage across the city. Click a neighborhood for live stats.</p>
+        <h1>🌿 Business Directory Map</h1>
+        <p class="subhead">Explore chamber members across Ghana. Click a marker for details.</p>
         <div id="map"></div>
 
         <div class="map-stats" id="statsContainer">
-            <div class="stat-card"><span id="statNeighborhood">Downtown</span><small>Neighborhood</small></div>
-            <div class="stat-card"><span id="statTemp">72°F</span><small>Avg. Summer Temp</small></div>
-            <div class="stat-card"><span id="statAQI">42</span><small>Air Quality Index</small></div>
-            <div class="stat-card"><span id="statTrees">1,240</span><small>Trees per Capita</small></div>
+            <div class="stat-card"><span id="statNeighborhood">Accra</span><small>Region</small></div>
+            <div class="stat-card"><span id="statTemp">85°F</span><small>Avg. Temp</small></div>
+            <div class="stat-card"><span id="statAQI">48</span><small>Business Index</small></div>
+            <div class="stat-card"><span id="statTrees">450+</span><small>Members</small></div>
         </div>
-        <p style="text-align:center; color:#3a6b4f; font-weight:500;">Click any neighborhood marker on the map to update stats.</p>
+        <p style="text-align:center; color:#3a6b4f; font-weight:500;">Click any region marker on the map to update stats.</p>
+    </section>
+
+    <!-- ========== PAGE: JOIN FORM ========== -->
+    <section id="page-join" class="page">
+        <h1>Join the Ghana Chamber of Commerce</h1>
+        <p class="subhead">Complete the form below to apply for membership.</p>
+        
+        <form method="get" action="thankyou.html" class="join-form">
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="fname">First Name</label>
+                    <input type="text" id="fname" name="fname" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="lname">Last Name</label>
+                    <input type="text" id="lname" name="lname" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="orgtitle">Organization Title</label>
+                    <input type="text" id="orgtitle" name="orgtitle" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Mobile Phone</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="orgname">Organization Name</label>
+                    <input type="text" id="orgname" name="orgname" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="membership">Membership Level</label>
+                    <select id="membership" name="membership" required>
+                        <option value="">Select Level...</option>
+                        <option value="np">Non-Profit</option>
+                        <option value="bronze">Bronze</option>
+                        <option value="silver">Silver</option>
+                        <option value="gold">Gold</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="timestamp">Timestamp</label>
+                    <input type="text" id="timestamp" name="timestamp" readonly>
+                </div>
+                
+                <div class="form-group full-width">
+                    <label for="description">Organization Description</label>
+                    <textarea id="description" name="description" rows="4" required></textarea>
+                </div>
+            </div>
+            
+            <button type="submit" class="submit-btn">Submit Application</button>
+        </form>
     </section>
 
     <!-- Toast -->
@@ -214,15 +350,30 @@
 
     <!-- Footer -->
     <footer>
-        🌳 The Urban Canopy Project — built with ❤️ for greener cities.
+        🇬🇭 Ghana Chamber of Commerce — Supporting local growth and sustainability.
     </footer>
 
     <!-- ========== SCRIPTS ========== -->
     <!-- Leaflet JS -->
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
-    </script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
     <script>
+        // ---------- NAVIGATION ----------
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('nav ul li a').forEach(a => a.classList.remove('active'));
+            
+            document.getElementById(pageId).classList.add('active');
+            if (pageId === 'page1') {
+                document.getElementById('nav-map').classList.add('active');
+                if (map) map.invalidateSize();
+            } else {
+                document.getElementById('nav-join').classList.add('active');
+                // Set timestamp when showing the form
+                document.getElementById('timestamp').value = new Date().toLocaleString();
+            }
+        }
+
         // ---------- TOAST ----------
         function showToast(msg) {
             const t = document.getElementById('toast');
@@ -235,64 +386,64 @@
         // ---------- PAGE 1: MAP ----------
         let map;
 
-        // Sample neighborhood data (JSON-like)
-        const neighborhoodData = {
-            'Downtown': { temp: '72°F', aqi: '42', trees: '1,240' },
-            'Riverside': { temp: '68°F', aqi: '35', trees: '2,800' },
-            'Hilltop': { temp: '66°F', aqi: '28', trees: '4,500' },
-            'Eastside': { temp: '74°F', aqi: '55', trees: '890' },
-            'Westwood': { temp: '70°F', aqi: '38', trees: '3,100' },
+        const regionData = {
+            'Accra': { temp: '85°F', aqi: '48', trees: '450+' },
+            'Kumasi': { temp: '82°F', aqi: '35', trees: '300+' },
+            'Tamale': { temp: '95°F', aqi: '55', trees: '150+' },
+            'Takoradi': { temp: '80°F', aqi: '40', trees: '200+' },
+            'Cape Coast': { temp: '81°F', aqi: '38', trees: '180+' },
         };
 
         function initMap() {
-            map = L.map('map').setView([40.7128, -74.0060], 12);
+            // Centered on Ghana
+            map = L.map('map').setView([7.9465, -1.0232], 7);
 
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 attribution: '&copy; OpenStreetMap contributors'
             }).addTo(map);
 
-            // markers with popups
             const locations = [
-                { name: 'Downtown', lat: 40.7128, lng: -74.0060 },
-                { name: 'Riverside', lat: 40.7350, lng: -74.0020 },
-                { name: 'Hilltop', lat: 40.7500, lng: -73.9800 },
-                { name: 'Eastside', lat: 40.7200, lng: -73.9600 },
-                { name: 'Westwood', lat: 40.7400, lng: -74.0300 }
+                { name: 'Accra', lat: 5.6037, lng: -0.1870 },
+                { name: 'Kumasi', lat: 6.6666, lng: -1.6163 },
+                { name: 'Tamale', lat: 9.4034, lng: -0.8424 },
+                { name: 'Takoradi', lat: 4.8917, lng: -1.7525 },
+                { name: 'Cape Coast', lat: 5.1053, lng: -1.2466 }
             ];
 
-            // custom icon
-            const treeIcon = L.divIcon({
-                html: '🌳',
-                className: 'tree-marker',
+            const markerIcon = L.divIcon({
+                html: '📍',
+                className: 'custom-marker',
                 iconSize: [32, 32],
                 iconAnchor: [16, 32]
             });
 
             locations.forEach(loc => {
-                const marker = L.marker([loc.lat, loc.lng], { icon: treeIcon }).addTo(map);
-                marker.bindPopup(`<b>${loc.name}</b><br>Click for canopy stats.`);
+                const marker = L.marker([loc.lat, loc.lng], { icon: markerIcon }).addTo(map);
+                marker.bindPopup(`<b>${loc.name}</b><br>Chamber Region`);
                 marker.on('click', () => {
                     updateStats(loc.name);
                 });
             });
 
-            // default stats
-            updateStats('Downtown');
+            updateStats('Accra');
         }
 
-        function updateStats(neighborhood) {
-            const data = neighborhoodData[neighborhood] || neighborhoodData['Downtown'];
-            document.getElementById('statNeighborhood').textContent = neighborhood;
+        function updateStats(region) {
+            const data = regionData[region] || regionData['Accra'];
+            document.getElementById('statNeighborhood').textContent = region;
             document.getElementById('statTemp').textContent = data.temp;
             document.getElementById('statAQI').textContent = data.aqi;
             document.getElementById('statTrees').textContent = data.trees;
-            showToast(`📊 Updated stats for ${neighborhood}`);
+            showToast(`📊 Updated details for ${region}`);
         }
 
-        // initialize map after DOM
-        document.addEventListener('DOMContentLoaded', initMap);
+        document.addEventListener('DOMContentLoaded', () => {
+            initMap();
+            // Set initial timestamp
+            document.getElementById('timestamp').value = new Date().toLocaleString();
+        });
 
-        console.log('🌳 Urban Canopy Project loaded successfully!');
+        console.log('🇬🇭 Ghana Chamber Directory loaded successfully!');
     </script>
 
 </body>

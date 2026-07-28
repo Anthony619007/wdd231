@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Explore the Ghana Chamber business directory and connect with trusted local companies across Ghana.">
+    <meta name="description" content="Join the Ghana Chamber of Commerce. Explore our business directory and connect with trusted local companies across Ghana.">
     <meta name="author" content="Anthony Anusiem">
-    <title>Directory | Ghana Chamber of Commerce | Anthony Anusiem</title>
-    <meta property="og:title" content="Ghana Chamber Business Directory | Anthony Anusiem">
-    <meta property="og:description" content="Explore trusted Ghana Chamber businesses, compare membership levels, and connect with local services across Ghana.">
+    <title>Join the Ghana Chamber of Commerce | Anthony Anusiem</title>
+    <meta property="og:title" content="Join Ghana Chamber of Commerce | Anthony Anusiem">
+    <meta property="og:description" content="Join trusted Ghana Chamber businesses, compare membership levels, and connect with local services across Ghana.">
     <meta property="og:image" content="https://anthony619007.github.io/wdd231/chamber/images/DAN-LOGO-4.png">
     <meta property="og:url" content="https://anthony619007.github.io/wdd231/">
     <meta property="og:type" content="website">
@@ -20,6 +20,47 @@
     <script src="scripts/navigation.js" defer></script>
     <script src="scripts/date.js" defer></script>
     <script src="scripts/courses.js" defer></script>
+    <style>
+        /* Basic styling for the form to ensure it looks professional */
+        form {
+            max-width: 600px;
+            margin: 2rem auto;
+            padding: 1.5rem;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .form-field {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        label {
+            font-weight: 600;
+        }
+        input, select, textarea {
+            padding: 0.8rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-family: inherit;
+        }
+        button[type="submit"] {
+            padding: 1rem;
+            background-color: #005a9c;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button[type="submit"]:hover {
+            background-color: #004477;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -37,7 +78,67 @@
     </nav>
 
     <main>
-        <h1>Home</h1>
+        <h1>Join the Ghana Chamber of Commerce</h1>
+
+        <section class="card join-form-section">
+            <h2>Membership Application</h2>
+            <form method="get" action="thankyou.html">
+                <div class="form-field">
+                    <label for="fname">First Name</label>
+                    <input type="text" id="fname" name="fname" required>
+                </div>
+
+                <div class="form-field">
+                    <label for="lname">Last Name</label>
+                    <input type="text" id="lname" name="lname" required>
+                </div>
+
+                <div class="form-field">
+                    <label for="orgtitle">Organization Title</label>
+                    <input type="text" id="orgtitle" name="orgtitle" required>
+                </div>
+
+                <div class="form-field">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="example@domain.com" required>
+                </div>
+
+                <div class="form-field">
+                    <label for="phone">Mobile Phone</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+
+                <div class="form-field">
+                    <label for="orgname">Organization Name</label>
+                    <input type="text" id="orgname" name="orgname" required>
+                </div>
+
+                <div class="form-field">
+                    <label for="membership">Membership Level</label>
+                    <select id="membership" name="membership" required>
+                        <option value="" disabled selected>Select your level</option>
+                        <option value="np">Non-Profit</option>
+                        <option value="bronze">Bronze</option>
+                        <option value="silver">Silver</option>
+                        <option value="gold">Gold</option>
+                    </select>
+                </div>
+
+                <div class="form-field">
+                    <label for="description">Organization Description</label>
+                    <textarea id="description" name="description" rows="4"></textarea>
+                </div>
+
+                <div class="form-field">
+                    <label for="timestamp">Timestamp</label>
+                    <input type="hidden" id="timestamp" name="timestamp">
+                    <!-- Added a visible version for user awareness, though the requirement might just need the field to exist -->
+                    <input type="text" id="display-timestamp" readonly>
+                </div>
+
+                <button type="submit">Submit Application</button>
+            </form>
+        </section>
 
         <div class="home-grid">
             <section class="card about">
@@ -54,17 +155,6 @@
                 <img class="student-photo" src="images/profile.jpg" alt="Anthony Anusiem">
             </section>
         </div>
-
-        <section class="card courses">
-            <h2>Web Certificate Courses</h2>
-            <div class="filters" role="group" aria-label="Course filters">
-                <button class="filter-button active" type="button" data-filter="all">All</button>
-                <button class="filter-button" type="button" data-filter="CSE">CSE</button>
-                <button class="filter-button" type="button" data-filter="WDD">WDD</button>
-            </div>
-            <div id="course-list" class="course-list"></div>
-            <p id="total-credits" class="credits"></p>
-        </section>
     </main>
 
     <footer>
@@ -82,5 +172,16 @@
         <p>&copy;<span id="currentyear"></span> &bull; Anthony Anusiem &bull; Accra, Ghana</p>
         <p>Last Modification: <span id="lastModified"></span></p>
     </footer>
+
+    <script>
+        // Set the timestamp value on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            const now = new Date();
+            const timestampField = document.getElementById('timestamp');
+            const displayField = document.getElementById('display-timestamp');
+            if (timestampField) timestampField.value = now.toISOString();
+            if (displayField) displayField.value = now.toLocaleString();
+        });
+    </script>
 </body>
 </html>
