@@ -20,6 +20,7 @@
     <script src="scripts/navigation.js" defer></script>
     <script src="scripts/date.js" defer></script>
     <script src="scripts/courses.js" defer></script>
+    <script src="scripts/form-timestamp.js" defer></script>
     <style>
         /* Basic styling for the form to ensure it looks professional */
         form {
@@ -85,32 +86,32 @@
             <form method="get" action="thankyou.html">
                 <div class="form-field">
                     <label for="fname">First Name</label>
-                    <input type="text" id="fname" name="fname" required>
+                    <input type="text" id="fname" name="fname" autocomplete="given-name" required>
                 </div>
 
                 <div class="form-field">
                     <label for="lname">Last Name</label>
-                    <input type="text" id="lname" name="lname" required>
+                    <input type="text" id="lname" name="lname" autocomplete="family-name" required>
                 </div>
 
                 <div class="form-field">
                     <label for="orgtitle">Organization Title</label>
-                    <input type="text" id="orgtitle" name="orgtitle" required>
+                    <input type="text" id="orgtitle" name="orgtitle" autocomplete="organization-title" required>
                 </div>
 
                 <div class="form-field">
                     <label for="email">Email Address</label>
-                    <input type="email" id="email" name="email" placeholder="example@domain.com" required>
+                    <input type="email" id="email" name="email" placeholder="example@domain.com" autocomplete="email" title="Please enter a valid email address." required>
                 </div>
 
                 <div class="form-field">
                     <label for="phone">Mobile Phone</label>
-                    <input type="tel" id="phone" name="phone" required>
+                    <input type="tel" id="phone" name="phone" autocomplete="tel" title="Please enter your mobile phone number." required>
                 </div>
 
                 <div class="form-field">
                     <label for="orgname">Organization Name</label>
-                    <input type="text" id="orgname" name="orgname" required>
+                    <input type="text" id="orgname" name="orgname" autocomplete="organization" required>
                 </div>
 
                 <div class="form-field">
@@ -126,14 +127,16 @@
 
                 <div class="form-field">
                     <label for="description">Organization Description</label>
-                    <textarea id="description" name="description" rows="4"></textarea>
+                    <textarea id="description" name="description" rows="4" title="Please provide a brief description of your organization."></textarea>
                 </div>
 
                 <div class="form-field">
-                    <label for="timestamp">Timestamp</label>
+                    <!-- The hidden field for the actual data submission -->
                     <input type="hidden" id="timestamp" name="timestamp">
-                    <!-- Added a visible version for user awareness, though the requirement might just need the field to exist -->
-                    <input type="text" id="display-timestamp" readonly>
+                    
+                    <!-- Visible display field with its own label -->
+                    <label for="display-timestamp">Application Timestamp</label>
+                    <input type="text" id="display-timestamp" name="display-timestamp" readonly>
                 </div>
 
                 <button type="submit">Submit Application</button>
@@ -172,16 +175,5 @@
         <p>&copy;<span id="currentyear"></span> &bull; Anthony Anusiem &bull; Accra, Ghana</p>
         <p>Last Modification: <span id="lastModified"></span></p>
     </footer>
-
-    <script>
-        // Set the timestamp value on page load
-        document.addEventListener('DOMContentLoaded', () => {
-            const now = new Date();
-            const timestampField = document.getElementById('timestamp');
-            const displayField = document.getElementById('display-timestamp');
-            if (timestampField) timestampField.value = now.toISOString();
-            if (displayField) displayField.value = now.toLocaleString();
-        });
-    </script>
 </body>
 </html>
