@@ -1,0 +1,214 @@
+/* ==========================================================================
+   High-Density Layout Overrides for Wide Screen Viewports (>= 1024px)
+   ========================================================================== */
+@media screen and (min-width: 64rem) {
+    body {
+        background-color: var(--bg-light);
+        color: var(--text-main);
+    }
+
+    .header-container {
+        padding: 20px 40px;
+    }
+
+    #menu-toggle {
+        display: none;
+    }
+
+    #nav-menu {
+        display: block !important;
+        background-color: var(--primary-color) !important;
+        padding: 0 40px;
+    }
+
+    #nav-menu ul {
+        display: flex;
+        justify-content: flex-start;
+        gap: 5px;
+    }
+
+    #nav-menu ul li a {
+        border-top: none;
+        padding: 18px 25px;
+        font-size: 1rem;
+        transition: all 0.2s ease;
+    }
+
+    #nav-menu ul li a.active {
+        background-color: var(--secondary-color);
+        color: var(--card-bg);
+        border-radius: 4px;
+    }
+
+    #nav-menu ul li a:hover {
+        color: var(--accent-color);
+        background-color: var(--nav-border-line);
+    }
+
+    /* Home Page Grid System (3-Columns) */
+    .home-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+    }
+
+    .hero-section {
+        grid-column: 1 / -1;
+    }
+
+    .hero-section picture img {
+        min-height: 450px;
+    }
+
+    .hero-cta {
+        position: absolute !important;
+        top: 50% !important;
+        left: 50% !important;
+        right: auto !important;
+        bottom: auto !important;
+        transform: translate(-50%, -50%) !important;
+        background-color: rgba(4, 20, 12, 0.82) !important;
+        border-radius: 8px;
+        max-width: 500px;
+        padding: 24px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .events-section {
+        grid-column: span 1;
+        margin-left: 40px;
+        margin-right: 0;
+    }
+
+    .weather-section {
+        grid-column: span 2;
+        margin-left: 0;
+        margin-right: 40px;
+    }
+
+    .spotlights-section {
+        grid-column: 1 / -1;
+        margin-left: 40px;
+        margin-right: 40px;
+    }
+
+    .spotlight-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 25px;
+    }
+
+    /* Directory Page View Class System Overrides */
+    .grid-layout {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+    }
+
+    .grid-layout .business-card {
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .grid-layout .business-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 20px var(--shadow-header);
+    }
+
+    .list-layout .business-card {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding: 15px 30px;
+    }
+
+    .list-layout .business-card:nth-child(even) {
+        background-color: var(--bg-light);
+    }
+
+    .list-layout .business-card h3 {
+        flex: 2;
+        margin: 0;
+        font-size: 1.1rem;
+    }
+
+    .list-layout .business-card .address {
+        flex: 2.5;
+        margin: 0;
+        padding: 0 15px;
+    }
+
+    .list-layout .business-card .phone {
+        flex: 1.5;
+        margin: 0;
+    }
+
+    .list-layout .business-card a {
+        flex: 1.5;
+        margin: 0;
+        text-align: right;
+    }
+
+    /* Split-Panel Dual Layout Footer Columns */
+    .footer-top {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+
+    .footer-meta {
+        text-align: right;
+    }
+
+    /* Events / Weather 2-column desktop layout */
+    .events-split-container,
+    .dual-weather-grid {
+        flex-direction: row !important;
+        justify-content: space-around;
+        align-items: center;
+        text-align: left;
+        width: 100%;
+        padding: 10px 0;
+    }
+
+    .events-image-placeholder {
+        flex: 1;
+        max-width: 380px;
+        height: 200px;
+    }
+
+    .events-details-list {
+        flex: 1;
+        padding-left: 30px;
+        text-align: left;
+    }
+
+    .weather-city-block {
+        flex: 1;
+        margin: 0 10px;
+    }
+
+    /* ======================================================================
+       JOIN PAGE: two-column desktop layout
+       ====================================================================== */
+    .join-layout {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+        align-items: start;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    .level-cards {
+        grid-template-columns: repeat(2, 1fr);
+        display: grid;
+    }
+
+    .thankyou-card dl {
+        grid-template-columns: 220px 1fr;
+        column-gap: 20px;
+    }
+
+    .thankyou-card dt {
+        padding-top: 4px;
+    }
+}

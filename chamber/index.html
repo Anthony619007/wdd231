@@ -1,450 +1,151 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Join Ghana Chamber of Commerce | Anthony Anusiem</title>
-    <!-- Leaflet CSS for the map -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    <style>
-        /* ----- Reset & Base ----- */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #f0f7f0;
-            color: #1e3a2e;
-            line-height: 1.6;
-        }
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chamber Home | Ghana Vietnam Chamber of Commerce</title>
+    <meta name="description"
+        content="Official home page for the Ghana Vietnam Chamber of Commerce in Accra. Discover bilateral trade events, local weather, and premium member spotlights.">
+    <meta name="author" content="Your Name">
 
-        /* ----- Navigation ----- */
-        nav {
-            background: #1e3a2e;
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
-        }
-        nav .logo {
-            color: #b8d9b0;
-            font-size: 1.6rem;
-            font-weight: 700;
-            letter-spacing: 1px;
-        }
-        nav .logo span {
-            color: #7cb86c;
-        }
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 2rem;
-        }
-        nav ul li a {
-            color: #e8f5e0;
-            font-weight: 500;
-            padding: 0.5rem 0.75rem;
-            border-radius: 6px;
-            transition: background 0.25s, color 0.25s;
-            cursor: pointer;
-        }
-        nav ul li a:hover,
-        nav ul li a.active {
-            background: #3a6b4f;
-            color: #fff;
-        }
+    <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
 
-        /* ----- Pages (shown/hidden via JS) ----- */
-        .page {
-            display: none;
-            padding: 2rem 2rem 4rem;
-            max-width: 1300px;
-            margin: 0 auto;
-            animation: fadeIn 0.4s ease;
-        }
-        .page.active {
-            display: block;
-        }
-        @keyframes fadeIn {
-            0% {
-                opacity: 0;
-                transform: translateY(12px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+    <!-- Open Graph properties: replace your-username with your GitHub username after deployment -->
+    <meta property="og:title" content="Bilateral Business Home - Ghana Vietnam Chamber of Commerce">
+    <meta property="og:description"
+        content="Explore bilateral trade metrics, local economic development updates, and connect with premium corporate networks.">
+    <meta property="og:image" content="https://your-username.github.io/wdd231/chamber/images/chamber-logo.svg">
+    <meta property="og:url" content="https://your-username.github.io/wdd231/chamber/index.html">
+    <meta property="og:type" content="website">
 
-        /* ----- Page 1: Map ----- */
-        #map {
-            height: 500px;
-            width: 100%;
-            border-radius: 16px;
-            border: 2px solid #3a6b4f;
-            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.10);
-            margin-bottom: 1.5rem;
-        }
-        .map-stats {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            justify-content: center;
-            margin: 1.5rem 0;
-        }
-        .stat-card {
-            background: white;
-            padding: 1rem 2rem;
-            border-radius: 40px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-            font-weight: 600;
-            border-left: 5px solid #4c8b5c;
-            flex: 1 1 160px;
-            text-align: center;
-        }
-        .stat-card span {
-            display: block;
-            font-size: 1.8rem;
-            color: #1e3a2e;
-        }
-        .stat-card small {
-            font-weight: 400;
-            color: #4a6b50;
-        }
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-        /* ----- Form Styles ----- */
-        .join-form {
-            background: white;
-            padding: 2.5rem;
-            border-radius: 16px;
-            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
-            max-width: 700px;
-            margin: 2rem auto;
-            border: 1px solid #c6dcc6;
-        }
-        .form-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-        }
-        .form-group {
-            margin-bottom: 1.2rem;
-            text-align: left;
-        }
-        .form-group.full-width {
-            grid-column: span 2;
-        }
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-            color: #1e3a2e;
-        }
-        .form-group input, 
-        .form-group select, 
-        .form-group textarea {
-            width: 100%;
-            padding: 0.8rem;
-            border: 1px solid #c6dcc6;
-            border-radius: 8px;
-            font-family: inherit;
-            font-size: 1rem;
-            background: #fafdfa;
-            transition: border-color 0.3s, box-shadow 0.3s;
-        }
-        .form-group input:focus, 
-        .form-group select:focus, 
-        .form-group textarea:focus {
-            outline: none;
-            border-color: #7cb86c;
-            box-shadow: 0 0 0 3px rgba(124, 184, 108, 0.2);
-        }
-        .submit-btn {
-            background: #1e3a2e;
-            color: white;
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 8px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            width: 100%;
-            transition: background 0.3s, transform 0.2s;
-            margin-top: 1rem;
-        }
-        .submit-btn:hover {
-            background: #3a6b4f;
-            transform: translateY(-2px);
-        }
-
-        /* ----- Utility ----- */
-        h1 {
-            font-size: 2.4rem;
-            margin-bottom: 0.5rem;
-            color: #1e3a2e;
-            text-align: center;
-        }
-        .subhead {
-            color: #3a6b4f;
-            margin-bottom: 1.8rem;
-            font-size: 1.1rem;
-            text-align: center;
-        }
-        footer {
-            text-align: center;
-            padding: 2rem 1rem;
-            color: #3a5a3a;
-            border-top: 1px solid #c6dcc6;
-            margin-top: 2rem;
-            font-size: 0.9rem;
-        }
-        .toast {
-            position: fixed;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #1e3a2e;
-            color: #e8f5e0;
-            padding: 0.8rem 2rem;
-            border-radius: 40px;
-            font-weight: 500;
-            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.2);
-            z-index: 9999;
-            opacity: 0;
-            transition: opacity 0.3s;
-            pointer-events: none;
-        }
-        .toast.show {
-            opacity: 1;
-        }
-
-        /* Responsive */
-        @media (max-width: 600px) {
-            nav {
-                flex-direction: column;
-                gap: 0.6rem;
-                padding: 0.8rem;
-            }
-            nav ul {
-                gap: 0.8rem;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            .form-grid {
-                grid-template-columns: 1fr;
-            }
-            .form-group.full-width {
-                grid-column: span 1;
-            }
-            .page {
-                padding: 1rem;
-            }
-            #map {
-                height: 300px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="styles/small.css">
+    <link rel="stylesheet" href="styles/larger.css" media="(min-width: 64rem)">
 </head>
+
 <body>
 
-    <!-- Navigation -->
-    <nav>
-        <div class="logo">🇬🇭 Ghana <span>Chamber</span></div>
-        <ul>
-            <li><a id="nav-map" class="active" onclick="showPage('page1')">Directory Map</a></li>
-            <li><a id="nav-join" onclick="showPage('page-join')">Join Chamber</a></li>
-        </ul>
-    </nav>
-
-    <!-- ========== PAGE 1: MAP ========== -->
-    <section id="page1" class="page active">
-        <h1>🌿 Business Directory Map</h1>
-        <p class="subhead">Explore chamber members across Ghana. Click a marker for details.</p>
-        <div id="map"></div>
-
-        <div class="map-stats" id="statsContainer">
-            <div class="stat-card"><span id="statNeighborhood">Accra</span><small>Region</small></div>
-            <div class="stat-card"><span id="statTemp">85°F</span><small>Avg. Temp</small></div>
-            <div class="stat-card"><span id="statAQI">48</span><small>Business Index</small></div>
-            <div class="stat-card"><span id="statTrees">450+</span><small>Members</small></div>
-        </div>
-        <p style="text-align:center; color:#3a6b4f; font-weight:500;">Click any region marker on the map to update stats.</p>
-    </section>
-
-    <!-- ========== PAGE: JOIN FORM ========== -->
-    <section id="page-join" class="page">
-        <h1>Join the Ghana Chamber of Commerce</h1>
-        <p class="subhead">Complete the form below to apply for membership.</p>
-        
-        <form method="get" action="thankyou.html" class="join-form">
-            <div class="form-grid">
-                <div class="form-group">
-                    <label for="fname">First Name</label>
-                    <input type="text" id="fname" name="fname" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="lname">Last Name</label>
-                    <input type="text" id="lname" name="lname" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="orgtitle">Organization Title</label>
-                    <input type="text" id="orgtitle" name="orgtitle" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="email">Email Address</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="phone">Mobile Phone</label>
-                    <input type="tel" id="phone" name="phone" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="orgname">Organization Name</label>
-                    <input type="text" id="orgname" name="orgname" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="membership">Membership Level</label>
-                    <select id="membership" name="membership" required>
-                        <option value="">Select Level...</option>
-                        <option value="np">Non-Profit</option>
-                        <option value="bronze">Bronze</option>
-                        <option value="silver">Silver</option>
-                        <option value="gold">Gold</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="timestamp">Timestamp</label>
-                    <input type="text" id="timestamp" name="timestamp" readonly>
-                </div>
-                
-                <div class="form-group full-width">
-                    <label for="description">Organization Description</label>
-                    <textarea id="description" name="description" rows="4" required></textarea>
+    <header>
+        <div class="header-container">
+            <div class="logo-area">
+                <img src="images/chamber-logo.svg" alt="GVCC Official Emblem Logo" width="80" height="80"
+                    loading="eager">
+                <div class="branding-text">
+                    <div class="header-logo-title">GVCC</div>
+                    <p>Ghana Vietnam Chamber of Commerce</p>
                 </div>
             </div>
-            
-            <button type="submit" class="submit-btn">Submit Application</button>
-        </form>
-    </section>
+            <button id="menu-toggle" aria-label="Toggle Navigation Menu">&#9776;</button>
+        </div>
+        <nav id="nav-menu">
+            <ul>
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="#">Discover</a></li>
+                <li><a href="directory.html">Directory</a></li>
+                <li><a href="join.html">Join Us</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <!-- Toast -->
-    <div id="toast" class="toast"></div>
+    <main class="home-grid">
+        <div class="hero-section">
+            <picture>
+                <source media="(min-width: 64rem)" srcset="images/hero-larger.svg">
+                <img src="images/hero-small.svg"
+                    alt="Illustrated skyline linking Accra's Black Star Gate with Vietnam's pagoda towers" width="1200"
+                    height="450" loading="eager">
+            </picture>
+            <div class="hero-cta">
+                <h2>Welcome to Your Future</h2>
+                <p>Grow your cross-border business network and scale your international trade operations with us.</p>
+                <a href="join.html" class="cta-btn">Join the Chamber</a>
+            </div>
+        </div>
 
-    <!-- Footer -->
+        <section class="events-section card">
+            <h2>Upcoming Bilateral Events</h2>
+            <div class="events-split-container">
+                <div class="events-image-placeholder">
+                    <span class="meeting-icon">🤝</span>
+                    <p>Bilateral Business Forum Image</p>
+                </div>
+                <div class="events-details-list">
+                    <ul>
+                        <li><strong>Accra Trade Summit</strong> - Oct 14th, 9:00 AM</li>
+                        <li><strong>B2B Networking Breakfast</strong> - Oct 22nd, 7:30 AM</li>
+                        <li><strong>Bilateral Investment Forum</strong> - Nov 05th, 12:00 PM</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="weather-section card">
+            <h2>Chamber Regional Weather Profiles</h2>
+            <div class="dual-weather-grid">
+                <div class="weather-city-block">
+                    <h3>Ghana Head Office</h3>
+                    <div id="accra-weather">
+                        <p>Loading Accra climate profile...</p>
+                    </div>
+                </div>
+                <div class="weather-city-block">
+                    <h3>Vietnam Trade Hub</h3>
+                    <div id="hanoi-weather">
+                        <p>Loading Hanoi climate profile...</p>
+                    </div>
+                </div>
+            </div>
+            <hr style="border: 0; border-top: 1px solid var(--border-light); margin: 20px 0;">
+            <h3 style="text-align: center; margin-bottom: 15px;">3-Day Regional Outlook</h3>
+            <div id="forecast-info" class="forecast-grid">
+                <!-- Combined forecast data hooks drop here dynamically -->
+            </div>
+        </section>
+
+        <section class="spotlights-section">
+            <h2>Business Spotlights</h2>
+            <div id="spotlight-container" class="spotlight-grid">
+                <!-- 2-3 random Gold/Silver member sponsor cards render dynamically here -->
+            </div>
+        </section>
+    </main>
+
     <footer>
-        🇬🇭 Ghana Chamber of Commerce — Supporting local growth and sustainability.
+        <div class="footer-top">
+            <div class="footer-contact">
+                <h3>GVCC Administrative Headquarters</h3>
+                <p>📍 Independence Avenue, Ridge, Accra, Ghana</p>
+                <p>📞 Phone: +233 30 274 5566 | ✉️ Contact: info@gvcc.org</p>
+            </div>
+            <div class="footer-social">
+                <h3>Connect With Us</h3>
+                <div class="social-links">
+                    <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a>
+                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                    <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">X / Twitter</a>
+                </div>
+            </div>
+            <div class="footer-meta">
+                <p>WDD 231 Web Frontend Development I</p>
+                <p>Chamber Group Project Portfolio Hub</p>
+                <p><a href="siteplan.html" class="siteplan-link">📄 Project Site Plan</a></p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; <span id="current-year"></span> | <strong>Your Name</strong> | Ghana</p>
+            <p class="modified-timestamp">Last Structural Modification: <span id="last-modified-date"></span></p>
+        </div>
     </footer>
 
-    <!-- ========== SCRIPTS ========== -->
-    <!-- Leaflet JS -->
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-
-    <script>
-        // ---------- NAVIGATION ----------
-        function showPage(pageId) {
-            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-            document.querySelectorAll('nav ul li a').forEach(a => a.classList.remove('active'));
-            
-            document.getElementById(pageId).classList.add('active');
-            if (pageId === 'page1') {
-                document.getElementById('nav-map').classList.add('active');
-                if (map) map.invalidateSize();
-            } else {
-                document.getElementById('nav-join').classList.add('active');
-                // Set timestamp when showing the form
-                document.getElementById('timestamp').value = new Date().toLocaleString();
-            }
-        }
-
-        // ---------- TOAST ----------
-        function showToast(msg) {
-            const t = document.getElementById('toast');
-            t.textContent = msg;
-            t.classList.add('show');
-            clearTimeout(t._timeout);
-            t._timeout = setTimeout(() => t.classList.remove('show'), 3200);
-        }
-
-        // ---------- PAGE 1: MAP ----------
-        let map;
-
-        const regionData = {
-            'Accra': { temp: '85°F', aqi: '48', trees: '450+' },
-            'Kumasi': { temp: '82°F', aqi: '35', trees: '300+' },
-            'Tamale': { temp: '95°F', aqi: '55', trees: '150+' },
-            'Takoradi': { temp: '80°F', aqi: '40', trees: '200+' },
-            'Cape Coast': { temp: '81°F', aqi: '38', trees: '180+' },
-        };
-
-        function initMap() {
-            // Centered on Ghana
-            map = L.map('map').setView([7.9465, -1.0232], 7);
-
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '&copy; OpenStreetMap contributors'
-            }).addTo(map);
-
-            const locations = [
-                { name: 'Accra', lat: 5.6037, lng: -0.1870 },
-                { name: 'Kumasi', lat: 6.6666, lng: -1.6163 },
-                { name: 'Tamale', lat: 9.4034, lng: -0.8424 },
-                { name: 'Takoradi', lat: 4.8917, lng: -1.7525 },
-                { name: 'Cape Coast', lat: 5.1053, lng: -1.2466 }
-            ];
-
-            const markerIcon = L.divIcon({
-                html: '📍',
-                className: 'custom-marker',
-                iconSize: [32, 32],
-                iconAnchor: [16, 32]
-            });
-
-            locations.forEach(loc => {
-                const marker = L.marker([loc.lat, loc.lng], { icon: markerIcon }).addTo(map);
-                marker.bindPopup(`<b>${loc.name}</b><br>Chamber Region`);
-                marker.on('click', () => {
-                    updateStats(loc.name);
-                });
-            });
-
-            updateStats('Accra');
-        }
-
-        function updateStats(region) {
-            const data = regionData[region] || regionData['Accra'];
-            document.getElementById('statNeighborhood').textContent = region;
-            document.getElementById('statTemp').textContent = data.temp;
-            document.getElementById('statAQI').textContent = data.aqi;
-            document.getElementById('statTrees').textContent = data.trees;
-            showToast(`📊 Updated details for ${region}`);
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            initMap();
-            // Set initial timestamp
-            document.getElementById('timestamp').value = new Date().toLocaleString();
-        });
-
-        console.log('🇬🇭 Ghana Chamber Directory loaded successfully!');
-    </script>
-
+    <script src="scripts/common.js" defer></script>
+    <script src="scripts/weather.js" defer></script>
+    <script src="scripts/spotlights.js" defer></script>
 </body>
+
 </html>
