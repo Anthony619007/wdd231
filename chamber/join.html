@@ -119,34 +119,36 @@
                         <div class="form-row">
                             <label for="first-name">First Name</label>
                             <input type="text" id="first-name" name="firstName" required minlength="2"
-                                autocomplete="given-name" autofocus>
+                                autocomplete="given-name" autofocus
+                                title="Enter your first name (at least 2 characters).">
                         </div>
 
                         <div class="form-row">
                             <label for="last-name">Last Name</label>
                             <input type="text" id="last-name" name="lastName" required minlength="2"
-                                autocomplete="family-name">
+                                autocomplete="family-name"
+                                title="Enter your last name (at least 2 characters).">
                         </div>
 
                         <div class="form-row">
-                            <label for="org-title">Organizational Title
+                            <label for="title">Organization Title
                                 <span class="hint">(letters, spaces and hyphens, 7+ characters)</span></label>
-                            <input type="text" id="org-title" name="orgTitle" autocomplete="organization-title"
+                            <input type="text" id="title" name="title" autocomplete="organization-title"
                                 pattern="[A-Za-z\s\-]{7,}"
-                                title="Organizational title must be at least 7 letters, and may include spaces and hyphens."
+                                title="Organization title must be at least 7 characters, and may include letters, spaces, and hyphens."
                                 placeholder="e.g., Marketing Director">
                         </div>
 
                         <div class="form-row">
                             <label for="email">Email Address</label>
                             <input type="email" id="email" name="email" required autocomplete="email"
-                                placeholder="you@company.com">
+                                placeholder="you@company.com" title="Enter a valid email address.">
                         </div>
 
                         <div class="form-row">
                             <label for="phone">Mobile Phone</label>
                             <input type="tel" id="phone" name="phone" required autocomplete="tel"
-                                placeholder="+233 24 000 0000">
+                                placeholder="+233 24 000 0000" title="Enter your mobile phone number.">
                         </div>
                     </fieldset>
 
@@ -154,9 +156,10 @@
                         <legend>Business Information</legend>
 
                         <div class="form-row">
-                            <label for="business-name">Business/Organization Name</label>
-                            <input type="text" id="business-name" name="businessName" required
-                                autocomplete="organization">
+                            <label for="organization">Organization Name</label>
+                            <input type="text" id="organization" name="organization" required
+                                autocomplete="organization"
+                                title="Enter the name of your business or organization.">
                         </div>
 
                         <div class="form-row">

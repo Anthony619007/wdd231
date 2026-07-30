@@ -7,10 +7,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const fieldMap = [
         { key: "firstName", label: "First Name" },
         { key: "lastName", label: "Last Name" },
-        { key: "orgTitle", label: "Organizational Title" },
+        { key: "title", label: "Organization Title" },
         { key: "email", label: "Email Address" },
         { key: "phone", label: "Mobile Phone" },
-        { key: "businessName", label: "Business/Organization Name" },
+        { key: "organization", label: "Organization Name" },
         { key: "businessDescription", label: "Business Description" },
         { key: "membershipLevel", label: "Membership Level" },
         { key: "timestamp", label: "Submitted On" }
