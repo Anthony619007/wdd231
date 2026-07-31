@@ -54,8 +54,8 @@ function displayCurrentCity(data, containerId, cityName) {
             <div class="current-weather-display">
                 <img src="${iconUrl}" alt="${desc}" width="50" height="50">
                 <div>
-                    <p class="temp" style="font-size: 1.8rem; font-weight: 700; margin: 0;">${temp}&deg;C</p>
-                    <p class="desc" style="margin: 0; text-transform: capitalize; color: var(--text-muted); font-size: 0.85rem;">${desc}</p>
+                    <p class="temp">${temp}&deg;C</p>
+                    <p class="desc">${desc}</p>
                 </div>
             </div>
         `;
@@ -82,9 +82,9 @@ function displayForecast(data) {
                 const dayCard = document.createElement("div");
                 dayCard.className = "forecast-day";
                 dayCard.innerHTML = `
-                    <p class="forecast-date" style="font-weight: bold; margin: 0 0 5px 0;">${dayName}</p>
+                    <p class="forecast-date">${dayName}</p>
                     <img src="${iconUrl}" alt="${desc}" width="40" height="40">
-                    <p class="forecast-temp" style="font-weight: bold; margin: 5px 0 0 0;">${temp}&deg;C</p>
+                    <p class="forecast-temp">${temp}&deg;C</p>
                 `;
                 forecastInfo.appendChild(dayCard);
             }

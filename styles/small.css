@@ -193,7 +193,9 @@ main {
 }
 
 /* Card Presentation Foundations */
-.card {
+.card,
+.spotlight-card,
+.business-card {
     background-color: var(--card-bg);
     border: 1px solid var(--border-light);
     border-radius: 8px;
@@ -203,7 +205,9 @@ main {
 
 .card h1,
 .card h2,
-.card h3 {
+.card h3,
+.spotlight-card h3,
+.business-card h3 {
     margin-top: 0;
     color: var(--primary-color);
 }
@@ -335,11 +339,7 @@ main {
 }
 
 .spotlight-card {
-    background-color: var(--card-bg);
-    border: 1px solid var(--border-light);
-    border-radius: 8px;
     padding: 20px;
-    box-shadow: 0 4px 6px var(--shadow-light);
 }
 
 .spotlight-header {
@@ -397,12 +397,7 @@ main {
 }
 
 .business-card {
-    background-color: var(--card-bg);
-    border: 1px solid var(--border-light);
-    border-radius: 8px;
-    padding: 24px;
     text-align: center;
-    box-shadow: 0 4px 6px var(--shadow-light);
 }
 
 .business-card.level-1 {

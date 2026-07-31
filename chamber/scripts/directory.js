@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
             renderDirectoryView(loadedMembers);
         } catch (error) {
             console.error("Critical Fetch Error Details:", error);
-            displayContainer.innerHTML = `<p style="grid-column: 1/-1; text-align: center; color: var(--secondary-color); padding: 20px; font-weight: bold;">Failed to safely execute directory fetch engine profile.</p>`;
+            displayContainer.innerHTML = `<p class="error-message">Failed to safely execute directory fetch engine profile.</p>`;
         }
     }
 
@@ -28,7 +28,17 @@ document.addEventListener("DOMContentLoaded", () => {
             const card = document.createElement("section");
             card.className = `business-card level-${member.membership}`;
 
-            card.innerHTML = `<div class="card-logo-wrap" style="min-height:80px;display:flex;align-items:center;justify-content:center;"><span style="font-size:2.5rem;color:#CED4DA;">🏢</span></div><h3>${member.name}</h3><p class="tagline">"${member.tagline}"</p><p class="address">📍 ${member.address}</p><p class="phone">📞 ${member.phone}</p><a href="${member.url}" target="_blank" rel="noopener noreferrer">Visit Corporate Website &rarr;</a>`;
+            // Use a placeholder if the image is missing or just show the icon
+            card.innerHTML = `
+                <div class="card-logo-wrap">
+                    <span class="placeholder-icon">🏢</span>
+                </div>
+                <h3>${member.name}</h3>
+                <p class="tagline">"${member.tagline}"</p>
+                <p class="address">📍 ${member.address}</p>
+                <p class="phone">📞 ${member.phone}</p>
+                <a href="${member.url}" target="_blank" rel="noopener noreferrer">Visit Corporate Website &rarr;</a>
+            `;
 
             displayContainer.appendChild(card);
         });
