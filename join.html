@@ -4,43 +4,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Join Ghana Vietnam Chamber of Commerce - Membership Application | GVCC</title>
+    <title>Join the Chamber | Mongolia Vietnam Chamber of Commerce</title>
     <meta name="description"
-        content="Join the Ghana Vietnam Chamber of Commerce today. Apply for NP, Bronze, Silver, or Gold membership and start building bilateral trade networks.">
-    <meta name="author" content="Your Name">
+        content="Apply for corporate membership with the Mongolia Vietnam Chamber of Commerce. Select from NP, Bronze, Silver, or Gold tiers to expand your network.">
+    <meta name="author" content="Buyannemekh Chimeddorj">
 
-    <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+    <!-- STANDARD FAVICON MAPPING LINK -->
+    <link rel="icon" href="https://github.io" type="image/x-icon">
 
-    <!-- Open Graph properties -->
-    <meta property="og:title" content="Join Ghana Vietnam Chamber of Commerce - Membership Application">
+    <!-- OPEN GRAPH SOCIAL PLATFORM PROPERTIES -->
+    <meta property="og:title" content="Membership Application - Mongolia Vietnam Chamber of Commerce">
     <meta property="og:description"
-        content="Join the Ghana Vietnam Chamber of Commerce. Compare membership levels and submit your application to start building bilateral trade networks.">
-    <meta property="og:image" content="https://gvcc-ghana.github.io/wdd231/chamber/images/chamber-logo.svg">
-    <meta property="og:url" content="https://gvcc-ghana.github.io/wdd231/chamber/join.html">
+        content="Submit your business registration profile and lock in your premium corporate networking level.">
+    <meta property="og:image" content="https://github.io">
+    <meta property="og:url" content="https://github.io">
     <meta property="og:type" content="website">
 
+    <!-- GOOGLE FONTS API INTEGRATION BLOCKS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <!-- LOCAL APP STYLESHEETS LINK MATRIX HIERARCHY -->
+    <link rel="stylesheet" href="https://cloudflare.com">
     <link rel="stylesheet" href="styles/small.css">
     <link rel="stylesheet" href="styles/larger.css" media="(min-width: 64rem)">
 </head>
 
 <body>
 
+    <!-- Header UI Module Layout (Synchronized across all pages) -->
     <header>
         <div class="header-container">
             <div class="logo-area">
-                <img src="images/chamber-logo.svg" alt="GVCC Official Emblem Logo" width="80" height="80"
+                <img src="images/chamber-logo.webp" alt="MVCC Official Emblem Logo" width="80" height="80"
                     loading="eager">
                 <div class="branding-text">
-                    <div class="header-logo-title">GVCC</div>
-                    <p>Ghana Vietnam Chamber of Commerce</p>
+                    <div class="header-logo-title">MVCC</div>
+                    <p>Mongolia Vietnam Chamber of Commerce</p>
                 </div>
             </div>
-            <button id="menu-toggle" aria-label="Toggle Navigation Menu">&#9776;</button>
+            <button id="menu-toggle" aria-label="Toggle Navigation Menu">☰</button>
         </div>
         <nav id="nav-menu">
             <ul>
@@ -53,215 +57,92 @@
         </nav>
     </header>
 
-    <main>
-        <h1>Join Ghana Vietnam Chamber of Commerce</h1>
-        <section class="join-hero card">
-            <p>Join a growing network of Ghanaian and Vietnamese businesses building bilateral trade, logistics, and
-                investment relationships across Accra, Kumasi, Hanoi, and Ho Chi Minh City. Choose the membership
-                level that fits your organization and submit your application below.</p>
+    <main class="join-main-layout">
+        <!-- Section 1: The Membership Registration Form -->
+        <section class="form-section card">
+            <h2>Chamber Membership Application</h2>
+            <form method="get" action="thankyou.html" class="application-form">
+
+                <label class="form-label">
+                    <span>First Name *</span>
+                    <input type="text" name="fname" required autocomplete="given-name">
+                </label>
+
+                <label class="form-label">
+                    <span>Last Name *</span>
+                    <input type="text" name="lname" required autocomplete="family-name">
+                </label>
+
+                <label class="form-label">
+                    <span>Your Organizational Title *</span>
+                    <input type="text" name="title" required pattern="[A-Za-z\s\-]{4,}"
+                        title="Please enter a valid title (at least 4 characters long, alphabetic strings only)">
+                </label>
+
+                <label class="form-label">
+                    <span>Email Address *</span>
+                    <input type="email" name="email" required placeholder="example@company.com" autocomplete="email">
+                </label>
+
+                <label class="form-label">
+                    <span>Mobile Phone Number *</span>
+                    <input type="tel" name="phone" required placeholder="+976..." autocomplete="tel">
+                </label>
+
+                <label class="form-label">
+                    <span>Business / Organization Name *</span>
+                    <input type="text" name="organization" required autocomplete="organization">
+                </label>
+
+                <label class="form-label">
+                    <span>Select Membership Level *</span>
+                    <select name="membership-level" required>
+                        <option value="" disabled selected>-- Choose Level --</option>
+                        <option value="np">Non-Profit Tier (Free)</option>
+                        <option value="bronze">Bronze Membership Tier</option>
+                        <option value="silver">Silver Membership Tier</option>
+                        <option value="gold">Gold Membership Tier</option>
+                    </select>
+                </label>
+
+                <label class="form-label">
+                    <span>Business Entity Description</span>
+                    <textarea name="description" rows="4"
+                        placeholder="Briefly summarize your cross-border trade operations or legal/logistics services..."></textarea>
+                </label>
+
+                <!-- CRITICAL ASSIGNMENT REQUIREMENT: Hidden Form Submission Timestamp -->
+                <input type="hidden" id="form-timestamp" name="timestamp" value="">
+
+                <input type="submit" value="Submit Corporate Application" class="submit-btn">
+            </form>
         </section>
 
-        <div class="join-layout">
-            <section class="membership-levels card" aria-labelledby="levels-heading">
-                <h2 id="levels-heading">Membership Levels</h2>
-                <div class="level-cards">
-
-                    <article class="level-card tier-np">
-                        <h3>NP Membership</h3>
-                        <p class="level-price">Free for registered non-profits</p>
-                        <ul>
-                            <li>Directory listing</li>
-                            <li>Newsletter subscription</li>
-                        </ul>
-                        <button class="benefits-btn" type="button" data-dialog="dialog-np">View Benefits</button>
-                    </article>
-
-                    <article class="level-card tier-bronze">
-                        <h3>Bronze Membership</h3>
-                        <p class="level-price">$100 / year</p>
-                        <ul>
-                            <li>Everything in NP</li>
-                            <li>1 event invitation per quarter</li>
-                        </ul>
-                        <button class="benefits-btn" type="button" data-dialog="dialog-bronze">View Benefits</button>
-                    </article>
-
-                    <article class="level-card tier-silver">
-                        <h3>Silver Membership</h3>
-                        <p class="level-price">$200 / year</p>
-                        <ul>
-                            <li>Everything in Bronze</li>
-                            <li>Homepage spotlight rotation</li>
-                        </ul>
-                        <button class="benefits-btn" type="button" data-dialog="dialog-silver">View Benefits</button>
-                    </article>
-
-                    <article class="level-card tier-gold">
-                        <h3>Gold Membership</h3>
-                        <p class="level-price">$500 / year</p>
-                        <ul>
-                            <li>Everything in Silver</li>
-                            <li>Priority placement + trade delegation invites</li>
-                        </ul>
-                        <button class="benefits-btn" type="button" data-dialog="dialog-gold">View Benefits</button>
-                    </article>
-
-                </div>
-            </section>
-
-            <section class="join-form-section card" aria-labelledby="form-heading">
-                <h2 id="form-heading">Membership Application</h2>
-                <form class="join-form" action="thankyou.html" method="get">
-
-                    <fieldset>
-                        <legend>Applicant Information</legend>
-
-                        <div class="form-row">
-                            <label for="first-name">First Name</label>
-                            <input type="text" id="first-name" name="firstName" required minlength="2"
-                                autocomplete="given-name" autofocus
-                                title="Enter your first name (at least 2 characters).">
-                        </div>
-
-                        <div class="form-row">
-                            <label for="last-name">Last Name</label>
-                            <input type="text" id="last-name" name="lastName" required minlength="2"
-                                autocomplete="family-name"
-                                title="Enter your last name (at least 2 characters).">
-                        </div>
-
-                        <div class="form-row">
-                            <label for="title">Organization Title
-                                <span class="hint">(letters, spaces and hyphens, 7+ characters)</span></label>
-                            <input type="text" id="title" name="title" autocomplete="organization-title"
-                                pattern="[A-Za-z\s\-]{7,}"
-                                title="Organization title must be at least 7 characters, and may include letters, spaces, and hyphens."
-                                placeholder="e.g., Marketing Director">
-                        </div>
-
-                        <div class="form-row">
-                            <label for="email">Email Address</label>
-                            <input type="email" id="email" name="email" required autocomplete="email"
-                                placeholder="you@company.com" title="Enter a valid email address.">
-                        </div>
-
-                        <div class="form-row">
-                            <label for="phone">Mobile Phone</label>
-                            <input type="tel" id="phone" name="phone" required autocomplete="tel"
-                                placeholder="+233 24 000 0000" title="Enter your mobile phone number.">
-                        </div>
-                    </fieldset>
-
-                    <fieldset>
-                        <legend>Business Information</legend>
-
-                        <div class="form-row">
-                            <label for="organization">Organization Name</label>
-                            <input type="text" id="organization" name="organization" required
-                                autocomplete="organization"
-                                title="Enter the name of your business or organization.">
-                        </div>
-
-                        <div class="form-row">
-                            <label for="business-desc">Organization Description <span class="hint">(optional, max 300
-                                    characters)</span></label>
-                            <textarea id="business-desc" name="organizationDescription" rows="3" maxlength="300"></textarea>
-                        </div>
-                    </fieldset>
-
-                    <fieldset>
-                        <legend>Membership Level</legend>
-                        <div class="radio-group">
-                            <div class="radio-option">
-                                <input type="radio" id="level-np" name="membershipLevel" value="NP Membership" checked>
-                                <label for="level-np">NP Membership — Free</label>
-                                <button type="button" class="radio-info-btn" data-dialog="dialog-np"
-                                    aria-label="NP Membership benefits">?</button>
-                            </div>
-                            <div class="radio-option">
-                                <input type="radio" id="level-bronze" name="membershipLevel" value="Bronze Membership">
-                                <label for="level-bronze">Bronze Membership — $100/yr</label>
-                                <button type="button" class="radio-info-btn" data-dialog="dialog-bronze"
-                                    aria-label="Bronze Membership benefits">?</button>
-                            </div>
-                            <div class="radio-option">
-                                <input type="radio" id="level-silver" name="membershipLevel" value="Silver Membership">
-                                <label for="level-silver">Silver Membership — $200/yr</label>
-                                <button type="button" class="radio-info-btn" data-dialog="dialog-silver"
-                                    aria-label="Silver Membership benefits">?</button>
-                            </div>
-                            <div class="radio-option">
-                                <input type="radio" id="level-gold" name="membershipLevel" value="Gold Membership">
-                                <label for="level-gold">Gold Membership — $500/yr</label>
-                                <button type="button" class="radio-info-btn" data-dialog="dialog-gold"
-                                    aria-label="Gold Membership benefits">?</button>
-                            </div>
-                        </div>
-                    </fieldset>
-
-                    <input type="hidden" id="timestamp" name="timestamp">
-
-                    <button type="submit" class="submit-btn">Submit Application</button>
-                </form>
-            </section>
-        </div>
+        <!-- Section 2: Membership Tiers Side-Panel Benefits Info -->
+        <section class="benefits-sidebar">
+            <div class="tier-benefit-card bronze-info">
+                <h3>🥉 Bronze Membership</h3>
+                <p>Includes standard listing markers inside our registered trade database directory.</p>
+            </div>
+            <div class="tier-benefit-card silver-info">
+                <h3>🥈 Silver Membership</h3>
+                <p>Unlocks homepage training module features, spotlight rotation loops, and discounted forum passes.</p>
+            </div>
+            <div class="tier-benefit-card gold-info">
+                <h3>🥇 Gold Membership</h3>
+                <p>Full premium access. Dominant priority spotlighting cards, free summit vendor spaces, and strategic
+                    governmental matchmaking sessions.</p>
+            </div>
+        </section>
     </main>
 
-    <!-- Benefit Dialogs -->
-    <dialog id="dialog-np" class="benefits-dialog">
-        <div class="dialog-inner">
-            <h3>NP Membership Benefits</h3>
-            <ul>
-                <li>Directory listing on the chamber website</li>
-                <li>Monthly bilateral trade newsletter</li>
-                <li>Access to public networking events</li>
-            </ul>
-            <button class="dialog-close" type="button">Close</button>
-        </div>
-    </dialog>
-
-    <dialog id="dialog-bronze" class="benefits-dialog">
-        <div class="dialog-inner">
-            <h3>Bronze Membership Benefits</h3>
-            <ul>
-                <li>Everything included in NP Membership</li>
-                <li>One reserved seat at a quarterly networking event</li>
-                <li>Listing badge on your directory card</li>
-            </ul>
-            <button class="dialog-close" type="button">Close</button>
-        </div>
-    </dialog>
-
-    <dialog id="dialog-silver" class="benefits-dialog">
-        <div class="dialog-inner">
-            <h3>Silver Membership Benefits</h3>
-            <ul>
-                <li>Everything included in Bronze Membership</li>
-                <li>Rotating spotlight placement on the home page</li>
-                <li>Two guest passes to the annual trade summit</li>
-            </ul>
-            <button class="dialog-close" type="button">Close</button>
-        </div>
-    </dialog>
-
-    <dialog id="dialog-gold" class="benefits-dialog">
-        <div class="dialog-inner">
-            <h3>Gold Membership Benefits</h3>
-            <ul>
-                <li>Everything included in Silver Membership</li>
-                <li>Priority placement at the top of the directory</li>
-                <li>Invitations to official Ghana–Vietnam trade delegations</li>
-            </ul>
-            <button class="dialog-close" type="button">Close</button>
-        </div>
-    </dialog>
-
+    <!-- Footer UI Module Layout (Synchronized across all pages) -->
     <footer>
         <div class="footer-top">
             <div class="footer-contact">
-                <h3>GVCC Administrative Headquarters</h3>
-                <p>📍 Independence Avenue, Ridge, Accra, Ghana</p>
-                <p>📞 Phone: +233 30 274 5566 | ✉️ Contact: info@gvcc.org</p>
+                <h3>MVCC Administrative Headquarters</h3>
+                <p>📍 Peace Avenue, Sukhbaatar District, Ulaanbaatar, Mongolia</p>
+                <p>📞 Phone: +976 11 312 456 | ✉️ Contact: info@mvcc.org</p>
             </div>
             <div class="footer-social">
                 <h3>Connect With Us</h3>
@@ -278,12 +159,13 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; <span id="current-year"></span> | <strong>Your Name</strong> | Ghana</p>
+            <p>&copy; <span id="current-year"></span> | <strong>Buyannemekh Chimeddorj</strong> | Mongolia</p>
             <p class="modified-timestamp">Last Structural Modification: <span id="last-modified-date"></span></p>
         </div>
     </footer>
 
-    <script src="scripts/common.js" defer></script>
+
+    <script src="scripts/main.js" defer></script>
     <script src="scripts/join.js" defer></script>
 </body>
 

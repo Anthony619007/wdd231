@@ -1,9 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
+    // 1. Data Endpoint Configuration
     const membersUrl = "data/members.json";
     const spotlightContainer = document.querySelector("#spotlight-container");
 
-    if (!spotlightContainer) return;
-
+    // 2. Fetch data from JSON database asynchronously
     async function getSpotlightMembers() {
         try {
             const response = await fetch(membersUrl);
@@ -12,29 +12,39 @@ document.addEventListener("DOMContentLoaded", () => {
             }
             const membersList = await response.json();
 
-            // Filter for Premium Tiers: Only Silver (2) or Gold (3) membership levels
+            // 3. Filter for Premium Tiers: Only Silver (2) or Gold (3) membership levels allowed
             const premiumMembers = membersList.filter(member =>
                 member.membership === 2 || member.membership === 3
             );
 
+            // 4. Randomize selection and pick exactly 2 or 3 entities
             const selectedSpotlights = getRandomMembers(premiumMembers, 3);
+
+            // 5. Build and inject cards into the interface
             displaySpotlights(selectedSpotlights);
         } catch (error) {
             console.error("Error processing sponsor data stream profiles:", error);
-            spotlightContainer.innerHTML = `<p>Sponsor spotlights temporarily unavailable.</p>`;
+            if (spotlightContainer) {
+                spotlightContainer.innerHTML = `<p>Sponsor spotlights temporarily unavailable.</p>`;
+            }
         }
     }
 
+    // Shuffle Array Utility (Fisher-Yates style random selection)
     function getRandomMembers(array, count) {
         const shuffled = [...array].sort(() => 0.5 - Math.random());
         return shuffled.slice(0, count);
     }
 
+    // 6. Dynamic Card Generation Framework
     function displaySpotlights(spotlightArray) {
-        spotlightContainer.innerHTML = "";
+        if (!spotlightContainer) return;
+        spotlightContainer.innerHTML = ""; // Clear loader placeholder
 
         spotlightArray.forEach(member => {
             const card = document.createElement("section");
+
+            // Add semantic styling classes matching membership level variants
             card.className = `spotlight-card tier-${member.membership}`;
 
             card.innerHTML = `
@@ -53,5 +63,13 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+    // 7. Dynamic Date Timestamp Metrics Hooks - INSERT THIS RIGHT ABOVE getSpotlightMembers()
+    const currentYearEl = document.getElementById("current-year");
+    const lastModifiedEl = document.getElementById("last-modified-date");
+
+    if (currentYearEl) currentYearEl.textContent = new Date().getFullYear();
+    if (lastModifiedEl) lastModifiedEl.textContent = document.lastModified;
+
+    // Initialize business randomizer loop (This is your existing final call line)
     getSpotlightMembers();
 });

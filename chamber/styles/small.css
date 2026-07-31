@@ -1,32 +1,33 @@
 /* ==========================================================================
-   Ghana Vietnam Chamber of Commerce - Color Palette Variables
-   Inspired by the Ghanaian flag (green / gold / red / black star) with a
-   warm ivory canvas that nods to kente cloth backgrounds.
+   Refined Corporate Color Palette Variables Matrix
    ========================================================================== */
 :root {
-    --primary-color: #045C36;
-    /* Deep Ghana Forest Green */
-    --secondary-color: #CE1126;
-    /* Ghana Flag Red */
-    --accent-color: #FCD116;
-    /* Ghana Flag Gold */
-    --bg-light: #F7F4EC;
-    /* Warm Ivory Canvas */
+    --primary-color: #0A2540;
+    /* Deep Royal Sapphire Base */
+    --secondary-color: #A61C24;
+    /* Oxblood Crimson Accent */
+    --accent-color: #D4AF37;
+    /* Muted Metallic Gold Highlight */
+    --bg-light: #F4F6F9;
+    /* Platinum Ice Canvas */
     --card-bg: #FFFFFF;
-    --text-main: #1B1B1B;
-    /* Black Star Charcoal */
-    --text-muted: #6E6455;
+    /* Pristine White Card Elements */
+    --text-main: #1C2A38;
+    /* Premium Dark Navy Charcoal Text */
+    --text-muted: #627D98;
+    /* Soft Slate Metadata Labeling */
 
-    --border-light: #E7E0CF;
-    --btn-bg: #EFEADA;
-    --btn-border: #CBBFA0;
-    --nav-mobile-bg: #05331F;
-    --nav-border-line: rgba(255, 255, 255, 0.08);
-    --shadow-light: rgba(4, 92, 54, 0.05);
-    --shadow-header: rgba(4, 92, 54, 0.18);
-    --tier-bronze: #C9A66B;
-    --tier-silver: #B9B2A4;
-    --footer-text-light: #E7E0CF;
+    /* AUDIT COMPLIANCE VARIABLES - FIXED ALL HARDCODED COLORS */
+    --border-light: #E2E8F0;
+    --btn-bg: #E2E8F0;
+    --btn-border: #CBD5E1;
+    --nav-mobile-bg: #06182B;
+    --nav-border-line: rgba(255, 255, 255, 0.05);
+    --shadow-light: rgba(10, 37, 64, 0.02);
+    --shadow-header: rgba(10, 37, 64, 0.15);
+    --tier-bronze: #CBD5E1;
+    --tier-silver: #94A3B8;
+    --footer-text-light: #E2E8F0;
 }
 
 /* Base Body Layout Configuration */
@@ -37,10 +38,6 @@ body {
     line-height: 1.5;
     padding: 0;
     margin: 0;
-}
-
-a {
-    color: var(--primary-color);
 }
 
 /* ==========================================================================
@@ -72,6 +69,10 @@ header {
     object-fit: contain;
 }
 
+.flag-icon {
+    font-size: 2rem;
+}
+
 .header-logo-title {
     font-size: 1.5rem;
     font-weight: bold;
@@ -88,7 +89,7 @@ header {
 
 /* Mobile Dropdown Navigation Menu */
 #menu-toggle {
-    background-color: transparent;
+    background: none;
     border: none;
     color: var(--card-bg);
     font-size: 1.8rem;
@@ -193,9 +194,7 @@ main {
 }
 
 /* Card Presentation Foundations */
-.card,
-.spotlight-card,
-.business-card {
+.card {
     background-color: var(--card-bg);
     border: 1px solid var(--border-light);
     border-radius: 8px;
@@ -205,9 +204,7 @@ main {
 
 .card h1,
 .card h2,
-.card h3,
-.spotlight-card h3,
-.business-card h3 {
+.card h3 {
     margin-top: 0;
     color: var(--primary-color);
 }
@@ -220,6 +217,7 @@ main {
     width: 100%;
     overflow: hidden;
     background-color: var(--primary-color);
+    /* Matches the sapphire block */
 }
 
 .hero-section picture img {
@@ -231,8 +229,10 @@ main {
     object-position: top;
 }
 
+/* Stacks naturally on mobile views, preventing clipping */
 .hero-cta {
     position: relative;
+    /* Changed from absolute to flow naturally */
     bottom: auto;
     left: auto;
     transform: none;
@@ -272,7 +272,7 @@ main {
 }
 
 .cta-btn:hover {
-    background-color: #A50E1E;
+    background-color: #BD212B;
 }
 
 /* ==========================================================================
@@ -339,7 +339,11 @@ main {
 }
 
 .spotlight-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
     padding: 20px;
+    box-shadow: 0 4px 6px var(--shadow-light);
 }
 
 .spotlight-header {
@@ -366,8 +370,8 @@ main {
 }
 
 .spotlight-card.tier-3 .company-badge {
-    background-color: #FCEFB4;
-    color: #6B4E00;
+    background-color: #FEF3C7;
+    color: #92400E;
 }
 
 .spotlight-tagline {
@@ -397,7 +401,12 @@ main {
 }
 
 .business-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    padding: 24px;
     text-align: center;
+    box-shadow: 0 4px 6px var(--shadow-light);
 }
 
 .business-card.level-1 {
@@ -500,6 +509,7 @@ footer {
 }
 
 .footer-contact h3,
+
 .footer-social h3 {
     margin: 0 0 10px 0;
     color: var(--accent-color);
@@ -555,7 +565,7 @@ footer {
 
 .modified-timestamp {
     font-size: 0.8rem;
-    color: var(--footer-text-light);
+    color: var(--tier-silver);
 }
 
 /* ======================================================
@@ -580,27 +590,90 @@ Accessibility Utilities: Structural Heading Hide
 
 .events-section ul {
     list-style-type: none;
+    /* Removes bullet formatting markers to balance layout text */
     padding: 0;
     margin: 15px auto 0 auto;
     display: inline-block;
+    /* Aligns text columns uniformly around center lines */
     text-align: left;
+    /* Restores crisp left text baseline alignment within centered wrapper */
 }
 
 .events-section ul li {
     margin-bottom: 8px;
 }
 
+/* ==========================================================================
+   W03: Upcoming Events 2-Column Split System Layouts - FIXED LEFT/RIGHT ROW
+   ========================================================================== */
+.events-section {
+    text-align: center;
+}
+
+.events-split-container {
+    display: flex;
+    flex-direction: row;
+    /* FIXED: Forces left-to-right side-by-side row split layout on mobile screen viewports */
+    gap: 25px;
+    margin-top: 15px;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.events-image-placeholder {
+    flex: 1;
+    /* Takes up half the horizontal layout width on the left column */
+    max-width: 50%;
+    height: auto;
+    display: block;
+    border: none;
+    /* Strips placeholder dotted border matrix elements out */
+}
+
+.events-image-placeholder img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 6px;
+    display: block;
+}
+
+.events-details-list {
+    flex: 1;
+    /* Takes up half the horizontal layout width on the right column */
+    max-width: 50%;
+    text-align: left;
+    /* Aligns textual elements gracefully along a crisp left baseline */
+}
+
+.events-details-list ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.events-details-list ul li {
+    margin-bottom: 12px;
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+
+/* ==========================================================================
+   W03: Upcoming Events & Dual-Weather Layout Foundations
+   ========================================================================== */
 .events-split-container {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    margin-top: 15px;
     align-items: center;
+    margin-top: 15px;
 }
 
 .events-image-placeholder {
     width: 100%;
-    max-width: 350px;
+    max-width: 340px;
     height: 180px;
     background-color: var(--bg-light);
     border: 2px dashed var(--btn-border);
@@ -610,7 +683,6 @@ Accessibility Utilities: Structural Heading Hide
     justify-content: center;
     align-items: center;
     color: var(--text-muted);
-    font-size: 0.85rem;
 }
 
 .events-image-placeholder .meeting-icon {
@@ -618,22 +690,15 @@ Accessibility Utilities: Structural Heading Hide
     margin-bottom: 5px;
 }
 
-.events-details-list {
-    width: 100%;
-    text-align: center;
-}
-
 .events-details-list ul {
     list-style-type: none;
     padding: 0;
     margin: 0;
-    display: inline-block;
     text-align: left;
 }
 
 .events-details-list ul li {
     margin-bottom: 12px;
-    font-size: 0.95rem;
 }
 
 /* Dual Weather Block Framework */
@@ -656,266 +721,110 @@ Accessibility Utilities: Structural Heading Hide
     color: var(--primary-color);
 }
 
-.section-divider {
-    border: 0;
-    border-top: 1px solid var(--border-light);
-    margin: 20px 0;
-}
-
-.forecast-heading {
-    text-align: center;
-    margin-bottom: 15px;
-}
-
 /* ==========================================================================
-   JOIN PAGE: Membership levels + application form (mobile-first)
+   W04: Join Us Application Form Mobile Layout Baseline
    ========================================================================== */
-.join-hero p {
-    color: var(--text-muted);
-    max-width: 65ch;
-}
-
-.level-cards {
+.join-main-layout {
     display: flex;
     flex-direction: column;
-    gap: 16px;
-    margin-top: 16px;
+    gap: 30px;
+    padding: 20px;
+    max-width: 1140px;
+    margin: 0 auto;
+    box-sizing: border-box;
 }
 
-.level-card {
-    background-color: var(--bg-light);
-    border: 1px solid var(--border-light);
-    border-radius: 8px;
-    padding: 18px;
-}
-
-.level-card.tier-np {
-    border-top: 5px solid var(--text-muted);
-}
-
-.level-card.tier-bronze {
-    border-top: 5px solid var(--tier-bronze);
-}
-
-.level-card.tier-silver {
-    border-top: 5px solid var(--tier-silver);
-}
-
-.level-card.tier-gold {
-    border-top: 5px solid var(--accent-color);
-}
-
-.level-card h3 {
-    margin: 0 0 4px 0;
-    color: var(--primary-color);
-}
-
-.level-price {
-    font-weight: 700;
-    color: var(--secondary-color);
-    margin: 0 0 10px 0;
-}
-
-.level-card ul {
-    margin: 0 0 12px 0;
-    padding-left: 18px;
-    font-size: 0.9rem;
-    color: var(--text-main);
-}
-
-.benefits-btn {
-    background-color: var(--card-bg);
-    border: 1px solid var(--btn-border);
-    color: var(--primary-color);
-    padding: 8px 14px;
-    border-radius: 6px;
-    font-weight: 600;
-    font-size: 0.85rem;
-    cursor: pointer;
-}
-
-.benefits-btn:hover {
-    background-color: var(--primary-color);
-    color: #FFFFFF;
-    border-color: var(--primary-color);
-}
-
-dialog.benefits-dialog {
-    border: none;
-    border-radius: 10px;
-    padding: 0;
-    max-width: 420px;
-    width: 90%;
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
-}
-
-dialog.benefits-dialog::backdrop {
-    background: rgba(4, 20, 12, 0.6);
-}
-
-.dialog-inner {
-    padding: 24px;
-}
-
-.dialog-inner h3 {
-    margin-top: 0;
-    color: var(--primary-color);
-}
-
-.dialog-close {
-    background-color: var(--secondary-color);
-    color: #FFFFFF;
-    border: none;
-    padding: 8px 18px;
-    border-radius: 6px;
-    font-weight: 600;
-    cursor: pointer;
-    margin-top: 14px;
-}
-
-.join-form-section {
-    margin-top: 20px;
-}
-
-.join-form fieldset {
-    border: none;
-    padding: 0;
-    margin: 0 0 18px 0;
-}
-
-.join-form legend {
-    font-weight: 700;
-    color: var(--primary-color);
-    padding: 0;
-    margin-bottom: 10px;
-    font-size: 1rem;
-}
-
-.form-row {
+.application-form {
     display: flex;
     flex-direction: column;
-    gap: 4px;
-    margin-bottom: 14px;
+    gap: 18px;
+    margin-top: 15px;
 }
 
-.form-row label {
+.form-label {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
     font-weight: 600;
     font-size: 0.9rem;
-    color: var(--text-main);
+    color: var(--primary-color);
 }
 
-.form-row .hint {
-    font-size: 0.78rem;
-    color: var(--text-muted);
-    font-weight: 400;
+.form-label span {
+    margin-left: 2px;
 }
 
-.join-form input[type="text"],
-.join-form input[type="email"],
-.join-form input[type="tel"],
-.join-form textarea {
-    padding: 10px 12px;
+.application-form input[type="text"],
+.application-form input[type="email"],
+.application-form input[type="tel"],
+.application-form select,
+.application-form textarea {
+    padding: 12px;
     border: 1px solid var(--btn-border);
     border-radius: 6px;
     font-family: inherit;
     font-size: 0.95rem;
+    background-color: var(--bg-light);
     color: var(--text-main);
+    box-sizing: border-box;
+    width: 100%;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.application-form input:focus,
+.application-form select:focus,
+.application-form textarea:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 3px rgba(166, 28, 36, 0.1);
     background-color: var(--card-bg);
 }
 
-.join-form input:invalid:not(:placeholder-shown) {
-    border-color: var(--secondary-color);
-}
-
-.join-form input:focus,
-.join-form textarea:focus {
-    outline: 2px solid var(--primary-color);
-    outline-offset: 1px;
-}
-
-.radio-group {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.radio-option {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    background-color: var(--bg-light);
-    border: 1px solid var(--border-light);
-    border-radius: 6px;
-    padding: 10px 12px;
-}
-
-.radio-option label {
-    flex: 1;
-    font-weight: 500;
-    font-size: 0.9rem;
-}
-
-.radio-info-btn {
-    background-color: transparent;
-    border: 1px solid var(--btn-border);
-    border-radius: 50%;
-    width: 22px;
-    height: 22px;
-    font-size: 0.75rem;
-    font-weight: 700;
-    color: var(--primary-color);
-    cursor: pointer;
-    line-height: 1;
-}
-
+/* Form Action Trigger Button Selector */
 .submit-btn {
-    background-color: var(--primary-color);
-    color: #FFFFFF;
+    background-color: var(--secondary-color);
+    color: var(--card-bg);
     border: none;
-    padding: 14px 24px;
+    padding: 14px;
     font-size: 1rem;
     font-weight: 700;
     border-radius: 6px;
     cursor: pointer;
-    width: 100%;
+    transition: background-color 0.2s ease;
+    margin-top: 10px;
 }
 
 .submit-btn:hover {
-    background-color: #033F25;
+    background-color: #BD212B;
 }
 
-/* ==========================================================================
-   THANK YOU PAGE
-   ========================================================================== */
-.thankyou-card dl {
-    display: grid;
-    grid-template-columns: 1fr;
-    row-gap: 10px;
-    margin-top: 16px;
+/* Sidebar Benefit Cards Layout Group */
+.benefits-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
-.thankyou-card dt {
-    font-weight: 700;
-    color: var(--primary-color);
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    letter-spacing: 0.4px;
+.tier-benefit-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 6px var(--shadow-light);
 }
 
-.thankyou-card dd {
+.tier-benefit-card h3 {
     margin: 0 0 8px 0;
-    padding-bottom: 8px;
-    border-bottom: 1px solid var(--border-light);
-    font-size: 1rem;
 }
 
-.back-home-btn {
-    display: inline-block;
-    margin-top: 10px;
-    background-color: var(--secondary-color);
-    color: #FFFFFF !important;
-    text-decoration: none;
-    padding: 12px 22px;
-    border-radius: 6px;
-    font-weight: 700;
+.bronze-info h3 {
+    color: #CD7F32;
+}
+
+.silver-info h3 {
+    color: var(--text-muted);
+}
+
+.gold-info h3 {
+    color: var(--accent-color);
 }

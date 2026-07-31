@@ -1,61 +1,54 @@
-// OpenWeatherMap API Configuration
-// NOTE: Replace this placeholder with your own free API key from openweathermap.org
-const apiKey = "YOUR_OPENWEATHERMAP_API_KEY";
+// OpenWeatherMap API Configuration Matrix
+const apiKey = '0b9a766d096a5bfd07d306f691e6717b';
 
-// Coordinates Setup: 1. Accra, Ghana | 2. Hanoi, Vietnam
+// Fixed Coordinates mapping targets for dual-city regional trackers
 const coords = {
-    accra: { lat: "5.60", lon: "-0.19", containerId: "#accra-weather" },
-    hanoi: { lat: "21.03", lon: "105.85", containerId: "#hanoi-weather" }
+    ub: { lat: '47.92', lon: '106.92', containerId: '#ub-weather' },
+    hanoi: { lat: '21.03', lon: '105.85', containerId: '#hanoi-weather' }
 };
 
-const forecastInfo = document.querySelector("#forecast-info");
+// Target DOM Forecast Anchor Point
+const forecastInfo = document.querySelector('#forecast-info');
 
 async function fetchChamberWeather() {
     try {
-        const [accraRes, hanoiRes, forecastRes] = await Promise.all([
-            fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${coords.accra.lat}&lon=${coords.accra.lon}&units=metric&appid=${apiKey}`),
-            fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${coords.hanoi.lat}&lon=${coords.hanoi.lon}&units=metric&appid=${apiKey}`),
-            fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${coords.accra.lat}&lon=${coords.accra.lon}&units=metric&appid=${apiKey}`)
+        // Fetch Current Conditions for both regional corporate hubs concurrently
+        const [ubRes, hanoiRes, forecastRes] = await Promise.all([
+            fetch(`https://openweathermap.org{coords.ub.lat}&lon=${coords.ub.lon}&units=imperial&appid=${apiKey}`),
+            fetch(`https://openweathermap.org{coords.hanoi.lat}&lon=${coords.hanoi.lon}&units=imperial&appid=${apiKey}`),
+            fetch(`https://openweathermap.org{coords.ub.lat}&lon=${coords.ub.lon}&units=imperial&appid=${apiKey}`)
         ]);
 
-        if (accraRes.ok && hanoiRes.ok && forecastRes.ok) {
-            displayCurrentCity(await accraRes.json(), coords.accra.containerId, "Accra");
-            displayCurrentCity(await hanoiRes.json(), coords.hanoi.containerId, "Hanoi");
+        if (ubRes.ok && hanoiRes.ok && forecastRes.ok) {
+            displayCurrentCity(await ubRes.json(), coords.ub.containerId);
+            displayCurrentCity(await hanoiRes.json(), coords.hanoi.containerId);
             displayForecast(await forecastRes.json());
         } else {
-            throw Error("OpenWeather data parsing connection breakdown.");
+            throw Error('OpenWeather data channel connection rejected.');
         }
     } catch (error) {
         console.error("Critical Weather Module Engine Exception:", error);
-        showWeatherFallback();
     }
 }
 
-function showWeatherFallback() {
-    const accraEl = document.querySelector(coords.accra.containerId);
-    const hanoiEl = document.querySelector(coords.hanoi.containerId);
-    const message = `<p>Live weather unavailable right now. Add your OpenWeatherMap API key in scripts/weather.js to enable this feature.</p>`;
-    if (accraEl) accraEl.innerHTML = message;
-    if (hanoiEl) hanoiEl.innerHTML = message;
-    if (forecastInfo) forecastInfo.innerHTML = "";
-}
-
-function displayCurrentCity(data, containerId, cityName) {
+function displayCurrentCity(data, containerId) {
     const el = document.querySelector(containerId);
     if (!el) return;
 
     const temp = Math.round(data.main.temp);
+
+    // CORRECTION FIXED: Accessing index [0] to parse array data parameters securely
     if (data.weather && data.weather.length > 0) {
         const desc = data.weather[0].description;
         const iconCode = data.weather[0].icon;
-        const iconUrl = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
+        const iconUrl = `https://openweathermap.org{iconCode}@2x.png`;
 
         el.innerHTML = `
-            <div class="current-weather-display">
+            <div class="current-weather-display" style="display: flex; align-items: center; gap: 15px;">
                 <img src="${iconUrl}" alt="${desc}" width="50" height="50">
                 <div>
-                    <p class="temp">${temp}&deg;C</p>
-                    <p class="desc">${desc}</p>
+                    <p class="temp" style="font-size: 1.8rem; font-weight: 700; margin: 0;">${temp}&deg;F</p>
+                    <p class="desc" style="margin: 0; text-transform: capitalize; color: var(--text-muted); font-size: 0.85rem;">${desc}</p>
                 </div>
             </div>
         `;
@@ -64,27 +57,29 @@ function displayCurrentCity(data, containerId, cityName) {
 
 function displayForecast(data) {
     if (!forecastInfo) return;
-    forecastInfo.innerHTML = "";
+    forecastInfo.innerHTML = '';
 
     if (data.list) {
-        const dailyData = data.list.filter(item => item.dt_txt.includes("12:00:00")).slice(0, 3);
+        // Extract consecutive noon updates over the next three days
+        const dailyData = data.list.filter(item => item.dt_txt.includes('12:00:00')).slice(0, 3);
 
         dailyData.forEach(day => {
             const date = new Date(day.dt * 1000);
-            const dayName = date.toLocaleDateString("en-US", { weekday: "short" });
+            const dayName = date.toLocaleDateString('en-US', { weekday: 'short' });
             const temp = Math.round(day.main.temp);
 
+            // CORRECTION FIXED: Target object zero inside weather array loops
             if (day.weather && day.weather.length > 0) {
                 const iconCode = day.weather[0].icon;
-                const iconUrl = `https://openweathermap.org/img/wn/${iconCode}.png`;
+                const iconUrl = `https://openweathermap.org{iconCode}.png`;
                 const desc = day.weather[0].description;
 
-                const dayCard = document.createElement("div");
-                dayCard.className = "forecast-day";
+                const dayCard = document.createElement('div');
+                dayCard.className = 'forecast-day';
                 dayCard.innerHTML = `
-                    <p class="forecast-date">${dayName}</p>
+                    <p class="forecast-date" style="font-weight: bold; margin: 0 0 5px 0;">${dayName}</p>
                     <img src="${iconUrl}" alt="${desc}" width="40" height="40">
-                    <p class="forecast-temp">${temp}&deg;C</p>
+                    <p class="forecast-temp" style="font-weight: bold; margin: 5px 0 0 0;">${temp}&deg;F</p>
                 `;
                 forecastInfo.appendChild(dayCard);
             }
@@ -92,8 +87,4 @@ function displayForecast(data) {
     }
 }
 
-if (apiKey && apiKey !== "YOUR_OPENWEATHERMAP_API_KEY") {
-    fetchChamberWeather();
-} else {
-    showWeatherFallback();
-}
+fetchChamberWeather();

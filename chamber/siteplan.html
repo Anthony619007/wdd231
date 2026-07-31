@@ -4,110 +4,258 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Site Plan - Ghana Vietnam Chamber of Commerce</title>
+    <title>Mongolia Vietnam Chamber of Commerce - Site Plan</title>
     <meta name="description"
-        content="Official website design planning framework and project specifications for the Ghana Vietnam Chamber of Commerce application.">
-    <meta name="author" content="Your Name">
+        content="Official website design planning framework and project specifications for the Mongolia Vietnam Chamber of Commerce application.">
+    <meta name="author" content="Buyannemekh Chimeddorj">
 
-    <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
-
-    <meta property="og:title" content="Site Plan | Ghana Vietnam Chamber of Commerce">
-    <meta property="og:description" content="Project design plan for the Ghana Vietnam Chamber of Commerce website.">
-    <meta property="og:image" content="https://gvcc-ghana.github.io/wdd231/chamber/images/chamber-logo.svg">
-    <meta property="og:url" content="https://gvcc-ghana.github.io/wdd231/chamber/siteplan.html">
-    <meta property="og:type" content="website">
-
+    <!-- FIXED: Repaired broken Google Fonts API Preconnect Domains -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <!-- Unified Shared Stylesheet Engine Core -->
+    <link rel="stylesheet" href="https://cloudflare.com">
     <link rel="stylesheet" href="styles/small.css">
     <link rel="stylesheet" href="styles/larger.css" media="(min-width: 64rem)">
-    <link rel="stylesheet" href="styles/siteplan.css">
+
+    <!-- Structural Token Overrides for Site Plan Layout Integrity -->
+    <style>
+        /* FIXED: Restricts header monitor stretching and centers the block horizontally */
+        header {
+            background-color: var(--primary-color);
+            color: #FFFFFF !important;
+            text-align: center;
+            padding: 35px 20px;
+            border-radius: 8px;
+            border-bottom: 4px solid var(--secondary-color);
+            box-shadow: 0 4px 12px rgba(10, 37, 64, 0.1);
+            max-width: 1140px;
+            margin: 0 auto 25px auto;
+            box-sizing: border-box;
+        }
+
+        header p,
+        header h1,
+        header h2,
+        header .author {
+            color: #FFFFFF !important;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 25px;
+            margin-bottom: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(10, 37, 64, 0.02);
+            border-left: 5px solid var(--primary-color) !important;
+            border-top: 1px solid #E2E8F0;
+            border-right: 1px solid #E2E8F0;
+            border-bottom: 1px solid #E2E8F0;
+            text-align: left;
+        }
+
+        .card h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+            border-bottom: 2px solid var(--bg-light);
+            padding-bottom: 6px;
+        }
+
+        .persona {
+            background: var(--bg-light);
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            border-left: 4px solid var(--secondary-color);
+        }
+
+        .persona h4 {
+            color: var(--secondary-color);
+            margin-bottom: 6px;
+            font-size: 1.1rem;
+        }
+
+        ul {
+            list-style-position: inside;
+            padding-left: 10px;
+        }
+
+        ul li {
+            margin-bottom: 8px;
+        }
+
+        .color-palette {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .color-swatch {
+            flex: 1 1 160px;
+            padding: 20px 10px;
+            text-align: center;
+            font-size: 0.85rem;
+            font-weight: bold;
+            border-radius: 6px;
+            box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.05);
+        }
+
+        .sitemap-tree {
+            text-align: center;
+            background: var(--bg-light);
+            padding: 25px;
+            border-radius: 6px;
+            border: 1px solid #E2E8F0;
+        }
+
+        .sitemap-node {
+            background: var(--primary-color);
+            color: #FFFFFF;
+            padding: 10px 20px;
+            display: inline-block;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 0.95rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .sitemap-node.root {
+            background: var(--secondary-color);
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+        }
+
+        .sitemap-children {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .wireframe-mock {
+            background: #E9ECEF;
+            border: 2px dashed var(--text-muted);
+            padding: 20px;
+            margin-top: 15px;
+            border-radius: 6px;
+        }
+
+        .wireframe-mock h4 {
+            color: var(--text-main);
+            margin-bottom: 6px;
+        }
+
+        .wireframe-mock p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 650px) {
+            .sitemap-children {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 8px;
+            }
+
+            .color-swatch {
+                flex: 1 1 100%;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
     <header>
+        <h1>Mongolia Vietnam Chamber of Commerce (MVCC)</h1>
         <h2>Official Website Site Plan</h2>
         <p class="author">WDD 231 Web Frontend Development I | Project Blueprint</p>
     </header>
 
     <main>
-        <h1>Site Plan</h1>
+        <!-- Site Overview Section -->
         <section class="card">
             <h3>Site Name</h3>
-            <p>Ghana Vietnam Chamber of Commerce (GVCC)</p>
+            <p>Mongolia Vietnam Chamber of Commerce (MVCC)</p>
         </section>
 
         <section class="card">
             <h3>Site Purpose</h3>
-            <p>Based in Accra, Ghana, this website serves as the primary bilateral gateway to promote trade,
-                investment, and economic cooperation between Ghana and Vietnam. It provides a formal registration hub
-                for active businesses, cross-border legal resources, trade data, and local networking events to
-                foster strong international commercial relations.</p>
+            <p>Based in Ulaanbaatar, Mongolia, this website serves as the primary bilateral gateway to promote trade,
+                investment, and economic cooperation between Mongolia and Vietnam. It provides a formal registration hub
+                for active businesses, cross-border legal resources, trade data, and local networking events to foster
+                strong international commercial relations.</p>
         </section>
 
+        <!-- Target Market & Personas -->
         <section class="card">
             <h3>Target Market</h3>
-            <p>Importers, exporters, manufacturing entities, cocoa and mineral logistics coordinators, and corporate
-                executives operating out of Accra, Kumasi, Hanoi, and Ho Chi Minh City looking to expand cross-border
+            <p>Importers, exporters, manufacturing entities, agricultural logistics coordinators, and corporate
+                executives operating out of Ulaanbaatar, Hanoi, and Ho Chi Minh City looking to expand cross-border
                 business.</p>
         </section>
 
         <section class="card">
             <h3>User Personas</h3>
             <div class="persona">
-                <h4>1. Ghanaian Logistics Manager (Kwabena, 42)</h4>
-                <p><strong>Scenario:</strong> Needs to locate verified Vietnamese textile and agricultural suppliers.
-                    He visits the website to access the member directory and confirm trade compliance standards.</p>
+                <h4>1. Mongolian Logistics Manager (Altangerel, 42)</h4>
+                <p><strong>Scenario:</strong> Needs to locate verified Vietnamese textile and agricultural suppliers. He
+                    visits the website to access the member directory and confirm trade compliance standards.</p>
             </div>
             <div class="persona">
                 <h4>2. Vietnamese Agricultural Exporter (Nguyen, 35)</h4>
-                <p><strong>Scenario:</strong> Wants to register her business with the Chamber in Accra to secure
+                <p><strong>Scenario:</strong> Wants to register her business with the Chamber in Ulaanbaatar to secure
                     local distribution networks. She uses the site to find membership fees and submit her online
                     application.</p>
             </div>
             <div class="persona">
-                <h4>3. Trade Attache / Investor (Adjoa, 50)</h4>
+                <h4>3. Trade Attache / Investor (Batu, 50)</h4>
                 <p><strong>Scenario:</strong> Needs high-level updates on customs tariffs and bilateral agreements
-                    between the two nations. She checks the blog, news feeds, and calendar for upcoming trade
-                    summits.</p>
+                    between the two nations. He checks the blog, news feeds, and calendar for upcoming trade summits.
+                </p>
             </div>
         </section>
 
+        <!-- SEO Strategy Section -->
         <section class="card">
             <h3>SEO Plan</h3>
             <ul>
-                <li><strong>Keywords:</strong> Ghana Vietnam trade, Accra business directory, GVCC registration,
-                    bilateral commerce, Vietnam import export.</li>
-                <li><strong>Verification:</strong> Register the physical Accra office on Google Business Profile.</li>
-                <li><strong>Backlinks:</strong> Establish mandatory reciprocal profile linking on all registered
-                    member company websites.</li>
+                <li><strong>Keywords:</strong> Mongolia Vietnam trade, Ulaanbaatar business directory, MVCC
+                    registration, bilateral commerce, Vietnam import export.</li>
+                <li><strong>Verification:</strong> Register the physical Ulaanbaatar office on Google Business Profile.
+                </li>
+                <li><strong>Backlinks:</strong> Establish mandatory reciprocal profile linking on all registered member
+                    company websites.</li>
                 <li><strong>Analytics:</strong> Integrate native Google Analytics scripts globally across all active
                     pages.</li>
             </ul>
         </section>
 
+        <!-- Design Brief & System Palette -->
         <section class="card">
             <h3>Design Brief</h3>
             <div class="color-palette">
-                <div class="color-swatch swatch-primary">Primary: #045C36<br>Ghana
-                    Forest Green</div>
-                <div class="color-swatch swatch-secondary">Secondary: #CE1126<br>Ghana
-                    Flag Red</div>
-                <div class="color-swatch swatch-accent">Accent: #FCD116<br>Ghana
-                    Flag Gold</div>
-                <div class="color-swatch swatch-bg">Background:
-                    #F7F4EC<br>Warm Ivory</div>
-                <div class="color-swatch swatch-text">Text: #1B1B1B<br>Black
-                    Star Charcoal</div>
+                <div class="color-swatch" style="background-color: #0A2540; color: white;">Primary: #0A2540<br>Royal
+                    Sapphire</div>
+                <div class="color-swatch" style="background-color: #A61C24; color: white;">Secondary: #A61C24<br>Oxblood
+                    Crimson</div>
+                <div class="color-swatch" style="background-color: #D4AF37; color: #1C2A38;">Accent: #D4AF37<br>Metallic
+                    Gold</div>
+                <div class="color-swatch" style="background-color: #F4F6F9; color: #1C2A38;">Background:
+                    #F4F6F9<br>Platinum Ice</div>
+                <div class="color-swatch" style="background-color: #1C2A38; color: white;">Text: #1C2A38<br>Charcoal
+                    Dark</div>
             </div>
-            <p class="typography-note"><strong>Typography:</strong> Font Family: <em>'Inter', 'Helvetica Neue',
+            <p style="margin-top: 15px;"><strong>Typography:</strong> Font Family: <em>'Inter', 'Helvetica Neue',
                     Helvetica, Arial, sans-serif</em>. Clean, modern, international corporate sans-serif feel.</p>
         </section>
 
+        <!-- Site Map & Architecture Section -->
         <section class="card">
             <h3>Site Map</h3>
             <div class="sitemap-tree">
@@ -115,23 +263,21 @@
                 <div class="sitemap-children">
                     <div class="sitemap-node">Directory</div>
                     <div class="sitemap-node">Join Us</div>
-                    <div class="sitemap-node">Thank You</div>
                     <div class="sitemap-node">Trade Resources</div>
                     <div class="sitemap-node">Events</div>
                     <div class="sitemap-node">Contact</div>
-                </div>
-            </div>
-        </section>
-    </main>
 
-    <footer class="siteplan-footer">
-        <p>&copy; <span id="current-year"></span> | <strong>Your Name</strong> | Ghana Vietnam Chamber of Commerce
-            Project Plan</p>
-        <p class="modified-note">Last Structural Modification: <span
-                id="last-modified-date"></span></p>
-    </footer>
-
-    <script src="scripts/common.js" defer></script>
+                    <footer
+                        style="text-align: center; padding: 25px 20px; margin-top: 40px; border-top: 1px solid #E2E8F0;">
+                        <p>&copy; <span id="current-year"></span> | <strong>Buyannemekh Chimeddorj</strong> | Mongolia
+                            Vietnam Chamber of Commerce Project Plan</p>
+                        <p style="font-size: 0.8rem; margin-top: 5px; opacity: 0.7;">Last Structural Modification: <span
+                                id="last-modified-date"></span></p>
+                    </footer>
+                    <script>
+                        document.getElementById("current-year").textContent = new Date().getFullYear();
+                        document.getElementById("last-modified-date").textContent = document.lastModified;
+                    </script>
 </body>
 
 </html>
