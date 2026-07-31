@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
         { key: "email", label: "Email Address" },
         { key: "phone", label: "Mobile Phone" },
         { key: "organization", label: "Organization Name" },
-        { key: "businessDescription", label: "Business Description" },
+        { key: "organizationDescription", label: "Organization Description" },
         { key: "membershipLevel", label: "Membership Level" },
         { key: "timestamp", label: "Submitted On" }
     ];
