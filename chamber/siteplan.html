@@ -101,6 +101,41 @@
             box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.05);
         }
 
+        .swatch-primary {
+            background-color: #045C36;
+            color: #FFFFFF;
+        }
+
+        .swatch-secondary {
+            background-color: #CE1126;
+            color: #FFFFFF;
+        }
+
+        .swatch-accent {
+            background-color: #FCD116;
+            color: #1B1B1B;
+        }
+
+        .swatch-bg {
+            background-color: #F7F4EC;
+            color: #1B1B1B;
+        }
+
+        .swatch-text {
+            background-color: #1B1B1B;
+            color: #FFFFFF;
+        }
+
+        .typography-note {
+            margin-top: 15px;
+        }
+
+        .modified-note {
+            font-size: 0.8rem;
+            margin-top: 5px;
+            opacity: 0.7;
+        }
+
         .sitemap-tree {
             text-align: center;
             background: var(--bg-light);
@@ -240,18 +275,18 @@
         <section class="card">
             <h3>Design Brief</h3>
             <div class="color-palette">
-                <div class="color-swatch" style="background-color: #045C36; color: white;">Primary: #045C36<br>Ghana
+                <div class="color-swatch swatch-primary">Primary: #045C36<br>Ghana
                     Forest Green</div>
-                <div class="color-swatch" style="background-color: #CE1126; color: white;">Secondary: #CE1126<br>Ghana
+                <div class="color-swatch swatch-secondary">Secondary: #CE1126<br>Ghana
                     Flag Red</div>
-                <div class="color-swatch" style="background-color: #FCD116; color: #1B1B1B;">Accent: #FCD116<br>Ghana
+                <div class="color-swatch swatch-accent">Accent: #FCD116<br>Ghana
                     Flag Gold</div>
-                <div class="color-swatch" style="background-color: #F7F4EC; color: #1B1B1B;">Background:
+                <div class="color-swatch swatch-bg">Background:
                     #F7F4EC<br>Warm Ivory</div>
-                <div class="color-swatch" style="background-color: #1B1B1B; color: white;">Text: #1B1B1B<br>Black
+                <div class="color-swatch swatch-text">Text: #1B1B1B<br>Black
                     Star Charcoal</div>
             </div>
-            <p style="margin-top: 15px;"><strong>Typography:</strong> Font Family: <em>'Inter', 'Helvetica Neue',
+            <p class="typography-note"><strong>Typography:</strong> Font Family: <em>'Inter', 'Helvetica Neue',
                     Helvetica, Arial, sans-serif</em>. Clean, modern, international corporate sans-serif feel.</p>
         </section>
 
@@ -274,7 +309,7 @@
     <footer class="siteplan-footer">
         <p>&copy; <span id="current-year"></span> | <strong>Your Name</strong> | Ghana Vietnam Chamber of Commerce
             Project Plan</p>
-        <p style="font-size: 0.8rem; margin-top: 5px; opacity: 0.7;">Last Structural Modification: <span
+        <p class="modified-note">Last Structural Modification: <span
                 id="last-modified-date"></span></p>
     </footer>
 
