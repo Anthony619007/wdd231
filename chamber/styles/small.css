@@ -3,21 +3,12 @@
    ========================================================================== */
 :root {
     --primary-color: #0A2540;
-    /* Deep Royal Sapphire Base */
     --secondary-color: #A61C24;
-    /* Oxblood Crimson Accent */
     --accent-color: #D4AF37;
-    /* Muted Metallic Gold Highlight */
     --bg-light: #F4F6F9;
-    /* Platinum Ice Canvas */
     --card-bg: #FFFFFF;
-    /* Pristine White Card Elements */
     --text-main: #1C2A38;
-    /* Premium Dark Navy Charcoal Text */
     --text-muted: #627D98;
-    /* Soft Slate Metadata Labeling */
-
-    /* AUDIT COMPLIANCE VARIABLES - FIXED ALL HARDCODED COLORS */
     --border-light: #E2E8F0;
     --btn-bg: #E2E8F0;
     --btn-border: #CBD5E1;
@@ -217,7 +208,6 @@ main {
     width: 100%;
     overflow: hidden;
     background-color: var(--primary-color);
-    /* Matches the sapphire block */
 }
 
 .hero-section picture img {
@@ -229,10 +219,8 @@ main {
     object-position: top;
 }
 
-/* Stacks naturally on mobile views, preventing clipping */
 .hero-cta {
     position: relative;
-    /* Changed from absolute to flow naturally */
     bottom: auto;
     left: auto;
     transform: none;
@@ -246,15 +234,15 @@ main {
     box-shadow: none;
 }
 
-.hero-cta h2 {
-    color: var(--accent-color) !important;
+.hero-cta h1 {
+    color: var(--accent-color);
     margin: 0 0 6px 0;
     font-size: 1.4rem;
     font-weight: 700;
 }
 
 .hero-cta p {
-    color: #FFFFFF !important;
+    color: #FFFFFF;
     margin: 0 0 14px 0;
     font-size: 0.95rem;
     line-height: 1.4;
@@ -509,7 +497,6 @@ footer {
 }
 
 .footer-contact h3,
-
 .footer-social h3 {
     margin: 0 0 10px 0;
     color: var(--accent-color);
@@ -583,28 +570,8 @@ Accessibility Utilities: Structural Heading Hide
     border: 0;
 }
 
-/* Center alignment variables for Upcoming Events cards */
-.events-section {
-    text-align: center;
-}
-
-.events-section ul {
-    list-style-type: none;
-    /* Removes bullet formatting markers to balance layout text */
-    padding: 0;
-    margin: 15px auto 0 auto;
-    display: inline-block;
-    /* Aligns text columns uniformly around center lines */
-    text-align: left;
-    /* Restores crisp left text baseline alignment within centered wrapper */
-}
-
-.events-section ul li {
-    margin-bottom: 8px;
-}
-
 /* ==========================================================================
-   W03: Upcoming Events 2-Column Split System Layouts - FIXED LEFT/RIGHT ROW
+   W03: Upcoming Events 2-Column Split System Layouts
    ========================================================================== */
 .events-section {
     text-align: center;
@@ -613,7 +580,6 @@ Accessibility Utilities: Structural Heading Hide
 .events-split-container {
     display: flex;
     flex-direction: row;
-    /* FIXED: Forces left-to-right side-by-side row split layout on mobile screen viewports */
     gap: 25px;
     margin-top: 15px;
     align-items: center;
@@ -623,15 +589,13 @@ Accessibility Utilities: Structural Heading Hide
 
 .events-image-placeholder {
     flex: 1;
-    /* Takes up half the horizontal layout width on the left column */
     max-width: 50%;
     height: auto;
     display: block;
     border: none;
-    /* Strips placeholder dotted border matrix elements out */
 }
 
-.events-image-placeholder img {
+.events-image-placeholder .event-image {
     width: 100%;
     height: auto;
     object-fit: cover;
@@ -641,10 +605,8 @@ Accessibility Utilities: Structural Heading Hide
 
 .events-details-list {
     flex: 1;
-    /* Takes up half the horizontal layout width on the right column */
     max-width: 50%;
     text-align: left;
-    /* Aligns textual elements gracefully along a crisp left baseline */
 }
 
 .events-details-list ul {
@@ -657,48 +619,6 @@ Accessibility Utilities: Structural Heading Hide
     margin-bottom: 12px;
     font-size: 0.95rem;
     line-height: 1.4;
-}
-
-
-/* ==========================================================================
-   W03: Upcoming Events & Dual-Weather Layout Foundations
-   ========================================================================== */
-.events-split-container {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    align-items: center;
-    margin-top: 15px;
-}
-
-.events-image-placeholder {
-    width: 100%;
-    max-width: 340px;
-    height: 180px;
-    background-color: var(--bg-light);
-    border: 2px dashed var(--btn-border);
-    border-radius: 6px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: var(--text-muted);
-}
-
-.events-image-placeholder .meeting-icon {
-    font-size: 2.5rem;
-    margin-bottom: 5px;
-}
-
-.events-details-list ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    text-align: left;
-}
-
-.events-details-list ul li {
-    margin-bottom: 12px;
 }
 
 /* Dual Weather Block Framework */
@@ -719,6 +639,17 @@ Accessibility Utilities: Structural Heading Hide
     margin: 0 0 10px 0;
     font-size: 1rem;
     color: var(--primary-color);
+}
+
+.weather-divider {
+    border: 0;
+    border-top: 1px solid var(--border-light);
+    margin: 20px 0;
+}
+
+.forecast-title {
+    text-align: center;
+    margin-bottom: 15px;
 }
 
 /* ==========================================================================
@@ -780,7 +711,6 @@ Accessibility Utilities: Structural Heading Hide
     background-color: var(--card-bg);
 }
 
-/* Form Action Trigger Button Selector */
 .submit-btn {
     background-color: var(--secondary-color);
     color: var(--card-bg);
@@ -827,4 +757,54 @@ Accessibility Utilities: Structural Heading Hide
 
 .gold-info h3 {
     color: var(--accent-color);
+}
+
+/* ==========================================================================
+   Thank You Page Styles
+   ========================================================================== */
+.thankyou-main {
+    padding: 40px 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+.thankyou-card {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.thankyou-icon {
+    font-size: 3.5rem;
+    margin-bottom: 15px;
+}
+
+.thankyou-message {
+    color: var(--text-muted);
+    margin-bottom: 30px;
+    font-size: 1.05rem;
+}
+
+.summary-card {
+    text-align: left;
+    background-color: var(--bg-light);
+    border-radius: 6px;
+    border: 1px solid var(--border-light);
+    max-width: 550px;
+    margin: 0 auto;
+    padding: 25px;
+}
+
+.summary-card h2 {
+    font-size: 1.2rem;
+    color: var(--primary-color);
+    margin-top: 0;
+    margin-bottom: 15px;
+    border-bottom: 2px solid var(--border-light);
+    padding-bottom: 8px;
+}
+
+.return-btn {
+    margin-top: 30px;
+    display: inline-block;
 }

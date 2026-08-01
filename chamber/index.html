@@ -1,4 +1,3 @@
-<!-- Replace the current index.html with this corrected version -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,35 +9,31 @@
         content="Official home page for the Mongolia Vietnam Chamber of Commerce in Ulaanbaatar. Discover bilateral trade events, local weather, and premium member spotlights.">
     <meta name="author" content="Buyannemekh Chimeddorj">
 
-    <!-- STANDARD FAVICON MAPPING LINK -->
     <link rel="icon" href="https://buyan-pro.github.io/wdd231/chamber/images/favicon.ico" type="image/x-icon">
 
-    <!-- OPEN GRAPH SOCIAL PLATFORM PROPERTIES -->
+    <!-- OG Image - Using SVG data URI for reliability -->
+    <meta property="og:image" content="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='630'%3E%3Crect width='1200' height='630' fill='%230A2540'/%3E%3Crect x='20' y='20' width='1160' height='590' fill='none' stroke='%23A61C24' stroke-width='8'/%3E%3Crect x='40' y='40' width='1120' height='550' fill='none' stroke='%23D4AF37' stroke-width='2'/%3E%3Ctext x='600' y='200' text-anchor='middle' font-family='Inter, Arial, sans-serif' font-size='72' font-weight='bold' fill='%23FFFFFF'%3EMVCC%3C/text%3E%3Ctext x='600' y='270' text-anchor='middle' font-family='Inter, Arial, sans-serif' font-size='32' fill='%23D4AF37'%3EMongolia Vietnam Chamber of Commerce%3C/text%3E%3Cline x1='300' y1='300' x2='900' y2='300' stroke='%23A61C24' stroke-width='3'/%3E%3Ctext x='600' y='360' text-anchor='middle' font-family='Inter, Arial, sans-serif' font-size='24' fill='%23E2E8F0'%3EBilateral Trade • Investment • Economic Cooperation%3C/text%3E%3Ctext x='600' y='430' text-anchor='middle' font-family='Inter, Arial, sans-serif' font-size='18' fill='%2394A3B8'%3EUlaanbaatar, Mongolia • Hanoi, Vietnam%3C/text%3E%3C/svg%3E">
+    
     <meta property="og:title" content="Bilateral Business Home - Mongolia Vietnam Chamber of Commerce">
     <meta property="og:description"
         content="Explore bilateral trade metrics, local economic development updates, and connect with premium corporate networks.">
-    <meta property="og:image" content="https://buyan-pro.github.io/wdd231/chamber/images/og-image.jpg">
     <meta property="og:url" content="https://buyan-pro.github.io/wdd231/chamber/index.html">
     <meta property="og:type" content="website">
 
-    <!-- GOOGLE FONTS API INTEGRATION BLOCKS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- LOCAL APP STYLESHEETS LINK MATRIX HIERARCHY -->
     <link rel="stylesheet" href="styles/small.css">
     <link rel="stylesheet" href="styles/larger.css" media="(min-width: 64rem)">
 </head>
 
 <body>
 
-    <!-- Header UI Module Layout -->
     <header>
         <div class="header-container">
             <div class="logo-area">
-                <img src="images/chamber-logo.webp" alt="MVCC Official Emblem Logo" width="80" height="80"
-                    loading="eager">
+                <img src="images/chamber-logo.webp" alt="MVCC Official Emblem Logo" width="80" height="80" loading="eager">
                 <div class="branding-text">
                     <div class="header-logo-title">MVCC</div>
                     <p>Mongolia Vietnam Chamber of Commerce</p>
@@ -57,9 +52,7 @@
         </nav>
     </header>
 
-    <!-- Main Content Workspace Constraints Grid -->
     <main class="home-grid">
-        <!-- Hero Section Component -->
         <div class="hero-section">
             <picture>
                 <source media="(min-width: 64rem)" srcset="images/hero-larger.webp">
@@ -74,14 +67,13 @@
             </div>
         </div>
 
-        <!-- Current Events Component Section -->
         <section class="events-section card">
             <h2>Upcoming Bilateral Events</h2>
             <div class="events-split-container">
                 <div class="events-image-placeholder">
                     <img src="images/vietnam-mongolia-meeting.webp"
                         alt="Official bilateral signing ceremony between Vietnamese and Mongolian delegates"
-                        style="width: 100%; height: 100%; object-fit: cover; border-radius: 6px;">
+                        class="event-image">
                 </div>
                 <div class="events-details-list">
                     <ul>
@@ -93,7 +85,6 @@
             </div>
         </section>
 
-        <!-- Weather Component Section -->
         <section class="weather-section card">
             <h2>Chamber Regional Weather Profiles</h2>
             <div class="dual-weather-grid">
@@ -110,14 +101,13 @@
                     </div>
                 </div>
             </div>
-            <hr style="border: 0; border-top: 1px solid var(--border-light); margin: 20px 0;">
-            <h3 style="text-align: center; margin-bottom: 15px;">3-Day Regional Outlook</h3>
+            <hr class="weather-divider">
+            <h3 class="forecast-title">3-Day Regional Outlook</h3>
             <div id="forecast-info" class="forecast-grid">
                 <!-- Combined forecast data hooks drop here dynamically -->
             </div>
         </section>
 
-        <!-- Premium Corporate Member Spotlights Component Section -->
         <section class="spotlights-section">
             <h2>Business Spotlights</h2>
             <div id="spotlight-container" class="spotlight-grid">
@@ -126,7 +116,6 @@
         </section>
     </main>
 
-    <!-- Footer UI Module Layout -->
     <footer>
         <div class="footer-top">
             <div class="footer-contact">
@@ -154,7 +143,6 @@
         </div>
     </footer>
 
-    <!-- APP CORE ENGINE SCRIPTS HOOK -->
     <script src="scripts/main.js" defer></script>
     <script src="scripts/weather.js" defer></script>
     <script src="scripts/spotlights.js" defer></script>
