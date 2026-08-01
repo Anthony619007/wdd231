@@ -1,10 +1,11 @@
+<!-- Replace the current index.html with this corrected version -->
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chamber Home | Mongolia Vietnam Chamber of Commerce</title>
+    <title>Join the Chamber | Mongolia Vietnam Chamber of Commerce</title>
     <meta name="description"
         content="Official home page for the Mongolia Vietnam Chamber of Commerce in Ulaanbaatar. Discover bilateral trade events, local weather, and premium member spotlights.">
     <meta name="author" content="Buyannemekh Chimeddorj">
@@ -12,12 +13,12 @@
     <!-- STANDARD FAVICON MAPPING LINK -->
     <link rel="icon" href="https://buyan-pro.github.io/wdd231/chamber/images/favicon.ico" type="image/x-icon">
 
-    <!-- OPEN GRAPH SOCIAL PLATFORM PROPERTIES - FIXED: Absolute pathways configured -->
+    <!-- OPEN GRAPH SOCIAL PLATFORM PROPERTIES -->
     <meta property="og:title" content="Bilateral Business Home - Mongolia Vietnam Chamber of Commerce">
     <meta property="og:description"
         content="Explore bilateral trade metrics, local economic development updates, and connect with premium corporate networks.">
-    <meta property="og:image" content="https://buyan-pro.github.io/wdd231/chamber/images/favicon.ico">
-    <meta property="og:url" content="https://github.io">
+    <meta property="og:image" content="https://buyan-pro.github.io/wdd231/chamber/images/og-image.jpg">
+    <meta property="og:url" content="https://buyan-pro.github.io/wdd231/chamber/index.html">
     <meta property="og:type" content="website">
 
     <!-- GOOGLE FONTS API INTEGRATION BLOCKS -->
@@ -25,16 +26,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- LOCAL APP STYLESHEETS LINK MATRIX HIERARCHY - FIXED: Restored official Normalize CDN engine -->
-    <link rel="stylesheet" href="https://cloudflare.com">
+    <!-- LOCAL APP STYLESHEETS LINK MATRIX HIERARCHY -->
     <link rel="stylesheet" href="styles/small.css">
     <link rel="stylesheet" href="styles/larger.css" media="(min-width: 64rem)">
-
 </head>
 
 <body>
 
-    <!-- Header UI Module Layout - FIXED: Corporate Logo embedded with layout attributes -->
+    <!-- Header UI Module Layout -->
     <header>
         <div class="header-container">
             <div class="logo-area">
@@ -45,7 +44,6 @@
                     <p>Mongolia Vietnam Chamber of Commerce</p>
                 </div>
             </div>
-            <!-- Dynamic Smartphone Hamburger Navigation Toggle Control -->
             <button id="menu-toggle" aria-label="Toggle Navigation Menu">☰</button>
         </div>
         <nav id="nav-menu">
@@ -61,7 +59,7 @@
 
     <!-- Main Content Workspace Constraints Grid -->
     <main class="home-grid">
-        <!-- Hero Section Component - FIXED: Changed section tag to a division wrapper -->
+        <!-- Hero Section Component -->
         <div class="hero-section">
             <picture>
                 <source media="(min-width: 64rem)" srcset="images/hero-larger.webp">
@@ -70,72 +68,65 @@
                     loading="eager">
             </picture>
             <div class="hero-cta">
-                <h2>Welcome to Your Future</h2>
+                <h1>Welcome to Your Future</h1>
                 <p>Grow your cross-border business network and scale your international trade operations with us.</p>
-                <a href="#" class="cta-btn">Join the Chamber</a>
+                <a href="join.html" class="cta-btn">Join the Chamber</a>
             </div>
-        </div> <!-- FIXED: Added the required matching closing div tag right here -->
+        </div>
 
-        <!-- Current Events Component Section - FIXED: Structured for 2-column layout -->
+        <!-- Current Events Component Section -->
         <section class="events-section card">
             <h2>Upcoming Bilateral Events</h2>
             <div class="events-split-container">
-                <!-- Column 1: Replaced placeholder with live meeting graphic -->
                 <div class="events-image-placeholder">
                     <img src="images/vietnam-mongolia-meeting.webp"
                         alt="Official bilateral signing ceremony between Vietnamese and Mongolian delegates"
                         style="width: 100%; height: 100%; object-fit: cover; border-radius: 6px;">
                 </div>
-
+                <div class="events-details-list">
+                    <ul>
+                        <li><strong>Ulaanbaatar Trade Summit</strong> - Oct 14th, 9:00 AM</li>
+                        <li><strong>B2B Networking Breakfast</strong> - Oct 22nd, 7:30 AM</li>
+                        <li><strong>Bilateral Investment Forum</strong> - Nov 05th, 12:00 PM</li>
+                    </ul>
+                </div>
             </div>
+        </section>
 
-            <!-- Column 2: Event Text Details -->
-            <div class="events-details-list">
-                <ul>
-                    <li><strong>Ulaanbaatar Trade Summit</strong> - Oct 14th, 9:00 AM</li>
-                    <li><strong>B2B Networking Breakfast</strong> - Oct 22nd, 7:30 AM</li>
-                    <li><strong>Bilateral Investment Forum</strong> - Nov 05th, 12:00 PM</li>
-                </ul>
-            </div>
-            </div>
-
-
-            <!-- Weather Component Section - FIXED: Prepared for Ulaanbaatar & Hanoi Dual rendering -->
-            <section class="weather-section card">
-                <h2>Chamber Regional Weather Profiles</h2>
-                <div class="dual-weather-grid">
-                    <!-- City 1: Ulaanbaatar -->
-                    <div class="weather-city-block">
-                        <h3>Mongolia Head Office</h3>
-                        <div id="ub-weather">
-                            <p>Loading Ulaanbaatar climate profile...</p>
-                        </div>
-                    </div>
-
-                    <!-- City 2: Hanoi -->
-                    <div class="weather-city-block">
-                        <h3>Vietnam Trade Hub</h3>
-                        <div id="hanoi-weather">
-                            <p>Loading Hanoi climate profile...</p>
-                        </div>
+        <!-- Weather Component Section -->
+        <section class="weather-section card">
+            <h2>Chamber Regional Weather Profiles</h2>
+            <div class="dual-weather-grid">
+                <div class="weather-city-block">
+                    <h3>Mongolia Head Office</h3>
+                    <div id="ub-weather">
+                        <p>Loading Ulaanbaatar climate profile...</p>
                     </div>
                 </div>
-                <hr style="border: 0; border-top: 1px solid var(--border-light); margin: 20px 0;">
-                <h3 style="text-align: center; margin-bottom: 15px;">3-Day Regional Outlook</h3>
-                <div id="forecast-info" class="forecast-grid">
-                    <!-- Combined forecast data hooks drop here dynamically -->
-                </div>
-
-                <!-- Premium Corporate Member Spotlights Component Section (Populated via scripts/spotlights.js) -->
-                <section class="spotlights-section">
-                    <h2>Business Spotlights</h2>
-                    <div id="spotlight-container" class="spotlight-grid">
-                        <!-- 2-3 random Gold/Silver member sponsor cards render dynamically here -->
+                <div class="weather-city-block">
+                    <h3>Vietnam Trade Hub</h3>
+                    <div id="hanoi-weather">
+                        <p>Loading Hanoi climate profile...</p>
                     </div>
+                </div>
+            </div>
+            <hr style="border: 0; border-top: 1px solid var(--border-light); margin: 20px 0;">
+            <h3 style="text-align: center; margin-bottom: 15px;">3-Day Regional Outlook</h3>
+            <div id="forecast-info" class="forecast-grid">
+                <!-- Combined forecast data hooks drop here dynamically -->
+            </div>
+        </section>
 
+        <!-- Premium Corporate Member Spotlights Component Section -->
+        <section class="spotlights-section">
+            <h2>Business Spotlights</h2>
+            <div id="spotlight-container" class="spotlight-grid">
+                <!-- 2-3 random Gold/Silver member sponsor cards render dynamically here -->
+            </div>
+        </section>
     </main>
 
-    <!-- Footer UI Module Layout - FIXED: Matches directory.html exactly -->
+    <!-- Footer UI Module Layout -->
     <footer>
         <div class="footer-top">
             <div class="footer-contact">
