@@ -1,0 +1,827 @@
+:root {
+    --primary-color: #0A2540;
+    /* Deep Royal Sapphire Base */
+    --secondary-color: #A61C24;
+    /* Oxblood Crimson Accent */
+    --accent-color: #D4AF37;
+    /* Muted Metallic Gold Highlight */
+    --bg-light: #F4F6F9;
+    /* Platinum Ice Canvas */
+    --card-bg: #FFFFFF;
+    /* Pristine White Card Elements */
+    --text-main: #1C2A38;
+    /* Premium Dark Navy Charcoal Text */
+    --text-muted: #627D98;
+    /* Soft Slate Metadata Labeling */
+
+    
+    --border-light: #E2E8F0;
+    --btn-bg: #E2E8F0;
+    --btn-border: #CBD5E1;
+    --nav-mobile-bg: #06182B;
+    --nav-border-line: rgba(255, 255, 255, 0.05);
+    --shadow-light: rgba(10, 37, 64, 0.02);
+    --shadow-header: rgba(10, 37, 64, 0.15);
+    --tier-bronze: #CBD5E1;
+    --tier-silver: #94A3B8;
+    --footer-text-light: #E2E8F0;
+}
+
+/* Base Body Layout Configuration */
+body {
+    font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-main);
+    line-height: 1.5;
+    padding: 0;
+    margin: 0;
+}
+
+/* ==========================================================================
+   Header Component Architecture
+   ========================================================================== */
+header {
+    background-color: var(--primary-color);
+    color: var(--card-bg);
+    position: relative;
+    border-bottom: 4px solid var(--secondary-color);
+    box-shadow: 0 2px 10px var(--shadow-header);
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+}
+
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-area img {
+    height: auto;
+    object-fit: contain;
+}
+
+.flag-icon {
+    font-size: 2rem;
+}
+
+.header-logo-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0;
+    letter-spacing: 0.5px;
+    color: var(--card-bg);
+}
+
+.branding-text p {
+    font-size: 0.75rem;
+    margin: 0;
+    color: var(--accent-color);
+}
+
+/* Mobile Dropdown Navigation Menu */
+#menu-toggle {
+    background: none;
+    border: none;
+    color: var(--card-bg);
+    font-size: 1.8rem;
+    cursor: pointer;
+    padding: 5px;
+}
+
+#nav-menu {
+    display: none;
+    background-color: var(--nav-mobile-bg);
+}
+
+#nav-menu.open {
+    display: block;
+}
+
+#nav-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#nav-menu ul li a {
+    display: block;
+    color: var(--card-bg);
+    padding: 12px 20px;
+    text-decoration: none;
+    font-weight: 500;
+    border-top: 1px solid var(--nav-border-line);
+}
+
+#nav-menu ul li a.active,
+#nav-menu ul li a:hover {
+    background-color: var(--secondary-color);
+    color: var(--card-bg);
+}
+
+/* ==========================================================================
+   Main Core Content Layout & Fluid Workspace Constraints
+   ========================================================================== */
+main.home-grid,
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+/* Side Margins: Protects text components from touching viewport edges on mobile */
+.card,
+.spotlights-section,
+.directory-control-panel {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.directory-control-panel {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.directory-control-panel h1 {
+    color: var(--primary-color);
+    margin-bottom: 8px;
+    font-size: 1.75rem;
+    font-weight: 700;
+}
+
+.directory-control-panel p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+}
+
+/* View Switcher Control Buttons */
+.view-switch-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.view-switch-buttons button {
+    background-color: var(--btn-bg);
+    border: 1px solid var(--btn-border);
+    color: var(--text-main);
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.view-switch-buttons button.active,
+.view-switch-buttons button:hover {
+    background-color: var(--secondary-color);
+    color: var(--card-bg);
+    border-color: var(--secondary-color);
+}
+
+/* Card Presentation Foundations */
+.card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    padding: 24px;
+    box-shadow: 0 4px 6px var(--shadow-light);
+}
+
+.card h1,
+.card h2,
+.card h3 {
+    margin-top: 0;
+    color: var(--primary-color);
+}
+
+/* ==========================================================================
+   Hero Section Component - Mobile Stacked Setup
+   ========================================================================== */
+.hero-section {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background-color: var(--primary-color);
+    /* Matches the sapphire block */
+}
+
+.hero-section picture img {
+    width: 100%;
+    height: auto;
+    max-height: 300px;
+    display: block;
+    object-fit: cover;
+    object-position: top;
+}
+
+/* Stacks naturally on mobile views, preventing clipping */
+.hero-cta {
+    position: relative;
+    /* Changed from absolute to flow naturally */
+    bottom: auto;
+    left: auto;
+    transform: none;
+    background-color: var(--primary-color);
+    padding: 20px;
+    color: #FFFFFF;
+    box-sizing: border-box;
+    text-align: center;
+    width: 100%;
+    max-width: 100%;
+    box-shadow: none;
+}
+
+.hero-cta h2 {
+    color: var(--accent-color) !important;
+    margin: 0 0 6px 0;
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+.hero-cta p {
+    color: #FFFFFF !important;
+    margin: 0 0 14px 0;
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+.cta-btn {
+    display: inline-block;
+    background-color: var(--secondary-color);
+    color: #FFFFFF !important;
+    text-decoration: none;
+    padding: 10px 20px;
+    font-weight: bold;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+}
+
+.cta-btn:hover {
+    background-color: #BD212B;
+}
+
+/* ==========================================================================
+   Real-Time Asynchronous Weather API UI Subcomponents
+   ========================================================================== */
+.current-weather-display {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.current-weather-display .temp {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.current-weather-display .desc {
+    margin: 0;
+    font-weight: 500;
+    color: var(--text-muted);
+}
+
+.forecast-grid {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.forecast-day {
+    flex: 1;
+    background-color: var(--bg-light);
+    padding: 10px;
+    border-radius: 6px;
+    text-align: center;
+    border: 1px solid var(--border-light);
+}
+
+.forecast-date {
+    font-weight: bold;
+    margin: 0 0 5px 0;
+    color: var(--primary-color);
+}
+
+.forecast-temp {
+    font-weight: bold;
+    margin: 5px 0 0 0;
+}
+
+/* ==========================================================================
+   Dynamic Sponsor Spotlight Layout Architecture (Home Page Only)
+   ========================================================================== */
+.spotlights-section h2 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.spotlight-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.spotlight-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 6px var(--shadow-light);
+}
+
+.spotlight-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid var(--bg-light);
+    padding-bottom: 8px;
+    margin-bottom: 12px;
+}
+
+.spotlight-header h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: var(--primary-color);
+}
+
+.company-badge {
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 4px 8px;
+    border-radius: 4px;
+    background-color: var(--bg-light);
+}
+
+.spotlight-card.tier-3 .company-badge {
+    background-color: #FEF3C7;
+    color: #92400E;
+}
+
+.spotlight-tagline {
+    font-style: italic;
+    color: var(--text-muted);
+    margin: 0 0 15px 0;
+}
+
+.spotlight-details p {
+    margin: 6px 0;
+    font-size: 0.85rem;
+}
+
+.spotlight-details a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+/* ==========================================================================
+   Grid Layout Configuration Baseline (Directory Page Only)
+   ========================================================================== */
+.grid-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 25px;
+}
+
+.business-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    padding: 24px;
+    text-align: center;
+    box-shadow: 0 4px 6px var(--shadow-light);
+}
+
+.business-card.level-1 {
+    border-top: 5px solid var(--tier-bronze);
+}
+
+.business-card.level-2 {
+    border-top: 5px solid var(--tier-silver);
+}
+
+.business-card.level-3 {
+    border-top: 5px solid var(--accent-color);
+}
+
+.business-card h3 {
+    font-size: 1.25rem;
+    margin: 12px 0 6px 0;
+    color: var(--primary-color);
+}
+
+.business-card .tagline {
+    font-style: italic;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 15px;
+}
+
+.business-card p {
+    font-size: 0.9rem;
+    margin: 6px 0;
+    color: var(--text-main);
+}
+
+.business-card a {
+    display: inline-block;
+    margin-top: 15px;
+    color: var(--secondary-color);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.business-card a:hover {
+    text-decoration: underline;
+}
+
+/* List Layout Configuration Baseline (Directory Page Only) */
+.list-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.list-layout .business-card {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    padding: 20px;
+    border-radius: 6px;
+    border-top: none;
+}
+
+.list-layout .business-card.level-1 {
+    border-left: 6px solid var(--tier-bronze);
+}
+
+.list-layout .business-card.level-2 {
+    border-left: 6px solid var(--tier-silver);
+}
+
+.list-layout .business-card.level-3 {
+    border-left: 6px solid var(--accent-color);
+}
+
+.list-layout .business-card .card-logo-wrap,
+.list-layout .business-card .tagline {
+    display: none;
+}
+
+/* ================================================================
+Footer Component Architecture
+================================================================ */
+
+footer {
+    background-color: var(--primary-color);
+    color: var(--bg-light);
+    padding: 30px 20px;
+    margin-top: 50px;
+    font-size: 0.9rem;
+    border-top: 4px solid var(--secondary-color);
+}
+
+.footer-top {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border-bottom: 1px solid var(--nav-border-line);
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+.footer-contact h3,
+
+.footer-social h3 {
+    margin: 0 0 10px 0;
+    color: var(--accent-color);
+    font-size: 1.1rem;
+}
+
+.footer-contact p,
+.footer-meta p {
+    margin: 6px 0;
+    color: var(--footer-text-light);
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 5px;
+}
+
+.social-links a {
+    color: var(--card-bg) !important;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: color 0.2s ease-in-out;
+}
+
+.social-links a:hover {
+    color: var(--accent-color) !important;
+    text-decoration: underline;
+}
+
+.footer-meta a.siteplan-link {
+    color: var(--accent-color) !important;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-block;
+    margin-top: 8px;
+    transition: opacity 0.2s ease;
+}
+
+.footer-meta a.siteplan-link:hover {
+    text-decoration: underline;
+    opacity: 0.85;
+}
+
+.footer-bottom {
+    text-align: center;
+}
+
+.footer-bottom p {
+    margin: 6px 0;
+}
+
+.modified-timestamp {
+    font-size: 0.8rem;
+    color: var(--tier-silver);
+}
+
+/* ======================================================
+Accessibility Utilities: Structural Heading Hide
+======================================================= */
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+/* Center alignment variables for Upcoming Events cards */
+.events-section {
+    text-align: center;
+}
+
+.events-section ul {
+    list-style-type: none;
+    /* Removes bullet formatting markers to balance layout text */
+    padding: 0;
+    margin: 15px auto 0 auto;
+    display: inline-block;
+    /* Aligns text columns uniformly around center lines */
+    text-align: left;
+    /* Restores crisp left text baseline alignment within centered wrapper */
+}
+
+.events-section ul li {
+    margin-bottom: 8px;
+}
+
+/* ==========================================================================
+   W03: Upcoming Events 2-Column Split System Layouts - FIXED LEFT/RIGHT ROW
+   ========================================================================== */
+.events-section {
+    text-align: center;
+}
+
+.events-split-container {
+    display: flex;
+    flex-direction: row;
+    /* FIXED: Forces left-to-right side-by-side row split layout on mobile screen viewports */
+    gap: 25px;
+    margin-top: 15px;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.events-image-placeholder {
+    flex: 1;
+    /* Takes up half the horizontal layout width on the left column */
+    max-width: 50%;
+    height: auto;
+    display: block;
+    border: none;
+    /* Strips placeholder dotted border matrix elements out */
+}
+
+.events-image-placeholder img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 6px;
+    display: block;
+}
+
+.events-details-list {
+    flex: 1;
+    /* Takes up half the horizontal layout width on the right column */
+    max-width: 50%;
+    text-align: left;
+    /* Aligns textual elements gracefully along a crisp left baseline */
+}
+
+.events-details-list ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.events-details-list ul li {
+    margin-bottom: 12px;
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+
+/* ==========================================================================
+   W03: Upcoming Events & Dual-Weather Layout Foundations
+   ========================================================================== */
+.events-split-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.events-image-placeholder {
+    width: 100%;
+    max-width: 340px;
+    height: 180px;
+    background-color: var(--bg-light);
+    border: 2px dashed var(--btn-border);
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-muted);
+}
+
+.events-image-placeholder .meeting-icon {
+    font-size: 2.5rem;
+    margin-bottom: 5px;
+}
+
+.events-details-list ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+}
+
+.events-details-list ul li {
+    margin-bottom: 12px;
+}
+
+/* Dual Weather Block Framework */
+.dual-weather-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.weather-city-block {
+    background-color: var(--bg-light);
+    padding: 15px;
+    border-radius: 6px;
+    border: 1px solid var(--border-light);
+}
+
+.weather-city-block h3 {
+    margin: 0 0 10px 0;
+    font-size: 1rem;
+    color: var(--primary-color);
+}
+
+/* ==========================================================================
+   W04: Join Us Application Form Mobile Layout Baseline
+   ========================================================================== */
+.join-main-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding: 20px;
+    max-width: 1140px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+.application-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin-top: 15px;
+}
+
+.form-label {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--primary-color);
+}
+
+.form-label span {
+    margin-left: 2px;
+}
+
+.application-form input[type="text"],
+.application-form input[type="email"],
+.application-form input[type="tel"],
+.application-form select,
+.application-form textarea {
+    padding: 12px;
+    border: 1px solid var(--btn-border);
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    background-color: var(--bg-light);
+    color: var(--text-main);
+    box-sizing: border-box;
+    width: 100%;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.application-form input:focus,
+.application-form select:focus,
+.application-form textarea:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 3px rgba(166, 28, 36, 0.1);
+    background-color: var(--card-bg);
+}
+
+/* Form Action Trigger Button Selector */
+.submit-btn {
+    background-color: var(--secondary-color);
+    color: var(--card-bg);
+    border: none;
+    padding: 14px;
+    font-size: 1rem;
+    font-weight: 700;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    margin-top: 10px;
+}
+
+.submit-btn:hover {
+    background-color: #BD212B;
+}
+
+/* Sidebar Benefit Cards Layout Group */
+.benefits-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.tier-benefit-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 6px var(--shadow-light);
+}
+
+.tier-benefit-card h3 {
+    margin: 0 0 8px 0;
+}
+
+.bronze-info h3 {
+    color: #CD7F32;
+}
+
+.silver-info h3 {
+    color: var(--text-muted);
+}
+
+.gold-info h3 {
+    color: var(--accent-color);
+}

@@ -1,0 +1,65 @@
+[
+    {
+        "name": "Tema Port Logistics & Freight Co.",
+        "address": "Harbour Road, Tema Free Zone, Greater Accra, Ghana",
+        "phone": "+233 30 274 1120",
+        "url": "https://temaportlogistics.gh",
+        "image": "images/logo-tema-port.png",
+        "membership": 3,
+        "tagline": "Connecting Ghana's Atlantic gateway to Southeast Asian supply chains."
+    },
+    {
+        "name": "Hanoi Agricultural Export Group",
+        "address": "12 Hoang Hoa Tham St, Ba Dinh, Hanoi, Vietnam",
+        "phone": "+84 24 3845 9999",
+        "url": "https://hanoiagexport.vn",
+        "image": "images/logo-hanoi-agri.png",
+        "membership": 3,
+        "tagline": "Premium tropical produce distribution across Ghanaian markets."
+    },
+    {
+        "name": "Accra Cocoa Processors Cooperative",
+        "address": "Spintex Industrial Area, Accra, Ghana",
+        "phone": "+233 30 281 3345",
+        "url": "https://accracocoa.gh",
+        "image": "images/logo-accra-cocoa.png",
+        "membership": 3,
+        "tagline": "Ghana's finest cocoa beans processed for premium Vietnamese confectionery."
+    },
+    {
+        "name": "Kumasi Gold & Minerals Trading",
+        "address": "Adum Commercial District, Kumasi, Ghana",
+        "phone": "+233 32 202 7788",
+        "url": "https://kumasigold.gh",
+        "image": "images/logo-kumasi-gold.png",
+        "membership": 2,
+        "tagline": "Certified gold and mineral exports linking Ashanti mines to global partners."
+    },
+    {
+        "name": "Saigon Textile and Manufacturing Corp",
+        "address": "45 Nguyen Hue Boulevard, District 1, Ho Chi Minh City",
+        "phone": "+84 28 3829 1234",
+        "url": "https://saigontextile.com",
+        "image": "images/logo-saigon-textile.png",
+        "membership": 2,
+        "tagline": "Heavy garment and commercial raw materials supplier for West Africa."
+    },
+    {
+        "name": "Volta Trans-Africa Consulting",
+        "address": "Ridge Towers, Ridge, Accra, Ghana",
+        "phone": "+233 30 266 9012",
+        "url": "https://voltatrans.gh",
+        "image": "images/logo-volta-trans.png",
+        "membership": 1,
+        "tagline": "Bilateral legal and customs regulatory clearance advisory."
+    },
+    {
+        "name": "Vietnam Maritime Shipping Joint-Stock",
+        "address": "215 Lachtray Street, Ngo Quyen District, Hai Phong",
+        "phone": "+84 225 3739 888",
+        "url": "https://vinalines.com.vn",
+        "image": "images/logo-vinalines.png",
+        "membership": 1,
+        "tagline": "Direct ocean cargo networks handling global transit lines."
+    }
+]
