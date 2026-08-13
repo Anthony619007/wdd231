@@ -5,34 +5,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thank You for Joining | Mongolia Vietnam Chamber of Commerce</title>
-    <meta name="description"
-        content="Thank you for submitting your membership application to the Mongolia Vietnam Chamber of Commerce. Your application is being reviewed.">
-    <meta name="author" content="Buyannemekh Chimeddorj">
+    <meta name="description" content="Thank you for submitting your membership application to the Mongolia Vietnam Chamber of Commerce. Your application is being reviewed.">
+    <meta name="author" content="Anthony Anusiem">
 
-    <link rel="icon" href="https://buyan-pro.github.io/wdd231/chamber/images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="https://github.io" type="image/x-icon">
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <meta property="og:image" content="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='630'%3E%3Crect width='1200' height='630' fill='%230A2540'/%3E%3Crect x='20' y='20' width='1160' height='590' fill='none' stroke='%23A61C24' stroke-width='8'/%3E%3Crect x='40' y='40' width='1120' height='550' fill='none' stroke='%23D4AF37' stroke-width='2'/%3E%3Ctext x='600' y='200' text-anchor='middle' font-family='Inter, Arial, sans-serif' font-size='72' font-weight='bold' fill='%23FFFFFF'%3EThank You!%3C/text%3E%3Ctext x='600' y='270' text-anchor='middle' font-family='Inter, Arial, sans-serif' font-size='32' fill='%23D4AF37'%3EApplication Received%3C/text%3E%3Cline x1='300' y1='300' x2='900' y2='300' stroke='%23A61C24' stroke-width='3'/%3E%3Ctext x='600' y='360' text-anchor='middle' font-family='Inter, Arial, sans-serif' font-size='24' fill='%23E2E8F0'%3EWe'll Review Your Membership Application Shortly%3C/text%3E%3Ctext x='600' y='430' text-anchor='middle' font-family='Inter, Arial, sans-serif' font-size='18' fill='%2394A3B8'%3EMongolia Vietnam Chamber of Commerce%3C/text%3E%3C/svg%3E">
-    
-    <meta property="og:title" content="Application Received - Mongolia Vietnam Chamber of Commerce">
-    <meta property="og:description"
-        content="Thank you for submitting your membership application to the Mongolia Vietnam Chamber of Commerce.">
-    <meta property="og:url" content="https://buyan-pro.github.io/wdd231/chamber/thankyou.html">
-    <meta property="og:type" content="website">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://cloudflare.com">
     <link rel="stylesheet" href="styles/small.css">
     <link rel="stylesheet" href="styles/larger.css" media="(min-width: 64rem)">
 </head>
 
 <body>
 
+    <!-- Header UI Module Layout -->
     <header>
         <div class="header-container">
             <div class="logo-area">
-                <img src="images/chamber-logo.webp" alt="MVCC Official Emblem Logo" width="80" height="80" loading="eager">
+                <img src="images/chamber-logo.webp" alt="MVCC Official Emblem Logo" width="80" height="80"
+                    loading="eager">
                 <div class="branding-text">
                     <div class="header-logo-title">MVCC</div>
                     <p>Mongolia Vietnam Chamber of Commerce</p>
@@ -51,24 +44,31 @@
         </nav>
     </header>
 
-    <main class="thankyou-main">
-        <section class="card thankyou-card">
-            <div class="thankyou-icon">🎉</div>
-            <h1>Application Submitted Successfully!</h1>
-            <p class="thankyou-message">
+    <main style="padding: 40px 20px; max-width: 800px; margin: 0 auto; box-sizing: border-box;">
+        <section class="card" style="text-align: center; padding: 40px 20px;">
+            <div style="font-size: 3.5rem; margin-bottom: 15px;">🎉</div>
+            <h1 style="color: var(--primary-color); margin-bottom: 10px;">Application Submitted Successfully!</h1>
+            <p style="color: var(--text-muted); margin-bottom: 30px; font-size: 1.05rem;">
                 Thank you for applying. Our administrative board will review your organizational profile criteria
                 shortly.
             </p>
 
-            <div id="submission-summary" class="card summary-card">
-                <h2>Review Submitted Registration Details</h2>
+            <!-- Target container box for printing URL parameters -->
+            <div id="submission-summary" class="card"
+                style="text-align: left; background-color: var(--bg-light); border-radius: 6px; border: 1px solid var(--border-light); max-width: 550px; margin: 0 auto; padding: 25px;">
+                <h2
+                    style="font-size: 1.2rem; color: var(--primary-color); margin-top: 0; margin-bottom: 15px; border-bottom: 2px solid var(--border-light); padding-bottom: 8px;">
+                    Review Submitted Registration Details
+                </h2>
                 <!-- JavaScript appends user form data lists right here -->
             </div>
 
-            <a href="index.html" class="cta-btn return-btn">Return to Home Page</a>
+            <a href="index.html" class="cta-btn" style="margin-top: 30px; display: inline-block;">Return to Home
+                Page</a>
         </section>
     </main>
 
+    <!-- Footer UI Module Layout -->
     <footer>
         <div class="footer-top">
             <div class="footer-contact">
@@ -91,7 +91,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; <span id="current-year"></span> | <strong>Buyannemekh Chimeddorj</strong> | Mongolia</p>
+            <p>&copy; <span id="current-year"></span> | <strong>Anthony Anusiem</strong> | Mongolia</p>
             <p class="modified-timestamp">Last Structural Modification: <span id="last-modified-date"></span></p>
         </div>
     </footer>

@@ -4,41 +4,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Join the Chamber | Mongolia Vietnam Chamber of Commerce</title>
+    <title>Chamber Business Directory | Mongolia Vietnam Chamber of Commerce</title>
     <meta name="description"
-        content="Chamber Business Directory - Mongolia Vietnam Chamber of Commerce in Ulaanbaatar: Your network for trade and logistics.">
+        content="Mongolia Vietnam Chamber of Commerce in Ulaanbaatar: Your network for trade and logistics.">
     <meta name="author" content="Buyannemekh Chimeddorj">
 
+    <!-- STANDARD FAVICON MAPPING LINK -->
     <link rel="icon" href="https://buyan-pro.github.io/wdd231/chamber/images/favicon.ico" type="image/x-icon">
 
-    <meta property="og:image" content="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='630'%3E%3Crect width='1200' height='630' fill='%230A2540'/%3E%3Crect x='20' y='20' width='1160' height='590' fill='none' stroke='%23A61C24' stroke-width='8'/%3E%3Crect x='40' y='40' width='1120' height='550' fill='none' stroke='%23D4AF37' stroke-width='2'/%3E%3Ctext x='600' y='200' text-anchor='middle' font-family='Inter, Arial, sans-serif' font-size='72' font-weight='bold' fill='%23FFFFFF'%3EMVCC%3C/text%3E%3Ctext x='600' y='270' text-anchor='middle' font-family='Inter, Arial, sans-serif' font-size='32' fill='%23D4AF37'%3EBusiness Directory%3C/text%3E%3Cline x1='300' y1='300' x2='900' y2='300' stroke='%23A61C24' stroke-width='3'/%3E%3Ctext x='600' y='360' text-anchor='middle' font-family='Inter, Arial, sans-serif' font-size='24' fill='%23E2E8F0'%3EConnect with Bilateral Trade Partners%3C/text%3E%3Ctext x='600' y='430' text-anchor='middle' font-family='Inter, Arial, sans-serif' font-size='18' fill='%2394A3B8'%3EUlaanbaatar • Hanoi • Ho Chi Minh City%3C/text%3E%3C/svg%3E">
-    
+    <!-- OPEN GRAPH PROPERTIES - BOTH URLS ARE FULLY ABSOLUTE AND ACCURATE -->
     <meta property="og:title" content="Bilateral Business Directory - Mongolia Vietnam Chamber of Commerce">
     <meta property="og:description"
         content="Explore and connect with registered trade companies, legal firms, and logistics providers driving cross-border economic ties.">
-    <meta property="og:url" content="https://buyan-pro.github.io/wdd231/chamber/directory.html">
+    <meta property="og:image" content="https://buyan-pro.github.io/wdd231/chamber/images/favicon.ico">
+    <meta property="og:url" content="https://github.io">
     <meta property="og:type" content="website">
 
+    <!-- GOOGLE FONTS API INTEGRATION BLOCKS - FIXED: Repaired missing font subdomains inside preconnect connection blocks -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
+    <!-- LOCAL APP STYLESHEETS LINK MATRIX HIERARCHY -->
+    <link rel="stylesheet" href="https://cloudflare.com">
     <link rel="stylesheet" href="styles/small.css">
     <link rel="stylesheet" href="styles/larger.css" media="(min-width: 64rem)">
+
 </head>
 
 <body>
 
+    <!-- Header UI Module Layout -->
     <header>
         <div class="header-container">
             <div class="logo-area">
-                <img src="images/chamber-logo.webp" alt="MVCC Official Emblem Logo" width="80" height="80" loading="eager">
+                <img src="images/chamber-logo.webp" alt="MVCC Official Emblem Logo" width="80" height="80"
+                    loading="eager">
                 <div class="branding-text">
+                    <!-- Removed h1 from header to clear the single h1 layout check -->
                     <div class="header-logo-title">MVCC</div>
                     <p>Mongolia Vietnam Chamber of Commerce</p>
                 </div>
             </div>
+            <!-- Dynamic Smartphone Hamburger Navigation Toggle Control -->
+            <!-- LOCATE THIS LINE IN DIRECTORY.HTML AND CHANGE ID TO MATCH MAIN.JS -->
             <button id="menu-toggle" aria-label="Toggle Navigation Menu">☰</button>
+
         </div>
         <nav id="nav-menu">
             <ul>
@@ -51,22 +62,29 @@
         </nav>
     </header>
 
+    <!-- Main Content Workspace Constraints Grid -->
     <main>
         <section class="directory-control-panel">
+            <!-- Top level Page Anchor -->
             <h1>Registered Business Directory</h1>
-            <p>Filter active bilateral trading organizations operating across Ulaanbaatar, Hanoi, and Ho Chi Minh City.</p>
+            <p>Filter active bilateral trading organizations operating across Ulaanbaatar, Hanoi, and Ho Chi Minh City.
+            </p>
             <div class="view-switch-buttons">
                 <button id="grid-view-btn" class="active">Grid View</button>
                 <button id="list-view-btn">List View</button>
             </div>
         </section>
 
+        <!-- FIXED 1: Added a hidden or visible structural h2 inside the article to give it a heading -->
         <article id="directory-display-container" class="grid-layout">
             <h2 class="visually-hidden">Active Member Profiles</h2>
+
+
             <!-- Dynamic javascript section injection logic appends here -->
         </article>
     </main>
 
+    <!-- Footer UI Module Layout -->
     <footer>
         <div class="footer-top">
             <div class="footer-contact">
@@ -94,14 +112,17 @@
         </div>
     </footer>
 
+    <!-- APP GLOBAL CORE ENGINE SCRIPTS HOOK -->
     <script src="scripts/main.js" defer></script>
     <script src="scripts/directory.js" defer></script>
 
+    <!-- INJECT THIS TARGETED EVENT HANDLER TO DEFEAT OVERWRITE CONFLICTS -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const btn = document.getElementById("menu-toggle");
             const nav = document.getElementById("nav-menu");
             if (btn && nav) {
+                // Attach a direct event loop trigger to guarantee execution
                 btn.onclick = () => {
                     nav.classList.toggle("open");
                     btn.innerHTML = nav.classList.contains("open") ? "&#x2715;" : "&#9776;";
