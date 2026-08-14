@@ -1,6 +1,4 @@
-/* ==========================================================================
-   High-Density Layout Overrides for Wide Screen Viewports Layout (>= 1024px)
-   ========================================================================== */
+
 @media screen and (min-width: 64rem) {
     body {
         background-color: var(--bg-light);
@@ -45,16 +43,12 @@
         background-color: var(--nav-border-line);
     }
 
-    /* ==========================================================================
-       Home Page Grid System Dashboard Configuration (3-Columns)
-       ========================================================================== */
     .home-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 30px;
     }
 
-    /* Hero section expands completely edge-to-edge across the top row */
     .hero-section {
         grid-column: 1 / -1;
     }
@@ -63,7 +57,6 @@
         min-height: 450px;
     }
 
-    /* Restores the overlay card ONLY on large monitor viewports */
     .hero-cta {
         position: absolute !important;
         top: 50% !important;
@@ -78,7 +71,6 @@
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
     }
 
-    /* Interior content layouts: Splits events and weather columns cleanly */
     .events-section {
         grid-column: span 1;
         margin-left: 40px;
@@ -91,7 +83,6 @@
         margin-right: 40px;
     }
 
-    /* Spotlight container cards span edge-to-edge on the bottom row */
     .spotlights-section {
         grid-column: 1 / -1;
         margin-left: 40px;
@@ -105,13 +96,9 @@
     }
 
 
-    /* ==========================================================================
-       W03 UI Improvements: 2-Column Split Framework for Events & Weather Modules
-       ========================================================================== */
     .events-split-container {
         display: flex !important;
         flex-direction: row !important;
-        /* Forces left-to-right alignment explicitly on monitor screens */
         justify-content: center !important;
         align-items: center !important;
         gap: 40px !important;
@@ -122,16 +109,13 @@
     .events-image-placeholder {
         flex: 1 !important;
         max-width: 45% !important;
-        /* Restricts the signing photo to the left half */
         height: auto !important;
     }
 
     .events-details-list {
         flex: 1 !important;
         max-width: 45% !important;
-        /* Restricts your text lists to the right half */
         text-align: left !important;
-        /* Guarantees clean left baseline text formatting */
         padding-left: 0 !important;
     }
 
@@ -141,9 +125,6 @@
     }
 
 
-    /* ==========================================================================
-       W04: Join Us Desktop Multi-Column Split Framework (Form vs. Sidebar)
-       ========================================================================== */
     .join-main-layout {
         display: grid;
         grid-template-columns: 2fr 1fr;
@@ -160,7 +141,6 @@
     .benefits-sidebar {
         position: sticky;
         top: 40px;
-        /* Locks the cards container during scroll actions */
     }
 
     .tier-benefit-card {
@@ -171,9 +151,6 @@
         transform: scale(1.02);
     }
 
-    /* ==========================================================================
-       Directory Page View Class System Overrides (Left Intact)
-       ========================================================================== */
     .grid-layout {
         grid-template-columns: repeat(3, 1fr);
         gap: 30px;
@@ -222,7 +199,6 @@
         text-align: right;
     }
 
-    /* Split-Panel Dual Layout Footer Columns */
     .footer-top {
         flex-direction: row;
         justify-content: space-between;
@@ -233,5 +209,3 @@
         text-align: right;
     }
 }
-
-/* FIXED: Media query curly bracket now correctly encapsulates the entire file */
