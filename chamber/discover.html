@@ -1,280 +1,206 @@
-/* discover.css — page-specific styles for discover.html */
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discover | Mongolia Vietnam Chamber of Commerce</title>
+    <meta name="description" content="Discover the benefits of joining the Mongolia Vietnam Chamber of Commerce. Learn about bilateral trade, networking, and exclusive member opportunities.">
+    <meta name="author" content="Anthony Anusie">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
 
-/* Reset and base styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+    <!-- Open Graph -->
+    <meta property="og:title" content="Discover MVCC – Bilateral Business Opportunities">
+    <meta property="og:description" content="Unlock cross-border trade, events, and premium networking with the Mongolia Vietnam Chamber of Commerce.">
+    <meta property="og:image" content="https://anthony619007.github.io/chamber/images/og-image.jpg">
+    <meta property="og:url" content="https://anthony619007.github.io/chamber/discover.html">
+    <meta property="og:type" content="website">
 
-body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-    line-height: 1.6;
-    color: #2c3e50;
-    background: #f8fafc;
-}
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-/* Main container */
-.discover-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    padding: 2rem 1rem;
-    max-width: 1200px;
-    margin: 0 auto;
-}
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="styles/small.css">
+    <link rel="stylesheet" href="styles/larger.css" media="(min-width: 64rem)">
+    <link rel="stylesheet" href="styles/discover.css">
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="header-container">
+            <div class="logo-area">
+                <img src="images/chamber-logo.webp" alt="MVCC Official Emblem Logo" width="80" height="80" loading="eager">
+                <div class="branding-text">
+                    <div class="header-logo-title">MVCC</div>
+                    <p>Mongolia Vietnam Chamber of Commerce</p>
+                </div>
+            </div>
+            <button id="menu-toggle" aria-label="Toggle Navigation Menu">☰</button>
+        </div>
+        <nav id="nav-menu">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="discover.html" class="active">Discover</a></li>
+                <li><a href="directory.html">Directory</a></li>
+                <li><a href="join.html">Join Us</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-/* Card styles */
-.discover-card {
-    background: #ffffff;
-    border-radius: 16px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-    padding: 1.8rem;
-    transition: all 0.3s ease;
-    border: 1px solid #eef2f6;
-}
+    <main>
+        <!-- Breadcrumb / context -->
+        <div class="breadcrumb">
+            <a href="index.html">Home</a> / <span>Discover</span>
+        </div>
 
-.discover-card:hover {
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.10);
-    transform: translateY(-4px);
-}
+        <!-- Hero for discover page -->
+        <div class="hero-discover">
+            <h1>✨ Discover MVCC</h1>
+            <p>Your gateway to cross-border trade, premium networking, and exclusive business insights between Mongolia and Vietnam.</p>
+        </div>
 
-.discover-card h2 {
-    color: #0b2b4a;
-    font-weight: 600;
-    font-size: 1.5rem;
-    margin: 0 0 1rem 0;
-    border-bottom: 3px solid #d4a373;
-    padding-bottom: 0.5rem;
-    display: inline-block;
-}
+        <!-- Main discover content grid -->
+        <div class="discover-grid">
+            <!-- card 1: why join -->
+            <div class="discover-card">
+                <h2>Why Join?</h2>
+                <ul>
+                    <li>Direct access to bilateral trade missions</li>
+                    <li>Monthly B2B networking breakfasts</li>
+                    <li>Exclusive market intelligence reports</li>
+                    <li>Co-branded promotional opportunities</li>
+                    <li>Government & embassy liaison support</li>
+                </ul>
+                <a href="join.html" class="cta-inline">Become a member →</a>
+            </div>
 
-.discover-card ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
+            <!-- card 2: events & programs -->
+            <div class="discover-card">
+                <h2>Flagship Programs</h2>
+                <ul>
+                    <li><strong>Ulaanbaatar Trade Summit</strong> – Oct 14</li>
+                    <li><strong>B2B Networking Breakfast</strong> – Oct 22</li>
+                    <li><strong>Bilateral Investment Forum</strong> – Nov 5</li>
+                    <li><strong>Vietnam-Mongolia Tech Bridge</strong> – Dec 2</li>
+                    <li>Annual Gala & Awards – Jan 2027</li>
+                </ul>
+                <div class="badge-grid">
+                    <span class="badge">🎫 members-only</span>
+                    <span class="badge">🌏 cross-border</span>
+                </div>
+            </div>
 
-.discover-card ul li {
-    padding: 0.6rem 0;
-    border-bottom: 1px solid #f0f3f7;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
+            <!-- card 3: member benefits -->
+            <div class="discover-card">
+                <h2>Member Perks</h2>
+                <ul>
+                    <li>Premium listing in online directory</li>
+                    <li>Spotlight feature on homepage</li>
+                    <li>Discounted booth at trade fairs</li>
+                    <li>Legal & tax advisory sessions</li>
+                    <li>Access to VIP delegations</li>
+                </ul>
+                <p class="perks-note"><strong>Gold & Silver</strong> members receive enhanced visibility and priority invitations.</p>
+            </div>
 
-.discover-card ul li:last-child {
-    border-bottom: none;
-}
+            <!-- card 4: economic snapshot -->
+            <div class="discover-card">
+                <h2>Bilateral Trade Snapshot</h2>
+                <ul>
+                    <li>📈 2025 trade volume: <strong>$420M</strong> (+18% yoy)</li>
+                    <li>🏭 Top sectors: textiles, agri-tech, mining</li>
+                    <li>✈️ Direct flights: UBN – HAN (3x weekly)</li>
+                    <li>🤝 MoUs signed: 12 active agreements</li>
+                </ul>
+                <div class="fact-box">
+                    <span class="fact-box-label">💡 Did you know?</span> Mongolia and Vietnam celebrate 70 years of diplomatic relations in 2026.
+                </div>
+            </div>
 
-.discover-card ul li::before {
-    content: "▹";
-    color: #b68b5c;
-    font-weight: bold;
-}
+            <!-- card 5: success stories -->
+            <div class="discover-card">
+                <h2>Member Success</h2>
+                <ul>
+                    <li><strong>Nomad Textiles</strong> – expanded to Hanoi, +40% revenue</li>
+                    <li><strong>Hanoi Coffee Co.</strong> – opened roastery in UB</li>
+                    <li><strong>Mongol Steel</strong> – JV with Vietnamese partners</li>
+                    <li><strong>Green Energy Asia</strong> – solar pilot project</li>
+                </ul>
+                <p class="success-quote">"The MVCC network opened doors we didn't know existed." – CEO, Nomad Textiles</p>
+            </div>
 
-/* Badge system */
-.badge-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.8rem;
-    margin-top: 0.8rem;
-}
+            <!-- card 6: get involved -->
+            <div class="discover-card">
+                <h2>Get Involved</h2>
+                <ul>
+                    <li>Volunteer for trade delegations</li>
+                    <li>Sponsor a networking reception</li>
+                    <li>Host a company tour for delegates</li>
+                    <li>Join the SME export accelerator</li>
+                </ul>
+                <a href="join.html" class="cta-inline cta-inline--alt">Contact us →</a>
+                <div class="badge-grid badge-grid--spaced">
+                    <span class="badge">🤝 open to all</span>
+                    <span class="badge">📅 2026 calendar</span>
+                </div>
+            </div>
+        </div>
 
-.badge {
-    background: #f0f4fa;
-    padding: 0.3rem 1rem;
-    border-radius: 30px;
-    font-size: 0.8rem;
-    font-weight: 500;
-    color: #1a3a5c;
-    display: inline-block;
-}
+        <!-- Additional discover section: cultural / bilateral highlights -->
+        <div class="bridge-section-wrap">
+            <div class="bridge-section">
+                <h2>🇲🇳 🤝 🇻🇳 Cultural & Business Bridge</h2>
+                <div class="bridge-columns">
+                    <div class="bridge-column">
+                        <h3>Mongolia</h3>
+                        <p>• Ulaanbaatar: financial & commercial hub<br>• Key exports: coal, copper, cashmere<br>• Rapidly growing startup ecosystem</p>
+                    </div>
+                    <div class="bridge-column">
+                        <h3>Vietnam</h3>
+                        <p>• Hanoi: political & cultural center<br>• Key exports: electronics, textiles, coffee<br>• Dynamic manufacturing & tech sector</p>
+                    </div>
+                    <div class="bridge-column">
+                        <h3>Joint Opportunities</h3>
+                        <p>• Agriculture & food processing<br>• Renewable energy partnerships<br>• Tourism & hospitality exchange</p>
+                    </div>
+                </div>
+                <p class="bridge-savedate">📌 2026 joint business forum – save the date: March 18-20</p>
+            </div>
+        </div>
+    </main>
 
-/* Call to action buttons */
-.cta-inline {
-    display: inline-block;
-    background: #1a3a5c;
-    color: #ffffff !important;
-    padding: 0.6rem 1.8rem;
-    border-radius: 40px;
-    text-decoration: none;
-    font-weight: 500;
-    margin-top: 1rem;
-    transition: background 0.2s ease;
-    border: none;
-    cursor: pointer;
-}
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-top">
+            <div class="footer-contact">
+                <h3>MVCC Administrative Headquarters</h3>
+                <p>📍 Peace Avenue, Sukhbaatar District, Ulaanbaatar, Mongolia</p>
+                <p>📞 Phone: +976 11 312 456 | ✉️ Contact: info@mvcc.org</p>
+            </div>
+            <div class="footer-social">
+                <h3>Connect With Us</h3>
+                <div class="social-links">
+                    <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a>
+                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                    <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">X / Twitter</a>
+                </div>
+            </div>
+            <div class="footer-meta">
+                <p>WDD 231 Web Frontend Development I</p>
+                <p>Chamber Group Project Portfolio Hub</p>
+                <p><a href="siteplan.html" class="siteplan-link">📄 Project Site Plan</a></p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; <span id="current-year"></span> | <strong>Anthony Anusiem</strong> | Mongolia</p>
+            <p class="modified-timestamp">Last Structural Modification: <span id="last-modified-date"></span></p>
+        </div>
+    </footer>
 
-.cta-inline:hover {
-    background: #0b2b4a;
-    text-decoration: none;
-}
-
-.cta-inline--alt {
-    background: #b68b5c;
-}
-
-.cta-inline--alt:hover {
-    background: #9a7548;
-}
-
-/* Hero section */
-.hero-discover {
-    background: linear-gradient(145deg, #e9f0f8 0%, #d9e4ef 100%);
-    padding: 2.5rem 1.5rem;
-    border-radius: 24px;
-    text-align: center;
-    margin: 1rem 0 2rem;
-}
-
-.hero-discover h1 {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: #0b2b4a;
-    margin: 0;
-}
-
-.hero-discover p {
-    font-size: 1.2rem;
-    color: #2c4058;
-    max-width: 700px;
-    margin: 0.6rem auto 0;
-}
-
-/* Breadcrumb navigation */
-.breadcrumb {
-    font-size: 0.9rem;
-    color: #4f6a84;
-    padding: 0.5rem 1rem 0;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.breadcrumb a {
-    color: #1a3a5c;
-    text-decoration: none;
-    font-weight: 500;
-}
-
-.breadcrumb a:hover {
-    text-decoration: underline;
-}
-
-/* Member perks note */
-.perks-note {
-    margin-top: 0.8rem;
-    font-size: 0.95rem;
-    color: #2a4a6a;
-}
-
-/* Trade snapshot fact box */
-.fact-box {
-    margin-top: 0.8rem;
-    background: #eef3f9;
-    padding: 0.8rem 1rem;
-    border-radius: 12px;
-    border-left: 4px solid #b68b5c;
-}
-
-.fact-box-label {
-    font-weight: 500;
-    color: #0b2b4a;
-}
-
-/* Member success quote */
-.success-quote {
-    font-style: italic;
-    color: #3d5f7a;
-    padding: 0.5rem 0;
-}
-
-/* Get involved badge spacing */
-.badge-grid--spaced {
-    margin-top: 1rem;
-}
-
-/* Cultural & business bridge section */
-.bridge-section-wrap {
-    max-width: 1200px;
-    margin: 2rem auto;
-    padding: 0 1rem;
-}
-
-.bridge-section {
-    background: #f7faff;
-    border-radius: 28px;
-    padding: 2rem;
-    border: 1px solid #dce5f0;
-}
-
-.bridge-section h2 {
-    margin: 0 0 1rem 0;
-    color: #0b2b4a;
-}
-
-.bridge-columns {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1.5rem;
-    justify-content: space-between;
-}
-
-.bridge-column {
-    flex: 1;
-    min-width: 200px;
-}
-
-.bridge-column h3 {
-    margin: 0 0 0.3rem 0;
-    color: #0b2b4a;
-}
-
-.bridge-column p {
-    margin: 0;
-    color: #2c4058;
-}
-
-.bridge-savedate {
-    margin-top: 1.5rem;
-    background: #e3eefb;
-    padding: 0.8rem 1.2rem;
-    border-radius: 40px;
-    display: inline-block;
-    font-weight: 500;
-    color: #0b2b4a;
-}
-
-/* Responsive design */
-@media (min-width: 768px) {
-    .discover-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 2rem;
-    }
-}
-
-@media (min-width: 1024px) {
-    .discover-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 2.5rem;
-    }
-}
-
-/* Mobile first adjustments */
-@media (max-width: 767px) {
-    .hero-discover h1 {
-        font-size: 1.8rem;
-    }
-    
-    .hero-discover p {
-        font-size: 1rem;
-    }
-    
-    .discover-card {
-        padding: 1.2rem;
-    }
-    
-    .bridge-column {
-        min-width: 100%;
-    }
-}
+    <!-- scripts (shared) -->
+    <script src="scripts/main.js" defer></script>
+    <script src="scripts/discover-init.js" defer></script>
+</body>
+</html>
